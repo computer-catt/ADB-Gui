@@ -66,7 +66,7 @@
             this.bcoverdraw = new System.Windows.Forms.Button();
             this.appdrawercover = new System.Windows.Forms.Button();
             this.apppop = new System.Windows.Forms.Timer(this.components);
-            this.button3 = new System.Windows.Forms.Button();
+            this.CC = new System.Windows.Forms.Button();
             this.drag.SuspendLayout();
             this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
@@ -490,17 +490,17 @@
             this.apppop.Interval = 5000;
             this.apppop.Tick += new System.EventHandler(this.apppop_Tick);
             // 
-            // button3
+            // CC
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(711, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(28, 25);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "=";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.app_Click);
+            this.CC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CC.Location = new System.Drawing.Point(711, 0);
+            this.CC.Name = "CC";
+            this.CC.Size = new System.Drawing.Size(28, 25);
+            this.CC.TabIndex = 11;
+            this.CC.Text = "🖌";
+            this.CC.UseVisualStyleBackColor = true;
+            this.CC.Click += new System.EventHandler(this.CC_Click);
             // 
             // Form1
             // 
@@ -508,7 +508,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1129, 634);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.CC);
             this.Controls.Add(this.appdrawer);
             this.Controls.Add(this.percent);
             this.Controls.Add(this.mount);
@@ -583,7 +583,7 @@
         private System.Windows.Forms.Button cr;
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.CheckBox drp;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button CC;
     }
 }
 

@@ -422,5 +422,20 @@ namespace ADB_simplifier
                 DiscordRpc.Shutdown();
             }
         }
+
+        private void CC_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                ForeColor = colorDialog.Color;
+                ds.ForeColor = colorDialog.Color;
+                script.ForeColor = colorDialog.Color;
+                draw.ForeColor = colorDialog.Color;
+                settext.ForeColor = colorDialog.Color;
+                cl.ForeColor = colorDialog.Color;
+            }
+            
+        }
     }
 }
