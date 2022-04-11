@@ -67,10 +67,12 @@
             this.appdrawercover = new System.Windows.Forms.Button();
             this.apppop = new System.Windows.Forms.Timer(this.components);
             this.CC = new System.Windows.Forms.Button();
+            this.sp = new System.Windows.Forms.Panel();
             this.drag.SuspendLayout();
             this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
             this.drawp.SuspendLayout();
+            this.sp.SuspendLayout();
             this.SuspendLayout();
             // 
             // bs
@@ -89,9 +91,9 @@
             // scriptyB
             // 
             this.scriptyB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.scriptyB.Location = new System.Drawing.Point(11, 64);
+            this.scriptyB.Location = new System.Drawing.Point(776, 0);
             this.scriptyB.Name = "scriptyB";
-            this.scriptyB.Size = new System.Drawing.Size(776, 330);
+            this.scriptyB.Size = new System.Drawing.Size(87, 329);
             this.scriptyB.TabIndex = 1;
             this.scriptyB.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.scriptyB.UseVisualStyleBackColor = true;
@@ -111,10 +113,10 @@
             this.script.BackColor = System.Drawing.Color.Black;
             this.script.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.script.ForeColor = System.Drawing.Color.Lime;
-            this.script.Location = new System.Drawing.Point(12, 65);
+            this.script.Location = new System.Drawing.Point(1, 1);
             this.script.Name = "script";
-            this.script.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.script.Size = new System.Drawing.Size(774, 327);
+            this.script.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.script.Size = new System.Drawing.Size(799, 328);
             this.script.TabIndex = 2;
             this.script.Text = "";
             // 
@@ -158,7 +160,7 @@
             // 
             this.app.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.app.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.app.Location = new System.Drawing.Point(737, -2);
+            this.app.Location = new System.Drawing.Point(736, -2);
             this.app.Name = "app";
             this.app.Size = new System.Drawing.Size(28, 25);
             this.app.TabIndex = 11;
@@ -494,7 +496,7 @@
             // 
             this.CC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CC.Location = new System.Drawing.Point(711, 0);
+            this.CC.Location = new System.Drawing.Point(710, 0);
             this.CC.Name = "CC";
             this.CC.Size = new System.Drawing.Size(28, 25);
             this.CC.TabIndex = 11;
@@ -502,14 +504,25 @@
             this.CC.UseVisualStyleBackColor = true;
             this.CC.Click += new System.EventHandler(this.CC_Click);
             // 
+            // sp
+            // 
+            this.sp.BackColor = System.Drawing.Color.Lime;
+            this.sp.Controls.Add(this.scriptyB);
+            this.sp.Controls.Add(this.script);
+            this.sp.Location = new System.Drawing.Point(11, 64);
+            this.sp.Name = "sp";
+            this.sp.Size = new System.Drawing.Size(777, 330);
+            this.sp.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1129, 634);
-            this.Controls.Add(this.CC);
             this.Controls.Add(this.appdrawer);
+            this.Controls.Add(this.sp);
+            this.Controls.Add(this.CC);
             this.Controls.Add(this.percent);
             this.Controls.Add(this.mount);
             this.Controls.Add(this.bc);
@@ -519,8 +532,6 @@
             this.Controls.Add(this.cldb);
             this.Controls.Add(this.drag);
             this.Controls.Add(this.close);
-            this.Controls.Add(this.script);
-            this.Controls.Add(this.scriptyB);
             this.Controls.Add(this.db);
             this.Controls.Add(this.bs4);
             this.Controls.Add(this.textboxbackround);
@@ -539,6 +550,7 @@
             this.appdrawer.ResumeLayout(false);
             this.appdrawer.PerformLayout();
             this.drawp.ResumeLayout(false);
+            this.sp.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,6 +596,7 @@
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.CheckBox drp;
         private System.Windows.Forms.Button CC;
+        private System.Windows.Forms.Panel sp;
     }
 }
 

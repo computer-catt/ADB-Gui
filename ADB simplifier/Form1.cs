@@ -434,6 +434,7 @@ namespace ADB_simplifier
                 draw.ForeColor = colorDialog.Color;
                 settext.ForeColor = colorDialog.Color;
                 cl.ForeColor = colorDialog.Color;
+                sp.BackColor = colorDialog.Color;
             }
             
         }
