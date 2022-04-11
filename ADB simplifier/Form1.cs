@@ -5,7 +5,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using System.IO.Compression;
-using System.Threading.Tasks;
+using DiscordRpcDemo;
 
 namespace ADB_simplifier
 {
@@ -19,14 +19,17 @@ namespace ADB_simplifier
         bool doe;
         string prev = "";
         string prev2 = "";
+        string rpc;
 
         WebClient net = new WebClient();
-
+        private DiscordRpc.EventHandlers handlers;
+        private DiscordRpc.RichPresence presence;
         private static Process adb = new Process();
         public Form1()
         {
             InitializeComponent();
             ClientSize = new Size(600, 365);
+            appdrawer.Location = new Point(190, 100);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\adb\\adb.exe"))
             {
                 net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/950150446159380590/adb.zip", "adb.zip");
@@ -83,7 +86,7 @@ namespace ADB_simplifier
         private void bs4_Click(object sender, EventArgs e)
         {
         loop:
-            if (snr("connect " + snr("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), false).StartsWith("cannot"))
+            if (snr("connect " + snr("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), true).StartsWith("cannot"))
             {
                 snr("tcpip 5555", false);
                 MessageBox.Show("tcpip ran wait a second before clicking ok");
@@ -353,10 +356,11 @@ namespace ADB_simplifier
                 {
                     draw.Items.Clear();
                     test = snr("shell dumpsys window animator", false);
+
                     la.Text = "running: ";
                     foreach (string beans in snr("shell pm list packages -3", false).Split("\r".ToCharArray()))
                     {
-                        if (beans.Length > 1)
+                        if (beans.Length > 1 && !beans.Contains("environment"))
                         {
                             draw.Items.Add(beans.Substring(9));
                             if (!doe)
@@ -366,10 +370,56 @@ namespace ADB_simplifier
                                     la.Text += beans.Substring(9);
                                     doe = true;
                                 }
+                                if (drp.Checked)
+                                {
+                                    if (presence.details != la.Text.Substring(8))
+                                    {
+                                        if (la.Text.Substring(8).Trim() == "")
+                                        {
+                                            presence.details = "nothing!";
+                                            presence.largeImageKey = "";
+                                        }
+                                        else
+                                        {
+                                            presence.details = la.Text.Substring(8);
+                                            presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").Trim();
+                                        }
+                                        DiscordRpc.UpdatePresence(ref presence);
+                                    }
+                                }
                             }
                         }
                     }
                 }
+            }
+        }
+
+        private void start_Click(object sender, EventArgs e) => snr("shell monkey -p " + draw.Text + " 1", false);
+        private void cr_Click(object sender, EventArgs e) => snr("shell am force-stop " + draw.Text, false);
+
+        private void drp_CheckedChanged(object sender, EventArgs e)
+        {
+            if (drp.Checked)
+            {
+                if (!File.Exists("discord-rpc-w32.dll"))
+                {
+                    net.DownloadFile("https://cdn.discordapp.com/attachments/947224516034187356/962914900357828688/discord-rpc-w32.dll", "discord-rpc-w32.dll");
+                }
+                handlers = default(DiscordRpc.EventHandlers);
+                DiscordRpc.Initialize("867565943290462218", ref this.handlers, true, null);
+                handlers = default(DiscordRpc.EventHandlers);
+                DiscordRpc.Initialize("867565943290462218", ref this.handlers, true, null);
+                presence.details = "nothing!";
+                presence.state = "";
+                presence.largeImageKey = "";
+                presence.smallImageKey = "";
+                presence.largeImageText = "";
+                presence.smallImageText = "";
+                DiscordRpc.UpdatePresence(ref presence);
+            }
+            else
+            {
+                DiscordRpc.Shutdown();
             }
         }
     }

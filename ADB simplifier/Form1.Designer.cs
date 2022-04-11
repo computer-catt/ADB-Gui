@@ -54,6 +54,9 @@
             this.mount = new System.Windows.Forms.Button();
             this.percent = new System.Windows.Forms.Label();
             this.appdrawer = new System.Windows.Forms.Panel();
+            this.drp = new System.Windows.Forms.CheckBox();
+            this.cr = new System.Windows.Forms.Button();
+            this.start = new System.Windows.Forms.Button();
             this.la = new System.Windows.Forms.Label();
             this.drawe = new System.Windows.Forms.Button();
             this.drawp = new System.Windows.Forms.Panel();
@@ -63,6 +66,7 @@
             this.bcoverdraw = new System.Windows.Forms.Button();
             this.appdrawercover = new System.Windows.Forms.Button();
             this.apppop = new System.Windows.Forms.Timer(this.components);
+            this.button3 = new System.Windows.Forms.Button();
             this.drag.SuspendLayout();
             this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
@@ -345,6 +349,9 @@
             // 
             // appdrawer
             // 
+            this.appdrawer.Controls.Add(this.drp);
+            this.appdrawer.Controls.Add(this.cr);
+            this.appdrawer.Controls.Add(this.start);
             this.appdrawer.Controls.Add(this.la);
             this.appdrawer.Controls.Add(this.drawe);
             this.appdrawer.Controls.Add(this.drawp);
@@ -352,11 +359,46 @@
             this.appdrawer.Controls.Add(this.button1);
             this.appdrawer.Controls.Add(this.bcoverdraw);
             this.appdrawer.Controls.Add(this.appdrawercover);
-            this.appdrawer.Location = new System.Drawing.Point(256, 101);
+            this.appdrawer.Location = new System.Drawing.Point(811, 31);
             this.appdrawer.Name = "appdrawer";
-            this.appdrawer.Size = new System.Drawing.Size(306, 267);
+            this.appdrawer.Size = new System.Drawing.Size(306, 165);
             this.appdrawer.TabIndex = 14;
             this.appdrawer.Visible = false;
+            // 
+            // drp
+            // 
+            this.drp.AutoSize = true;
+            this.drp.BackColor = System.Drawing.Color.Transparent;
+            this.drp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.drp.Location = new System.Drawing.Point(66, 26);
+            this.drp.Name = "drp";
+            this.drp.Size = new System.Drawing.Size(154, 20);
+            this.drp.TabIndex = 15;
+            this.drp.Text = "discord rich presence";
+            this.drp.UseVisualStyleBackColor = false;
+            this.drp.CheckedChanged += new System.EventHandler(this.drp_CheckedChanged);
+            // 
+            // cr
+            // 
+            this.cr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cr.Location = new System.Drawing.Point(25, 114);
+            this.cr.Name = "cr";
+            this.cr.Size = new System.Drawing.Size(262, 28);
+            this.cr.TabIndex = 17;
+            this.cr.Text = "Send close application request";
+            this.cr.UseVisualStyleBackColor = true;
+            this.cr.Click += new System.EventHandler(this.cr_Click);
+            // 
+            // start
+            // 
+            this.start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.start.Location = new System.Drawing.Point(25, 79);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(262, 29);
+            this.start.TabIndex = 17;
+            this.start.Text = "Send start application request";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // la
             // 
@@ -371,7 +413,7 @@
             // 
             this.drawe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.drawe.Font = new System.Drawing.Font("Microsoft Sans Serif", 4.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drawe.Location = new System.Drawing.Point(157, 49);
+            this.drawe.Location = new System.Drawing.Point(259, 49);
             this.drawe.Name = "drawe";
             this.drawe.Size = new System.Drawing.Size(28, 25);
             this.drawe.TabIndex = 11;
@@ -383,7 +425,7 @@
             this.drawp.Controls.Add(this.draw);
             this.drawp.Location = new System.Drawing.Point(30, 53);
             this.drawp.Name = "drawp";
-            this.drawp.Size = new System.Drawing.Size(156, 17);
+            this.drawp.Size = new System.Drawing.Size(252, 17);
             this.drawp.TabIndex = 15;
             // 
             // draw
@@ -393,7 +435,7 @@
             this.draw.FormattingEnabled = true;
             this.draw.Location = new System.Drawing.Point(-4, -4);
             this.draw.Name = "draw";
-            this.draw.Size = new System.Drawing.Size(159, 24);
+            this.draw.Size = new System.Drawing.Size(260, 24);
             this.draw.TabIndex = 0;
             // 
             // button2
@@ -427,7 +469,7 @@
             this.bcoverdraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bcoverdraw.Location = new System.Drawing.Point(25, 49);
             this.bcoverdraw.Name = "bcoverdraw";
-            this.bcoverdraw.Size = new System.Drawing.Size(147, 25);
+            this.bcoverdraw.Size = new System.Drawing.Size(261, 25);
             this.bcoverdraw.TabIndex = 1;
             this.bcoverdraw.UseVisualStyleBackColor = true;
             // 
@@ -438,7 +480,7 @@
             this.appdrawercover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.appdrawercover.Location = new System.Drawing.Point(0, 0);
             this.appdrawercover.Name = "appdrawercover";
-            this.appdrawercover.Size = new System.Drawing.Size(306, 267);
+            this.appdrawercover.Size = new System.Drawing.Size(306, 165);
             this.appdrawercover.TabIndex = 0;
             this.appdrawercover.UseVisualStyleBackColor = true;
             // 
@@ -448,12 +490,25 @@
             this.apppop.Interval = 5000;
             this.apppop.Tick += new System.EventHandler(this.apppop_Tick);
             // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(711, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(28, 25);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "=";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.app_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1129, 634);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.appdrawer);
             this.Controls.Add(this.percent);
             this.Controls.Add(this.mount);
@@ -525,6 +580,10 @@
         private System.Windows.Forms.Button bcoverdraw;
         private System.Windows.Forms.Timer apppop;
         private System.Windows.Forms.Label la;
+        private System.Windows.Forms.Button cr;
+        private System.Windows.Forms.Button start;
+        private System.Windows.Forms.CheckBox drp;
+        private System.Windows.Forms.Button button3;
     }
 }
 
