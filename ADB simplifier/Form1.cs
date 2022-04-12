@@ -17,9 +17,8 @@ namespace ADB_simplifier
         bool connected;
         string test;
         bool doe;
-        string prev = "";
-        string prev2 = "";
-        string[] rpc;
+        string prev = "",prev2 = "",found;
+        string[] rpc, ab;
 
         WebClient net = new WebClient();
         private DiscordRpc.EventHandlers handlers;
@@ -131,28 +130,23 @@ namespace ADB_simplifier
                 cl.Clear();
             }
         }
-        //has 2 reoccuring code that can be run once instead(current adb command use: 4, posible use: 2)
+        //there was a note here but now its not needed(snr listing: 2)
         private void sc_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                connected = !snr("devices", false).Split("\r".ToCharArray())[1].Contains("device") ? false : true;
-            }
-            catch 
-            {
-                connected = false;
-            }
+            string[] ab = snr("devices", false).Split("\r".ToCharArray());
+            connected = !ab[1].Contains("device") ? false : true;
             ds.Items.Clear();
             if (ds.Text.Length > 3)
             {
-                if (snr(" shell dumpsys battery", false).Contains("not found"))
+                found = snr("shell dumpsys battery", false);
+                if (found.Contains("not found"))
                 {
                     ds.Text = "";
                 }
             }
             if (connected)
             {
-                foreach (string beanis in snr("devices", false).Split("\r".ToCharArray()))
+                foreach (string beanis in ab)
                 {
                     if (!beanis.Contains("List of devices attached") && beanis.Contains("device"))
                     {
@@ -178,7 +172,7 @@ namespace ADB_simplifier
             }
             try
             {
-                percent.Text = connected ? snr("shell dumpsys battery", false).Split("\r".ToCharArray())[10].Remove(0, 10) : "";
+                percent.Text = connected ? found.Split("\r".ToCharArray())[10].Remove(0, 10) : "";
             }
             catch { }
         }
