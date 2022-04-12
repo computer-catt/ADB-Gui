@@ -20,8 +20,6 @@ namespace ADB_simplifier
         string prev = "";
         string prev2 = "";
         string rpc;
-        string[] supportedPackages = { "com.discord", "com.beatgames.beatsaber", "com.weloveoculus.BMBF" };
-        string[] packageAlias = { "Discord", "BeatSaber", "BMBF" };
 
         WebClient net = new WebClient();
         private DiscordRpc.EventHandlers handlers;
@@ -138,14 +136,7 @@ namespace ADB_simplifier
 
         private void sc_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                connected = !snr("devices", false).Split("\r".ToCharArray())[1].Contains("device") ? false : true;
-            }
-            catch
-            {
-                connected = false;
-            }
+            connected = !snr("devices", false).Split("\r".ToCharArray())[1].Contains("device") ? false : true;
             ds.Items.Clear();
             if (ds.Text.Length > 3)
             {
@@ -169,11 +160,7 @@ namespace ADB_simplifier
                 }
                 if (ds.Text.Length < 3)
                 {
-                    try
-                    {
-                        ds.SelectedIndex = 0;
-                    }
-                    catch { }
+                    ds.SelectedIndex = 0;
                 }
             }
             else
@@ -394,12 +381,8 @@ namespace ADB_simplifier
                                         }
                                         else
                                         {
-                                            presence.details = "Playing: " + la.Text.Substring(8).Trim();
-                                            if (Array.Exists(supportedPackages, element => element == la.Text.Substring(8).Trim()))
-                                            {
-                                                presence.details = "Playing: " + packageAlias[Array.IndexOf(supportedPackages, la.Text.Substring(8).Trim())];
-                                            }
-                                            presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").Trim().ToLower();
+                                            presence.details = la.Text.Substring(8);
+                                            presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").Trim();
                                         }
                                         DiscordRpc.UpdatePresence(ref presence);
                                     }
@@ -453,7 +436,7 @@ namespace ADB_simplifier
                 cl.ForeColor = colorDialog.Color;
                 sp.BackColor = colorDialog.Color;
             }
-
+            
         }
     }
 }
