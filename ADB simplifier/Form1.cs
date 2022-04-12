@@ -19,9 +19,7 @@ namespace ADB_simplifier
         bool doe;
         string prev = "";
         string prev2 = "";
-        string rpc;
-        string[] supportedPackages = { "com.discord", "com.beatgames.beatsaber", "com.weloveoculus.BMBF" };
-        string[] packageAlias = { "Discord", "BeatSaber", "BMBF"};
+        string[] rpc;
 
         WebClient net = new WebClient();
         private DiscordRpc.EventHandlers handlers;
@@ -38,6 +36,7 @@ namespace ADB_simplifier
                 ZipFile.ExtractToDirectory("adb.zip", Directory.GetCurrentDirectory() + "\\adb");
                 File.Delete("adb.zip");
             }
+            rpc = net.DownloadString("https://pastebin.com/LC4E3snN").Split("\r".ToCharArray());
         }
 
         private void bs_Click(object sender, EventArgs e) => snr("devices", true);
@@ -395,9 +394,9 @@ namespace ADB_simplifier
                                         else
                                         {
                                             presence.details = "Playing: " + la.Text.Substring(8).Trim();
-                                            if (Array.Exists(supportedPackages, element => element == la.Text.Substring(8).Trim()))
+                                            if (Array.Exists(rpc[0].Split("\"".ToCharArray()), element => element == la.Text.Substring(8).Trim()))
                                             {
-                                                presence.details = "Playing: " + packageAlias[Array.IndexOf(supportedPackages, la.Text.Substring(8).Trim())];
+                                                presence.details = "Playing: " + rpc[1].Split("\"".ToCharArray())[Array.IndexOf(rpc[0].Split("\"".ToCharArray()), la.Text.Substring(8).Trim())];
                                             }
                                             presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").Trim().ToLower();
                                         }
