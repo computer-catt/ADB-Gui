@@ -79,19 +79,17 @@ namespace ADB_simplifier
                 script.SelectionLength = script.Text.Length;
                 script.SelectionColor = Color.Red;
             }
-            return adb.StandardOutput.ReadToEnd() + adb.StandardError.ReadToEnd();
+            
+            return adb.StandardOutput.ReadToEnd();
         }
         private void button1_Click(object sender, EventArgs e) => Close();
         private void bs2_Click(object sender, EventArgs e) => snr("reboot", true);
+        //needs a cart fix
         private void bs4_Click(object sender, EventArgs e)
         {
-        loop:
-            if (snr("connect " + snr("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), true).StartsWith("cannot"))
-            {
                 snr("tcpip 5555", false);
-                MessageBox.Show("tcpip ran wait a second before clicking ok");
-                goto loop;
-            }
+                MessageBox.Show("tcpip started, please wait untill device reconnects.");
+                snr("connect " + snr("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), true);
         }
 
         private void bs3_Click(object sender, EventArgs e)
@@ -133,7 +131,7 @@ namespace ADB_simplifier
                 cl.Clear();
             }
         }
-
+        //has 2 reoccuring code that can be run once instead(current adb command use: 4, posible use: 2)
         private void sc_Tick(object sender, EventArgs e)
         {
             try
@@ -202,7 +200,7 @@ namespace ADB_simplifier
             settext.Text = prev;
             settext.ReadOnly = false;
         }
-
+        //can mabye be shortened to hell i need to test it(im not proud of this "if spam")
         private void settext_KeyDown(object sender, KeyEventArgs e)
         {
             if (!live)
@@ -358,6 +356,7 @@ namespace ADB_simplifier
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
+        //snr use: 2
         private void apppop_Tick(object sender, EventArgs e)
         {
             doe = false;
@@ -423,14 +422,7 @@ namespace ADB_simplifier
                 }
                 handlers = default(DiscordRpc.EventHandlers);
                 DiscordRpc.Initialize("867565943290462218", ref this.handlers, true, null);
-                handlers = default(DiscordRpc.EventHandlers);
-                DiscordRpc.Initialize("867565943290462218", ref this.handlers, true, null);
                 presence.details = "nothing!";
-                presence.state = "";
-                presence.largeImageKey = "";
-                presence.smallImageKey = "";
-                presence.largeImageText = "";
-                presence.smallImageText = "";
                 DiscordRpc.UpdatePresence(ref presence);
             }
             else
