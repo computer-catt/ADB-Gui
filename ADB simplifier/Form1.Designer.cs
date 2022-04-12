@@ -249,7 +249,7 @@
             this.cover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cover.Location = new System.Drawing.Point(0, 0);
             this.cover.Name = "cover";
-            this.cover.Size = new System.Drawing.Size(1129, 634);
+            this.cover.Size = new System.Drawing.Size(1129, 450);
             this.cover.TabIndex = 7;
             this.cover.Text = "button1";
             this.cover.UseVisualStyleBackColor = true;
@@ -519,7 +519,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1129, 634);
+            this.ClientSize = new System.Drawing.Size(1129, 450);
             this.Controls.Add(this.appdrawer);
             this.Controls.Add(this.sp);
             this.Controls.Add(this.CC);
