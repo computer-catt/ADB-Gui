@@ -257,7 +257,7 @@
             // sc
             // 
             this.sc.Enabled = true;
-            this.sc.Interval = 1000;
+            this.sc.Interval = 3000;
             this.sc.Tick += new System.EventHandler(this.sc_Tick);
             // 
             // instant

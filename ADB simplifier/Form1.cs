@@ -397,7 +397,7 @@ namespace ADB_simplifier
                                             {
                                                 presence.details = "Playing: " + rpc[1].Split("\"".ToCharArray())[Array.IndexOf(rpc[0].Split("\"".ToCharArray()), la.Text.Substring(8).Trim())];
                                             }
-                                            presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").Trim().ToLower();
+                                            presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").ToLower().Trim();
                                         }
                                         DiscordRpc.UpdatePresence(ref presence);
                                     }
