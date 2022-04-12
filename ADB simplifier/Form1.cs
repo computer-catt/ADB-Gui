@@ -36,7 +36,7 @@ namespace ADB_simplifier
                 ZipFile.ExtractToDirectory("adb.zip", Directory.GetCurrentDirectory() + "\\adb");
                 File.Delete("adb.zip");
             }
-            rpc = net.DownloadString("https://pastebin.com/LC4E3snN").Split("\r".ToCharArray());
+            rpc = net.DownloadString("https://pastebin.com/raw/LC4E3snN").Split("\r".ToCharArray());
         }
 
         private void bs_Click(object sender, EventArgs e) => snr("devices", true);
