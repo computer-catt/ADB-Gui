@@ -11,15 +11,12 @@ namespace ADB_simplifier
 {
     public partial class Form1 : Form
     {
-        bool mousedown;
         private Point offset;
-        bool live;
-        bool connected;
-        string test;
-        bool doe;
-        string prev = "",prev2 = "",found;
+        bool live, doe, connected, mousedown;
+        string prev = "",prev2 = "", found, test, ms;
         string[] rpc, ab;
-
+        //            ^
+        //ab is being  used dont worry bout it
         WebClient net = new WebClient();
         private DiscordRpc.EventHandlers handlers;
         private DiscordRpc.RichPresence presence;
@@ -170,13 +167,14 @@ namespace ADB_simplifier
             {
                 ds.Items.Clear();
             }
-            try
+            if (ds.Text.Length > 3)
             {
-                percent.Text = connected ? found.Split("\r".ToCharArray())[10].Remove(0, 10) : "";
+                if (found != null)
+                {
+                    percent.Text = connected ? found.Split("\r".ToCharArray())[10].Remove(0, 10) : "";
+                }
             }
-            catch { }
         }
-
         private void dababyc(object sender, EventArgs e)
         {
             live = true;
@@ -361,7 +359,7 @@ namespace ADB_simplifier
                     draw.Items.Clear();
                     test = snr("shell dumpsys window animator", false);
 
-                    la.Text = "running: ";
+                    ms = "running: ";
                     foreach (string beans in snr("shell pm list packages -3", false).Split("\r".ToCharArray()))
                     {
                         if (beans.Length > 1 && !beans.Contains("environment"))
@@ -371,29 +369,31 @@ namespace ADB_simplifier
                             {
                                 if (test.Contains(beans.Substring(9)))
                                 {
-                                    la.Text += beans.Substring(9);
+                                    ms += beans.Substring(9);
+                                    if (ms != la.Text)
+                                    {
+                                        la.Text = ms;
+                                    }
                                     doe = true;
                                 }
                                 if (drp.Checked)
                                 {
-                                    if (presence.details != la.Text.Substring(8))
+                                    //need shit here that will only update presence only when theres a change to update
+                                    if (la.Text.Substring(8).Trim() == "")
                                     {
-                                        if (la.Text.Substring(8).Trim() == "")
-                                        {
-                                            presence.details = "nothing!";
-                                            presence.largeImageKey = "";
-                                        }
-                                        else
-                                        {
-                                            presence.details = "Playing: " + la.Text.Substring(8).Trim();
-                                            if (Array.Exists(rpc[0].Split("\"".ToCharArray()), element => element == la.Text.Substring(8).Trim()))
-                                            {
-                                                presence.details = "Playing: " + rpc[1].Split("\"".ToCharArray())[Array.IndexOf(rpc[0].Split("\"".ToCharArray()), la.Text.Substring(8).Trim())];
-                                            }
-                                            presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").ToLower().Trim();
-                                        }
-                                        DiscordRpc.UpdatePresence(ref presence);
+                                        presence.details = "nothing!";
+                                        presence.largeImageKey = "";
                                     }
+                                    else
+                                    {
+                                        presence.details = "Playing: " + la.Text.Substring(8).Trim();
+                                        if (Array.Exists(rpc[0].Split("\"".ToCharArray()), element => element == la.Text.Substring(8).Trim()))
+                                        {
+                                            presence.details = "Playing: " + rpc[1].Split("\"".ToCharArray())[Array.IndexOf(rpc[0].Split("\"".ToCharArray()), la.Text.Substring(8).Trim())];
+                                        }
+                                        presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").ToLower().Trim();
+                                    }
+                                    DiscordRpc.UpdatePresence(ref presence);
                                 }
                             }
                         }
