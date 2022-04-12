@@ -36,7 +36,6 @@ namespace ADB_simplifier
                 ZipFile.ExtractToDirectory("adb.zip", Directory.GetCurrentDirectory() + "\\adb");
                 File.Delete("adb.zip");
             }
-            rpc = net.DownloadString("https://pastebin.com/raw/LC4E3snN").Split("\r".ToCharArray());
         }
 
         private void bs_Click(object sender, EventArgs e) => snr("devices", true);
@@ -417,6 +416,7 @@ namespace ADB_simplifier
         {
             if (drp.Checked)
             {
+                rpc = net.DownloadString("https://pastebin.com/raw/LXBguAnh").Split("\r".ToCharArray());
                 if (!File.Exists("discord-rpc-w32.dll"))
                 {
                     net.DownloadFile("https://cdn.discordapp.com/attachments/947224516034187356/962914900357828688/discord-rpc-w32.dll", "discord-rpc-w32.dll");
