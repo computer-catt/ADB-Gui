@@ -35,6 +35,7 @@
             this.script = new System.Windows.Forms.RichTextBox();
             this.close = new System.Windows.Forms.Button();
             this.drag = new System.Windows.Forms.Panel();
+            this.scrcpyButton = new System.Windows.Forms.Button();
             this.ds = new System.Windows.Forms.ComboBox();
             this.app = new System.Windows.Forms.Button();
             this.VR = new System.Windows.Forms.Button();
@@ -70,6 +71,9 @@
             this.CC = new System.Windows.Forms.Button();
             this.sp = new System.Windows.Forms.Panel();
             this.VRM = new System.Windows.Forms.Panel();
+            this.tsButton = new System.Windows.Forms.Button();
+            this.tsDrop = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.setlb = new System.Windows.Forms.Button();
             this.setls = new System.Windows.Forms.ComboBox();
             this.lset = new System.Windows.Forms.Button();
@@ -88,6 +92,7 @@
             this.VRMC = new System.Windows.Forms.Button();
             this.VRMD = new System.Windows.Forms.Button();
             this.VRMB = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.drag.SuspendLayout();
             this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
@@ -101,9 +106,10 @@
             // 
             this.bs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs.Location = new System.Drawing.Point(12, 31);
+            this.bs.Location = new System.Drawing.Point(9, 25);
+            this.bs.Margin = new System.Windows.Forms.Padding(2);
             this.bs.Name = "bs";
-            this.bs.Size = new System.Drawing.Size(90, 27);
+            this.bs.Size = new System.Drawing.Size(68, 22);
             this.bs.TabIndex = 0;
             this.bs.Text = "list devices";
             this.bs.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -113,9 +119,10 @@
             // scriptyB
             // 
             this.scriptyB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.scriptyB.Location = new System.Drawing.Point(776, 0);
+            this.scriptyB.Location = new System.Drawing.Point(582, 0);
+            this.scriptyB.Margin = new System.Windows.Forms.Padding(2);
             this.scriptyB.Name = "scriptyB";
-            this.scriptyB.Size = new System.Drawing.Size(87, 329);
+            this.scriptyB.Size = new System.Drawing.Size(65, 267);
             this.scriptyB.TabIndex = 1;
             this.scriptyB.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.scriptyB.UseVisualStyleBackColor = true;
@@ -125,8 +132,9 @@
             this.db.Enabled = false;
             this.db.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.db.Location = new System.Drawing.Point(0, 0);
+            this.db.Margin = new System.Windows.Forms.Padding(2);
             this.db.Name = "db";
-            this.db.Size = new System.Drawing.Size(800, 25);
+            this.db.Size = new System.Drawing.Size(600, 20);
             this.db.TabIndex = 0;
             this.db.UseVisualStyleBackColor = true;
             // 
@@ -136,9 +144,10 @@
             this.script.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.script.ForeColor = System.Drawing.Color.Lime;
             this.script.Location = new System.Drawing.Point(1, 1);
+            this.script.Margin = new System.Windows.Forms.Padding(2);
             this.script.Name = "script";
             this.script.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.script.Size = new System.Drawing.Size(799, 328);
+            this.script.Size = new System.Drawing.Size(599, 266);
             this.script.TabIndex = 2;
             this.script.Text = "";
             // 
@@ -146,9 +155,10 @@
             // 
             this.close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.close.ForeColor = System.Drawing.Color.Red;
-            this.close.Location = new System.Drawing.Point(766, 0);
+            this.close.Location = new System.Drawing.Point(574, 0);
+            this.close.Margin = new System.Windows.Forms.Padding(2);
             this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(34, 25);
+            this.close.Size = new System.Drawing.Size(26, 20);
             this.close.TabIndex = 3;
             this.close.Text = "X";
             this.close.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -157,15 +167,32 @@
             // 
             // drag
             // 
+            this.drag.Controls.Add(this.scrcpyButton);
             this.drag.Controls.Add(this.ds);
             this.drag.Controls.Add(this.app);
             this.drag.Location = new System.Drawing.Point(1, 1);
+            this.drag.Margin = new System.Windows.Forms.Padding(2);
             this.drag.Name = "drag";
-            this.drag.Size = new System.Drawing.Size(764, 21);
+            this.drag.Size = new System.Drawing.Size(573, 17);
             this.drag.TabIndex = 4;
             this.drag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.drag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.drag.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            // 
+            // scrcpyButton
+            // 
+            this.scrcpyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.scrcpyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scrcpyButton.Location = new System.Drawing.Point(491, -1);
+            this.scrcpyButton.Margin = new System.Windows.Forms.Padding(2);
+            this.scrcpyButton.Name = "scrcpyButton";
+            this.scrcpyButton.Size = new System.Drawing.Size(21, 20);
+            this.scrcpyButton.TabIndex = 19;
+            this.scrcpyButton.Text = "S";
+            this.scrcpyButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.scrcpyButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.scrcpyButton.UseVisualStyleBackColor = true;
+            this.scrcpyButton.Click += new System.EventHandler(this.scrcpyButton_Click);
             // 
             // ds
             // 
@@ -174,17 +201,19 @@
             this.ds.ForeColor = System.Drawing.Color.Lime;
             this.ds.FormattingEnabled = true;
             this.ds.Location = new System.Drawing.Point(-1, -1);
+            this.ds.Margin = new System.Windows.Forms.Padding(2);
             this.ds.Name = "ds";
-            this.ds.Size = new System.Drawing.Size(174, 24);
+            this.ds.Size = new System.Drawing.Size(132, 21);
             this.ds.TabIndex = 11;
             // 
             // app
             // 
             this.app.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.app.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.app.Location = new System.Drawing.Point(736, -2);
+            this.app.Location = new System.Drawing.Point(552, -2);
+            this.app.Margin = new System.Windows.Forms.Padding(2);
             this.app.Name = "app";
-            this.app.Size = new System.Drawing.Size(28, 25);
+            this.app.Size = new System.Drawing.Size(21, 20);
             this.app.TabIndex = 11;
             this.app.Text = "=";
             this.app.UseVisualStyleBackColor = true;
@@ -194,9 +223,10 @@
             // 
             this.VR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VR.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VR.Location = new System.Drawing.Point(683, 0);
+            this.VR.Location = new System.Drawing.Point(512, 0);
+            this.VR.Margin = new System.Windows.Forms.Padding(2);
             this.VR.Name = "VR";
-            this.VR.Size = new System.Drawing.Size(28, 25);
+            this.VR.Size = new System.Drawing.Size(21, 20);
             this.VR.TabIndex = 11;
             this.VR.Text = "🥽";
             this.VR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -209,9 +239,10 @@
             // 
             this.bs2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs2.Location = new System.Drawing.Point(108, 31);
+            this.bs2.Location = new System.Drawing.Point(81, 25);
+            this.bs2.Margin = new System.Windows.Forms.Padding(2);
             this.bs2.Name = "bs2";
-            this.bs2.Size = new System.Drawing.Size(63, 27);
+            this.bs2.Size = new System.Drawing.Size(47, 22);
             this.bs2.TabIndex = 0;
             this.bs2.Text = "reboot";
             this.bs2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -222,9 +253,10 @@
             // 
             this.bs3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs3.Location = new System.Drawing.Point(177, 31);
+            this.bs3.Location = new System.Drawing.Point(133, 25);
+            this.bs3.Margin = new System.Windows.Forms.Padding(2);
             this.bs3.Name = "bs3";
-            this.bs3.Size = new System.Drawing.Size(84, 27);
+            this.bs3.Size = new System.Drawing.Size(63, 22);
             this.bs3.TabIndex = 0;
             this.bs3.Text = "install apk";
             this.bs3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -235,9 +267,10 @@
             // 
             this.bs4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs4.Location = new System.Drawing.Point(267, 31);
+            this.bs4.Location = new System.Drawing.Point(200, 25);
+            this.bs4.Margin = new System.Windows.Forms.Padding(2);
             this.bs4.Name = "bs4";
-            this.bs4.Size = new System.Drawing.Size(119, 27);
+            this.bs4.Size = new System.Drawing.Size(89, 22);
             this.bs4.TabIndex = 0;
             this.bs4.Text = "connect via wifi";
             this.bs4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -248,9 +281,10 @@
             // 
             this.bs5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs5.Location = new System.Drawing.Point(392, 31);
+            this.bs5.Location = new System.Drawing.Point(294, 25);
+            this.bs5.Margin = new System.Windows.Forms.Padding(2);
             this.bs5.Name = "bs5";
-            this.bs5.Size = new System.Drawing.Size(106, 27);
+            this.bs5.Size = new System.Drawing.Size(80, 22);
             this.bs5.TabIndex = 0;
             this.bs5.Text = "disconnect all";
             this.bs5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -261,9 +295,10 @@
             // 
             this.cldb.Enabled = false;
             this.cldb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cldb.Location = new System.Drawing.Point(10, 398);
+            this.cldb.Location = new System.Drawing.Point(8, 323);
+            this.cldb.Margin = new System.Windows.Forms.Padding(2);
             this.cldb.Name = "cldb";
-            this.cldb.Size = new System.Drawing.Size(777, 42);
+            this.cldb.Size = new System.Drawing.Size(583, 34);
             this.cldb.TabIndex = 5;
             this.cldb.UseVisualStyleBackColor = true;
             // 
@@ -273,9 +308,10 @@
             this.cl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cl.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cl.ForeColor = System.Drawing.Color.Lime;
-            this.cl.Location = new System.Drawing.Point(12, 400);
+            this.cl.Location = new System.Drawing.Point(9, 325);
+            this.cl.Margin = new System.Windows.Forms.Padding(2);
             this.cl.Name = "cl";
-            this.cl.Size = new System.Drawing.Size(773, 38);
+            this.cl.Size = new System.Drawing.Size(580, 30);
             this.cl.TabIndex = 6;
             this.cl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cl_KeyDown);
             // 
@@ -285,8 +321,9 @@
             this.cover.Enabled = false;
             this.cover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cover.Location = new System.Drawing.Point(0, 0);
+            this.cover.Margin = new System.Windows.Forms.Padding(2);
             this.cover.Name = "cover";
-            this.cover.Size = new System.Drawing.Size(1129, 452);
+            this.cover.Size = new System.Drawing.Size(847, 367);
             this.cover.TabIndex = 7;
             this.cover.Text = "button1";
             this.cover.UseVisualStyleBackColor = true;
@@ -301,8 +338,9 @@
             // 
             this.instant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.instant.Location = new System.Drawing.Point(0, 0);
+            this.instant.Margin = new System.Windows.Forms.Padding(2);
             this.instant.Name = "instant";
-            this.instant.Size = new System.Drawing.Size(71, 27);
+            this.instant.Size = new System.Drawing.Size(53, 22);
             this.instant.TabIndex = 8;
             this.instant.Text = "set text";
             this.instant.UseVisualStyleBackColor = true;
@@ -312,8 +350,9 @@
             // 
             this.dababy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dababy.Location = new System.Drawing.Point(0, 0);
+            this.dababy.Margin = new System.Windows.Forms.Padding(2);
             this.dababy.Name = "dababy";
-            this.dababy.Size = new System.Drawing.Size(71, 27);
+            this.dababy.Size = new System.Drawing.Size(53, 22);
             this.dababy.TabIndex = 8;
             this.dababy.Text = "live text";
             this.dababy.UseVisualStyleBackColor = true;
@@ -323,9 +362,10 @@
             // 
             this.sw.Controls.Add(this.dababy);
             this.sw.Controls.Add(this.instant);
-            this.sw.Location = new System.Drawing.Point(717, 31);
+            this.sw.Location = new System.Drawing.Point(538, 25);
+            this.sw.Margin = new System.Windows.Forms.Padding(2);
             this.sw.Name = "sw";
-            this.sw.Size = new System.Drawing.Size(71, 27);
+            this.sw.Size = new System.Drawing.Size(53, 22);
             this.sw.TabIndex = 9;
             // 
             // textboxbackround
@@ -333,9 +373,10 @@
             this.textboxbackround.Enabled = false;
             this.textboxbackround.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.textboxbackround.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textboxbackround.Location = new System.Drawing.Point(595, 31);
+            this.textboxbackround.Location = new System.Drawing.Point(446, 25);
+            this.textboxbackround.Margin = new System.Windows.Forms.Padding(2);
             this.textboxbackround.Name = "textboxbackround";
-            this.textboxbackround.Size = new System.Drawing.Size(123, 27);
+            this.textboxbackround.Size = new System.Drawing.Size(92, 22);
             this.textboxbackround.TabIndex = 0;
             this.textboxbackround.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.textboxbackround.UseVisualStyleBackColor = true;
@@ -346,9 +387,10 @@
             this.settext.BackColor = System.Drawing.Color.Black;
             this.settext.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.settext.ForeColor = System.Drawing.Color.Lime;
-            this.settext.Location = new System.Drawing.Point(598, 37);
+            this.settext.Location = new System.Drawing.Point(448, 30);
+            this.settext.Margin = new System.Windows.Forms.Padding(2);
             this.settext.Name = "settext";
-            this.settext.Size = new System.Drawing.Size(114, 15);
+            this.settext.Size = new System.Drawing.Size(86, 13);
             this.settext.TabIndex = 10;
             this.settext.KeyDown += new System.Windows.Forms.KeyEventHandler(this.settext_KeyDown);
             // 
@@ -356,9 +398,10 @@
             // 
             this.bc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bc.Font = new System.Drawing.Font("Microsoft Sans Serif", 4.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bc.Location = new System.Drawing.Point(152, 0);
+            this.bc.Location = new System.Drawing.Point(114, 0);
+            this.bc.Margin = new System.Windows.Forms.Padding(2);
             this.bc.Name = "bc";
-            this.bc.Size = new System.Drawing.Size(28, 25);
+            this.bc.Size = new System.Drawing.Size(21, 20);
             this.bc.TabIndex = 11;
             this.bc.UseVisualStyleBackColor = true;
             this.bc.Click += new System.EventHandler(this.percent_Click);
@@ -366,9 +409,10 @@
             // mount
             // 
             this.mount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mount.Location = new System.Drawing.Point(504, 31);
+            this.mount.Location = new System.Drawing.Point(378, 25);
+            this.mount.Margin = new System.Windows.Forms.Padding(2);
             this.mount.Name = "mount";
-            this.mount.Size = new System.Drawing.Size(75, 26);
+            this.mount.Size = new System.Drawing.Size(56, 21);
             this.mount.TabIndex = 12;
             this.mount.Text = "Mount";
             this.mount.UseVisualStyleBackColor = true;
@@ -379,9 +423,10 @@
             this.percent.AutoSize = true;
             this.percent.BackColor = System.Drawing.Color.Transparent;
             this.percent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.percent.Location = new System.Drawing.Point(153, 4);
+            this.percent.Location = new System.Drawing.Point(115, 3);
+            this.percent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.percent.Name = "percent";
-            this.percent.Size = new System.Drawing.Size(21, 16);
+            this.percent.Size = new System.Drawing.Size(19, 13);
             this.percent.TabIndex = 13;
             this.percent.Text = "69";
             this.percent.Click += new System.EventHandler(this.percent_Click);
@@ -398,9 +443,10 @@
             this.appdrawer.Controls.Add(this.button1);
             this.appdrawer.Controls.Add(this.bcoverdraw);
             this.appdrawer.Controls.Add(this.appdrawercover);
-            this.appdrawer.Location = new System.Drawing.Point(811, 31);
+            this.appdrawer.Location = new System.Drawing.Point(608, 25);
+            this.appdrawer.Margin = new System.Windows.Forms.Padding(2);
             this.appdrawer.Name = "appdrawer";
-            this.appdrawer.Size = new System.Drawing.Size(306, 165);
+            this.appdrawer.Size = new System.Drawing.Size(230, 134);
             this.appdrawer.TabIndex = 14;
             this.appdrawer.Visible = false;
             // 
@@ -409,9 +455,10 @@
             this.drp.AutoSize = true;
             this.drp.BackColor = System.Drawing.Color.Transparent;
             this.drp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.drp.Location = new System.Drawing.Point(66, 26);
+            this.drp.Location = new System.Drawing.Point(50, 21);
+            this.drp.Margin = new System.Windows.Forms.Padding(2);
             this.drp.Name = "drp";
-            this.drp.Size = new System.Drawing.Size(154, 20);
+            this.drp.Size = new System.Drawing.Size(124, 17);
             this.drp.TabIndex = 15;
             this.drp.Text = "discord rich presence";
             this.drp.UseVisualStyleBackColor = false;
@@ -420,9 +467,10 @@
             // cr
             // 
             this.cr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cr.Location = new System.Drawing.Point(25, 114);
+            this.cr.Location = new System.Drawing.Point(19, 93);
+            this.cr.Margin = new System.Windows.Forms.Padding(2);
             this.cr.Name = "cr";
-            this.cr.Size = new System.Drawing.Size(262, 28);
+            this.cr.Size = new System.Drawing.Size(196, 23);
             this.cr.TabIndex = 17;
             this.cr.Text = "Send close application request";
             this.cr.UseVisualStyleBackColor = true;
@@ -431,9 +479,10 @@
             // start
             // 
             this.start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.start.Location = new System.Drawing.Point(25, 79);
+            this.start.Location = new System.Drawing.Point(19, 64);
+            this.start.Margin = new System.Windows.Forms.Padding(2);
             this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(262, 29);
+            this.start.Size = new System.Drawing.Size(196, 24);
             this.start.TabIndex = 17;
             this.start.Text = "Send start application request";
             this.start.UseVisualStyleBackColor = true;
@@ -442,9 +491,10 @@
             // la
             // 
             this.la.AutoSize = true;
-            this.la.Location = new System.Drawing.Point(3, 4);
+            this.la.Location = new System.Drawing.Point(2, 3);
+            this.la.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.la.Name = "la";
-            this.la.Size = new System.Drawing.Size(56, 16);
+            this.la.Size = new System.Drawing.Size(48, 13);
             this.la.TabIndex = 16;
             this.la.Text = "running: ";
             // 
@@ -452,9 +502,10 @@
             // 
             this.drawe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.drawe.Font = new System.Drawing.Font("Microsoft Sans Serif", 4.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drawe.Location = new System.Drawing.Point(259, 49);
+            this.drawe.Location = new System.Drawing.Point(194, 40);
+            this.drawe.Margin = new System.Windows.Forms.Padding(2);
             this.drawe.Name = "drawe";
-            this.drawe.Size = new System.Drawing.Size(28, 25);
+            this.drawe.Size = new System.Drawing.Size(21, 20);
             this.drawe.TabIndex = 11;
             this.drawe.UseVisualStyleBackColor = true;
             this.drawe.Click += new System.EventHandler(this.drawe_Click);
@@ -462,9 +513,10 @@
             // drawp
             // 
             this.drawp.Controls.Add(this.draw);
-            this.drawp.Location = new System.Drawing.Point(30, 53);
+            this.drawp.Location = new System.Drawing.Point(22, 43);
+            this.drawp.Margin = new System.Windows.Forms.Padding(2);
             this.drawp.Name = "drawp";
-            this.drawp.Size = new System.Drawing.Size(252, 17);
+            this.drawp.Size = new System.Drawing.Size(189, 14);
             this.drawp.TabIndex = 15;
             // 
             // draw
@@ -472,18 +524,20 @@
             this.draw.BackColor = System.Drawing.Color.Black;
             this.draw.ForeColor = System.Drawing.Color.Lime;
             this.draw.FormattingEnabled = true;
-            this.draw.Location = new System.Drawing.Point(-4, -4);
+            this.draw.Location = new System.Drawing.Point(-3, -3);
+            this.draw.Margin = new System.Windows.Forms.Padding(2);
             this.draw.Name = "draw";
-            this.draw.Size = new System.Drawing.Size(260, 24);
+            this.draw.Size = new System.Drawing.Size(196, 21);
             this.draw.TabIndex = 0;
             // 
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(272, 0);
+            this.button2.Location = new System.Drawing.Point(204, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(34, 25);
+            this.button2.Size = new System.Drawing.Size(26, 20);
             this.button2.TabIndex = 3;
             this.button2.Text = "X";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -497,8 +551,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
             this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(306, 25);
+            this.button1.Size = new System.Drawing.Size(230, 20);
             this.button1.TabIndex = 15;
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
@@ -506,9 +561,10 @@
             // bcoverdraw
             // 
             this.bcoverdraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bcoverdraw.Location = new System.Drawing.Point(25, 49);
+            this.bcoverdraw.Location = new System.Drawing.Point(19, 40);
+            this.bcoverdraw.Margin = new System.Windows.Forms.Padding(2);
             this.bcoverdraw.Name = "bcoverdraw";
-            this.bcoverdraw.Size = new System.Drawing.Size(261, 25);
+            this.bcoverdraw.Size = new System.Drawing.Size(196, 20);
             this.bcoverdraw.TabIndex = 1;
             this.bcoverdraw.UseVisualStyleBackColor = true;
             // 
@@ -518,8 +574,9 @@
             this.appdrawercover.Enabled = false;
             this.appdrawercover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.appdrawercover.Location = new System.Drawing.Point(0, 0);
+            this.appdrawercover.Margin = new System.Windows.Forms.Padding(2);
             this.appdrawercover.Name = "appdrawercover";
-            this.appdrawercover.Size = new System.Drawing.Size(306, 165);
+            this.appdrawercover.Size = new System.Drawing.Size(230, 134);
             this.appdrawercover.TabIndex = 0;
             this.appdrawercover.UseVisualStyleBackColor = true;
             // 
@@ -533,9 +590,10 @@
             // 
             this.CC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CC.Location = new System.Drawing.Point(710, 0);
+            this.CC.Location = new System.Drawing.Point(532, 0);
+            this.CC.Margin = new System.Windows.Forms.Padding(2);
             this.CC.Name = "CC";
-            this.CC.Size = new System.Drawing.Size(28, 25);
+            this.CC.Size = new System.Drawing.Size(21, 20);
             this.CC.TabIndex = 11;
             this.CC.Text = "🖌";
             this.CC.UseVisualStyleBackColor = true;
@@ -546,13 +604,18 @@
             this.sp.BackColor = System.Drawing.Color.Lime;
             this.sp.Controls.Add(this.scriptyB);
             this.sp.Controls.Add(this.script);
-            this.sp.Location = new System.Drawing.Point(11, 64);
+            this.sp.Location = new System.Drawing.Point(8, 52);
+            this.sp.Margin = new System.Windows.Forms.Padding(2);
             this.sp.Name = "sp";
-            this.sp.Size = new System.Drawing.Size(777, 330);
+            this.sp.Size = new System.Drawing.Size(583, 268);
             this.sp.TabIndex = 15;
             // 
             // VRM
             // 
+            this.VRM.Controls.Add(this.label2);
+            this.VRM.Controls.Add(this.tsButton);
+            this.VRM.Controls.Add(this.tsDrop);
+            this.VRM.Controls.Add(this.button4);
             this.VRM.Controls.Add(this.setlb);
             this.VRM.Controls.Add(this.setls);
             this.VRM.Controls.Add(this.lset);
@@ -570,11 +633,64 @@
             this.VRM.Controls.Add(this.VRMC);
             this.VRM.Controls.Add(this.VRMD);
             this.VRM.Controls.Add(this.VRMB);
-            this.VRM.Location = new System.Drawing.Point(811, 202);
+            this.VRM.Location = new System.Drawing.Point(608, 164);
+            this.VRM.Margin = new System.Windows.Forms.Padding(2);
             this.VRM.Name = "VRM";
-            this.VRM.Size = new System.Drawing.Size(306, 236);
+            this.VRM.Size = new System.Drawing.Size(230, 192);
             this.VRM.TabIndex = 18;
             this.VRM.Visible = false;
+            // 
+            // tsButton
+            // 
+            this.tsButton.BackColor = System.Drawing.Color.Transparent;
+            this.tsButton.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.tsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.tsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsButton.Location = new System.Drawing.Point(141, 137);
+            this.tsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.tsButton.Name = "tsButton";
+            this.tsButton.Size = new System.Drawing.Size(43, 21);
+            this.tsButton.TabIndex = 10;
+            this.tsButton.UseVisualStyleBackColor = false;
+            this.tsButton.Click += new System.EventHandler(this.tsButton_Click);
+            // 
+            // tsDrop
+            // 
+            this.tsDrop.BackColor = System.Drawing.Color.Black;
+            this.tsDrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tsDrop.ForeColor = System.Drawing.Color.Lime;
+            this.tsDrop.FormattingEnabled = true;
+            this.tsDrop.Items.AddRange(new object[] {
+            "512",
+            "768",
+            "1024",
+            "1280",
+            "1536",
+            "2048",
+            "2560",
+            "3072"});
+            this.tsDrop.Location = new System.Drawing.Point(141, 137);
+            this.tsDrop.Margin = new System.Windows.Forms.Padding(2);
+            this.tsDrop.Name = "tsDrop";
+            this.tsDrop.Size = new System.Drawing.Size(43, 21);
+            this.tsDrop.TabIndex = 12;
+            this.tsDrop.SelectedIndexChanged += new System.EventHandler(this.tsDrop_SelectedIndexChanged);
+            // 
+            // button4
+            // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(180, 137);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(34, 21);
+            this.button4.TabIndex = 11;
+            this.button4.Text = "Set";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.tsSet_Click);
             // 
             // setlb
             // 
@@ -584,9 +700,10 @@
             this.setlb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.setlb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setlb.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.setlb.Location = new System.Drawing.Point(207, 136);
+            this.setlb.Location = new System.Drawing.Point(159, 110);
+            this.setlb.Margin = new System.Windows.Forms.Padding(2);
             this.setlb.Name = "setlb";
-            this.setlb.Size = new System.Drawing.Size(31, 26);
+            this.setlb.Size = new System.Drawing.Size(23, 21);
             this.setlb.TabIndex = 7;
             this.setlb.UseVisualStyleBackColor = false;
             this.setlb.Click += new System.EventHandler(this.setlb_Click);
@@ -602,9 +719,10 @@
             "3",
             "2",
             "1"});
-            this.setls.Location = new System.Drawing.Point(207, 136);
+            this.setls.Location = new System.Drawing.Point(159, 110);
+            this.setls.Margin = new System.Windows.Forms.Padding(2);
             this.setls.Name = "setls";
-            this.setls.Size = new System.Drawing.Size(29, 24);
+            this.setls.Size = new System.Drawing.Size(23, 21);
             this.setls.TabIndex = 6;
             this.setls.SelectedIndexChanged += new System.EventHandler(this.setls_SelectedIndexChanged);
             // 
@@ -612,9 +730,10 @@
             // 
             this.lset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lset.Location = new System.Drawing.Point(236, 136);
+            this.lset.Location = new System.Drawing.Point(181, 110);
+            this.lset.Margin = new System.Windows.Forms.Padding(2);
             this.lset.Name = "lset";
-            this.lset.Size = new System.Drawing.Size(45, 26);
+            this.lset.Size = new System.Drawing.Size(34, 21);
             this.lset.TabIndex = 5;
             this.lset.Text = "Set";
             this.lset.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -625,9 +744,10 @@
             // 
             this.fpset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fpset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fpset.Location = new System.Drawing.Point(214, 101);
+            this.fpset.Location = new System.Drawing.Point(160, 82);
+            this.fpset.Margin = new System.Windows.Forms.Padding(2);
             this.fpset.Name = "fpset";
-            this.fpset.Size = new System.Drawing.Size(73, 26);
+            this.fpset.Size = new System.Drawing.Size(55, 21);
             this.fpset.TabIndex = 5;
             this.fpset.Text = "set data";
             this.fpset.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -642,9 +762,10 @@
             this.fpsetb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.fpsetb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fpsetb.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.fpsetb.Location = new System.Drawing.Point(165, 101);
+            this.fpsetb.Location = new System.Drawing.Point(124, 82);
+            this.fpsetb.Margin = new System.Windows.Forms.Padding(2);
             this.fpsetb.Name = "fpsetb";
-            this.fpsetb.Size = new System.Drawing.Size(50, 26);
+            this.fpsetb.Size = new System.Drawing.Size(38, 21);
             this.fpsetb.TabIndex = 7;
             this.fpsetb.UseVisualStyleBackColor = false;
             this.fpsetb.Click += new System.EventHandler(this.fpsetb_Click);
@@ -653,9 +774,10 @@
             // 
             this.fpsetp.Controls.Add(this.fpsetc);
             this.fpsetp.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.fpsetp.Location = new System.Drawing.Point(167, 105);
+            this.fpsetp.Location = new System.Drawing.Point(125, 85);
+            this.fpsetp.Margin = new System.Windows.Forms.Padding(2);
             this.fpsetp.Name = "fpsetp";
-            this.fpsetp.Size = new System.Drawing.Size(25, 17);
+            this.fpsetp.Size = new System.Drawing.Size(19, 14);
             this.fpsetp.TabIndex = 8;
             // 
             // fpsetc
@@ -668,9 +790,10 @@
             "90",
             "72",
             "60"});
-            this.fpsetc.Location = new System.Drawing.Point(-4, -4);
+            this.fpsetc.Location = new System.Drawing.Point(-3, -3);
+            this.fpsetc.Margin = new System.Windows.Forms.Padding(2);
             this.fpsetc.Name = "fpsetc";
-            this.fpsetc.Size = new System.Drawing.Size(52, 24);
+            this.fpsetc.Size = new System.Drawing.Size(40, 21);
             this.fpsetc.TabIndex = 6;
             this.fpsetc.Text = "stink";
             this.fpsetc.SelectedIndexChanged += new System.EventHandler(this.fpsetc_SelectedIndexChanged);
@@ -679,9 +802,10 @@
             // 
             this.prox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prox.Location = new System.Drawing.Point(212, 34);
+            this.prox.Location = new System.Drawing.Point(159, 28);
+            this.prox.Margin = new System.Windows.Forms.Padding(2);
             this.prox.Name = "prox";
-            this.prox.Size = new System.Drawing.Size(75, 26);
+            this.prox.Size = new System.Drawing.Size(56, 21);
             this.prox.TabIndex = 5;
             this.prox.Text = "Enable";
             this.prox.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -692,9 +816,10 @@
             // 
             this.eperimode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.eperimode.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.7F);
-            this.eperimode.Location = new System.Drawing.Point(188, 66);
+            this.eperimode.Location = new System.Drawing.Point(141, 54);
+            this.eperimode.Margin = new System.Windows.Forms.Padding(2);
             this.eperimode.Name = "eperimode";
-            this.eperimode.Size = new System.Drawing.Size(99, 26);
+            this.eperimode.Size = new System.Drawing.Size(74, 21);
             this.eperimode.TabIndex = 5;
             this.eperimode.Text = "Enable";
             this.eperimode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -705,9 +830,10 @@
             // 
             this.disprox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.disprox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.disprox.Location = new System.Drawing.Point(131, 34);
+            this.disprox.Location = new System.Drawing.Point(98, 28);
+            this.disprox.Margin = new System.Windows.Forms.Padding(2);
             this.disprox.Name = "disprox";
-            this.disprox.Size = new System.Drawing.Size(75, 26);
+            this.disprox.Size = new System.Drawing.Size(56, 21);
             this.disprox.TabIndex = 5;
             this.disprox.Text = "Disable";
             this.disprox.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -718,45 +844,50 @@
             // 
             this.VRML.AutoSize = true;
             this.VRML.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VRML.Location = new System.Drawing.Point(6, 141);
+            this.VRML.Location = new System.Drawing.Point(4, 115);
+            this.VRML.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VRML.Name = "VRML";
-            this.VRML.Size = new System.Drawing.Size(183, 16);
+            this.VRML.Size = new System.Drawing.Size(148, 13);
             this.VRML.TabIndex = 3;
             this.VRML.Text = "Set CPU level and GPU level:";
             // 
             // VRDRR
             // 
             this.VRDRR.AutoSize = true;
-            this.VRDRR.Location = new System.Drawing.Point(6, 104);
+            this.VRDRR.Location = new System.Drawing.Point(4, 84);
+            this.VRDRR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VRDRR.Name = "VRDRR";
-            this.VRDRR.Size = new System.Drawing.Size(153, 16);
+            this.VRDRR.Size = new System.Drawing.Size(122, 13);
             this.VRDRR.TabIndex = 3;
             this.VRDRR.Text = "Set display Refresh rate:";
             // 
             // VRMEM
             // 
             this.VRMEM.AutoSize = true;
-            this.VRMEM.Location = new System.Drawing.Point(6, 71);
+            this.VRMEM.Location = new System.Drawing.Point(4, 58);
+            this.VRMEM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VRMEM.Name = "VRMEM";
-            this.VRMEM.Size = new System.Drawing.Size(171, 16);
+            this.VRMEM.Size = new System.Drawing.Size(134, 13);
             this.VRMEM.TabIndex = 3;
             this.VRMEM.Text = "Enable experimental mode:";
             // 
             // VRMPS
             // 
             this.VRMPS.AutoSize = true;
-            this.VRMPS.Location = new System.Drawing.Point(6, 39);
+            this.VRMPS.Location = new System.Drawing.Point(4, 32);
+            this.VRMPS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VRMPS.Name = "VRMPS";
-            this.VRMPS.Size = new System.Drawing.Size(108, 16);
+            this.VRMPS.Size = new System.Drawing.Size(85, 13);
             this.VRMPS.TabIndex = 3;
             this.VRMPS.Text = "Proximity sensor:";
             // 
             // VRMSL
             // 
             this.VRMSL.AutoSize = true;
-            this.VRMSL.Location = new System.Drawing.Point(6, 4);
+            this.VRMSL.Location = new System.Drawing.Point(4, 3);
+            this.VRMSL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VRMSL.Name = "VRMSL";
-            this.VRMSL.Size = new System.Drawing.Size(91, 16);
+            this.VRMSL.Size = new System.Drawing.Size(74, 13);
             this.VRMSL.TabIndex = 4;
             this.VRMSL.Text = "Quest settings";
             // 
@@ -764,9 +895,10 @@
             // 
             this.VRMC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VRMC.ForeColor = System.Drawing.Color.Red;
-            this.VRMC.Location = new System.Drawing.Point(272, 0);
+            this.VRMC.Location = new System.Drawing.Point(204, 0);
+            this.VRMC.Margin = new System.Windows.Forms.Padding(2);
             this.VRMC.Name = "VRMC";
-            this.VRMC.Size = new System.Drawing.Size(34, 25);
+            this.VRMC.Size = new System.Drawing.Size(26, 20);
             this.VRMC.TabIndex = 3;
             this.VRMC.Text = "X";
             this.VRMC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -779,8 +911,9 @@
             this.VRMD.Enabled = false;
             this.VRMD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VRMD.Location = new System.Drawing.Point(0, 0);
+            this.VRMD.Margin = new System.Windows.Forms.Padding(2);
             this.VRMD.Name = "VRMD";
-            this.VRMD.Size = new System.Drawing.Size(306, 25);
+            this.VRMD.Size = new System.Drawing.Size(230, 20);
             this.VRMD.TabIndex = 1;
             this.VRMD.UseVisualStyleBackColor = true;
             // 
@@ -791,17 +924,29 @@
             this.VRMB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VRMB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VRMB.Location = new System.Drawing.Point(0, 0);
+            this.VRMB.Margin = new System.Windows.Forms.Padding(2);
             this.VRMB.Name = "VRMB";
-            this.VRMB.Size = new System.Drawing.Size(306, 236);
+            this.VRMB.Size = new System.Drawing.Size(230, 192);
             this.VRMB.TabIndex = 0;
             this.VRMB.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(5, 143);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Texture Size:";
+            // 
             // ADBGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1129, 452);
+            this.ClientSize = new System.Drawing.Size(847, 367);
             this.Controls.Add(this.VRM);
             this.Controls.Add(this.VR);
             this.Controls.Add(this.appdrawer);
@@ -826,7 +971,8 @@
             this.Controls.Add(this.cover);
             this.ForeColor = System.Drawing.Color.Lime;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(800, 450);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(600, 366);
             this.Name = "ADBGUI";
             this.Text = "ADB-Gui";
             this.drag.ResumeLayout(false);
@@ -904,6 +1050,11 @@
         private System.Windows.Forms.Button setlb;
         private System.Windows.Forms.ComboBox setls;
         private System.Windows.Forms.Button lset;
+        private System.Windows.Forms.Button scrcpyButton;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button tsButton;
+        private System.Windows.Forms.ComboBox tsDrop;
+        private System.Windows.Forms.Label label2;
     }
 }
 

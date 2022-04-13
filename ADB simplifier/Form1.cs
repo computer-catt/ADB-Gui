@@ -21,15 +21,16 @@ namespace ADB_simplifier
         private DiscordRpc.EventHandlers handlers;
         private DiscordRpc.RichPresence presence;
         private static Process adbp = new Process();
+        private static Process scrcpy = new Process();
         public ADBGUI()
         {
             InitializeComponent();
             ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 100);
             VRM.Location = new Point(190,90);
-            if (!File.Exists(Directory.GetCurrentDirectory() + "\\adb\\adb.exe"))
+            if (!File.Exists(Directory.GetCurrentDirectory() + "\\adb\\scrcpy.exe"))
             {
-                net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/950150446159380590/adb.zip", "adb.zip");
+                net.DownloadFile("https://github.com/Genymobile/scrcpy/releases/download/v1.23/scrcpy-win64-v1.23.zip", "adb.zip");
                 ZipFile.ExtractToDirectory("adb.zip", Directory.GetCurrentDirectory() + "\\adb");
                 File.Delete("adb.zip");
             }
@@ -73,7 +74,8 @@ namespace ADB_simplifier
             {
                 string error = adbp.StandardError.ReadToEnd();
                 script.Text = adbp.StandardOutput.ReadToEnd() + error;
-                script.SelectionStart = script.Text.Length - error.Length + 1;
+                // following line broke, idk why lol
+                //script.SelectionStart = script.Text.Length - error.Length + 1;
                 script.SelectionLength = script.Text.Length;
                 script.SelectionColor = Color.Red;
             }
@@ -335,7 +337,7 @@ namespace ADB_simplifier
                 {
                     key(53);
                 }
-                if (e.KeyCode == Keys.X)
+                if (e.KeyCode == Keys.Z)
                 {
                     key(54);
                 }
@@ -360,19 +362,26 @@ namespace ADB_simplifier
         private void fpsetb_Click(object sender, EventArgs e) => fpsetc.DroppedDown = !fpsetc.DroppedDown;
         private void fpsetc_SelectedIndexChanged(object sender, EventArgs e) => fpsetb.Text = fpsetc.Text;
         private void setlb_Click(object sender, EventArgs e) => setls.DroppedDown = !setls.DroppedDown;
+        private void tsButton_Click(object sender, EventArgs e) => tsDrop.DroppedDown = !tsDrop.DroppedDown;
+        private void tsSet_Click(object sender, EventArgs e)
+        {
+            if (tsButton.Text != "")
+            {
+                adb("shell setprop debug.oculus.textureWidth " + tsButton.Text, false);
+                adb("shell setprop debug.oculus.textureHeight  " + tsButton.Text, false);
+            }
+            else
+            {
+                MessageBox.Show("You must set a value first!");
+            }
+           
+        }
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
+        private void tsDrop_SelectedIndexChanged(object sender, EventArgs e) => tsButton.Text = tsDrop.Text;
+        private void disprox_Click(object sender, EventArgs e) => adb("shell am broadcast -a com.oculus.vrpowermanager.prox_close", true);
 
-        private void disprox_Click(object sender, EventArgs e)
-        {
-            adb("shell am broadcast - a com.oculus.vrpowermanager.prox_close", true);
-            MessageBox.Show("A quest restart needs to be perfromed for changes to apply.");
-        }
-
-        private void prox_Click(object sender, EventArgs e)
-        {
-            adb("shell am broadcast - a com.oculus.vrpowermanager.automation_disable", true);
-            MessageBox.Show("A quest restart needs to be perfromed for changes to apply.");
-        }
+        private void prox_Click(object sender, EventArgs e) => adb("shell am broadcast -a com.oculus.vrpowermanager.automation_disable", true);
+        
 
         private void eperimode_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.experimentalEnabled 1 ", true);
 
@@ -400,6 +409,26 @@ namespace ADB_simplifier
                 MessageBox.Show("You must set a value first!");
             }
         }
+        private void scrcpyButton_Click(object sender, EventArgs e)
+        {
+            string args = "";
+            script.Text = model;
+            if (model.Trim() == "Quest 2") args = "--crop 1600:900:2017:510";
+            else if (model.Trim() == "Quest") args = "--crop 1280:720:1500:350";
+            script.Text += args;
+
+            scrcpy.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\adb\\scrcpy.exe";
+            scrcpy.StartInfo.Arguments = args;
+            scrcpy.StartInfo.RedirectStandardError = true;
+            scrcpy.StartInfo.RedirectStandardOutput = true;
+            scrcpy.StartInfo.RedirectStandardInput = true;
+            scrcpy.StartInfo.CreateNoWindow = true;
+            scrcpy.StartInfo.UseShellExecute = false;
+            scrcpy.Start();
+
+            //string error = scrcpy.StandardError.ReadToEnd();
+            //script.Text += scrcpy.StandardOutput.ReadToEnd() + error;
+        }
 
         private void percent_Click(object sender, EventArgs e) => ds.DroppedDown = !ds.DroppedDown;
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
@@ -411,8 +440,8 @@ namespace ADB_simplifier
             doe = false;
             if (connected)
             {
-                if (appdrawer.Visible)
-                {
+                //if (appdrawer.Visible)
+                //{
                     draw.Items.Clear();
                     test = adb("shell dumpsys window animator", false);
 
@@ -455,7 +484,7 @@ namespace ADB_simplifier
                             }
                         }
                     }
-                }
+                //}
             }
         }
 
