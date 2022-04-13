@@ -1,6 +1,6 @@
 ﻿namespace ADB_simplifier
 {
-    partial class Form1
+    partial class ADBGUI
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,7 @@
             this.drag = new System.Windows.Forms.Panel();
             this.ds = new System.Windows.Forms.ComboBox();
             this.app = new System.Windows.Forms.Button();
+            this.VR = new System.Windows.Forms.Button();
             this.bs2 = new System.Windows.Forms.Button();
             this.bs3 = new System.Windows.Forms.Button();
             this.bs4 = new System.Windows.Forms.Button();
@@ -68,11 +69,32 @@
             this.apppop = new System.Windows.Forms.Timer(this.components);
             this.CC = new System.Windows.Forms.Button();
             this.sp = new System.Windows.Forms.Panel();
+            this.VRM = new System.Windows.Forms.Panel();
+            this.setlb = new System.Windows.Forms.Button();
+            this.setls = new System.Windows.Forms.ComboBox();
+            this.lset = new System.Windows.Forms.Button();
+            this.fpset = new System.Windows.Forms.Button();
+            this.fpsetb = new System.Windows.Forms.Button();
+            this.fpsetp = new System.Windows.Forms.Panel();
+            this.fpsetc = new System.Windows.Forms.ComboBox();
+            this.prox = new System.Windows.Forms.Button();
+            this.eperimode = new System.Windows.Forms.Button();
+            this.disprox = new System.Windows.Forms.Button();
+            this.VRML = new System.Windows.Forms.Label();
+            this.VRDRR = new System.Windows.Forms.Label();
+            this.VRMEM = new System.Windows.Forms.Label();
+            this.VRMPS = new System.Windows.Forms.Label();
+            this.VRMSL = new System.Windows.Forms.Label();
+            this.VRMC = new System.Windows.Forms.Button();
+            this.VRMD = new System.Windows.Forms.Button();
+            this.VRMB = new System.Windows.Forms.Button();
             this.drag.SuspendLayout();
             this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
             this.drawp.SuspendLayout();
             this.sp.SuspendLayout();
+            this.VRM.SuspendLayout();
+            this.fpsetp.SuspendLayout();
             this.SuspendLayout();
             // 
             // bs
@@ -167,6 +189,21 @@
             this.app.Text = "=";
             this.app.UseVisualStyleBackColor = true;
             this.app.Click += new System.EventHandler(this.app_Click);
+            // 
+            // VR
+            // 
+            this.VR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VR.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VR.Location = new System.Drawing.Point(683, 0);
+            this.VR.Name = "VR";
+            this.VR.Size = new System.Drawing.Size(28, 25);
+            this.VR.TabIndex = 11;
+            this.VR.Text = "🥽";
+            this.VR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.VR.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.VR.UseVisualStyleBackColor = true;
+            this.VR.Visible = false;
+            this.VR.Click += new System.EventHandler(this.VR_Click);
             // 
             // bs2
             // 
@@ -514,12 +551,259 @@
             this.sp.Size = new System.Drawing.Size(777, 330);
             this.sp.TabIndex = 15;
             // 
-            // Form1
+            // VRM
+            // 
+            this.VRM.Controls.Add(this.setlb);
+            this.VRM.Controls.Add(this.setls);
+            this.VRM.Controls.Add(this.lset);
+            this.VRM.Controls.Add(this.fpset);
+            this.VRM.Controls.Add(this.fpsetb);
+            this.VRM.Controls.Add(this.fpsetp);
+            this.VRM.Controls.Add(this.prox);
+            this.VRM.Controls.Add(this.eperimode);
+            this.VRM.Controls.Add(this.disprox);
+            this.VRM.Controls.Add(this.VRML);
+            this.VRM.Controls.Add(this.VRDRR);
+            this.VRM.Controls.Add(this.VRMEM);
+            this.VRM.Controls.Add(this.VRMPS);
+            this.VRM.Controls.Add(this.VRMSL);
+            this.VRM.Controls.Add(this.VRMC);
+            this.VRM.Controls.Add(this.VRMD);
+            this.VRM.Controls.Add(this.VRMB);
+            this.VRM.Location = new System.Drawing.Point(811, 202);
+            this.VRM.Name = "VRM";
+            this.VRM.Size = new System.Drawing.Size(306, 236);
+            this.VRM.TabIndex = 18;
+            this.VRM.Visible = false;
+            // 
+            // setlb
+            // 
+            this.setlb.BackColor = System.Drawing.Color.Transparent;
+            this.setlb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.setlb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.setlb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.setlb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setlb.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.setlb.Location = new System.Drawing.Point(207, 136);
+            this.setlb.Name = "setlb";
+            this.setlb.Size = new System.Drawing.Size(31, 26);
+            this.setlb.TabIndex = 7;
+            this.setlb.UseVisualStyleBackColor = false;
+            this.setlb.Click += new System.EventHandler(this.setlb_Click);
+            // 
+            // setls
+            // 
+            this.setls.BackColor = System.Drawing.Color.Black;
+            this.setls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setls.ForeColor = System.Drawing.Color.Lime;
+            this.setls.FormattingEnabled = true;
+            this.setls.Items.AddRange(new object[] {
+            "4",
+            "3",
+            "2",
+            "1"});
+            this.setls.Location = new System.Drawing.Point(207, 136);
+            this.setls.Name = "setls";
+            this.setls.Size = new System.Drawing.Size(29, 24);
+            this.setls.TabIndex = 6;
+            this.setls.SelectedIndexChanged += new System.EventHandler(this.setls_SelectedIndexChanged);
+            // 
+            // lset
+            // 
+            this.lset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lset.Location = new System.Drawing.Point(236, 136);
+            this.lset.Name = "lset";
+            this.lset.Size = new System.Drawing.Size(45, 26);
+            this.lset.TabIndex = 5;
+            this.lset.Text = "Set";
+            this.lset.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lset.UseVisualStyleBackColor = true;
+            this.lset.Click += new System.EventHandler(this.lset_Click);
+            // 
+            // fpset
+            // 
+            this.fpset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fpset.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fpset.Location = new System.Drawing.Point(214, 101);
+            this.fpset.Name = "fpset";
+            this.fpset.Size = new System.Drawing.Size(73, 26);
+            this.fpset.TabIndex = 5;
+            this.fpset.Text = "set data";
+            this.fpset.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.fpset.UseVisualStyleBackColor = true;
+            this.fpset.Click += new System.EventHandler(this.fpset_Click);
+            // 
+            // fpsetb
+            // 
+            this.fpsetb.BackColor = System.Drawing.Color.Transparent;
+            this.fpsetb.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.fpsetb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.fpsetb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.fpsetb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fpsetb.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.fpsetb.Location = new System.Drawing.Point(165, 101);
+            this.fpsetb.Name = "fpsetb";
+            this.fpsetb.Size = new System.Drawing.Size(50, 26);
+            this.fpsetb.TabIndex = 7;
+            this.fpsetb.UseVisualStyleBackColor = false;
+            this.fpsetb.Click += new System.EventHandler(this.fpsetb_Click);
+            // 
+            // fpsetp
+            // 
+            this.fpsetp.Controls.Add(this.fpsetc);
+            this.fpsetp.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.fpsetp.Location = new System.Drawing.Point(167, 105);
+            this.fpsetp.Name = "fpsetp";
+            this.fpsetp.Size = new System.Drawing.Size(25, 17);
+            this.fpsetp.TabIndex = 8;
+            // 
+            // fpsetc
+            // 
+            this.fpsetc.BackColor = System.Drawing.Color.Black;
+            this.fpsetc.ForeColor = System.Drawing.Color.Lime;
+            this.fpsetc.FormattingEnabled = true;
+            this.fpsetc.Items.AddRange(new object[] {
+            "120",
+            "90",
+            "72",
+            "60"});
+            this.fpsetc.Location = new System.Drawing.Point(-4, -4);
+            this.fpsetc.Name = "fpsetc";
+            this.fpsetc.Size = new System.Drawing.Size(52, 24);
+            this.fpsetc.TabIndex = 6;
+            this.fpsetc.Text = "stink";
+            this.fpsetc.SelectedIndexChanged += new System.EventHandler(this.fpsetc_SelectedIndexChanged);
+            // 
+            // prox
+            // 
+            this.prox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.prox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prox.Location = new System.Drawing.Point(212, 34);
+            this.prox.Name = "prox";
+            this.prox.Size = new System.Drawing.Size(75, 26);
+            this.prox.TabIndex = 5;
+            this.prox.Text = "Enable";
+            this.prox.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.prox.UseVisualStyleBackColor = true;
+            this.prox.Click += new System.EventHandler(this.prox_Click);
+            // 
+            // eperimode
+            // 
+            this.eperimode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eperimode.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.7F);
+            this.eperimode.Location = new System.Drawing.Point(188, 66);
+            this.eperimode.Name = "eperimode";
+            this.eperimode.Size = new System.Drawing.Size(99, 26);
+            this.eperimode.TabIndex = 5;
+            this.eperimode.Text = "Enable";
+            this.eperimode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.eperimode.UseVisualStyleBackColor = true;
+            this.eperimode.Click += new System.EventHandler(this.eperimode_Click);
+            // 
+            // disprox
+            // 
+            this.disprox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.disprox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.disprox.Location = new System.Drawing.Point(131, 34);
+            this.disprox.Name = "disprox";
+            this.disprox.Size = new System.Drawing.Size(75, 26);
+            this.disprox.TabIndex = 5;
+            this.disprox.Text = "Disable";
+            this.disprox.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.disprox.UseVisualStyleBackColor = true;
+            this.disprox.Click += new System.EventHandler(this.disprox_Click);
+            // 
+            // VRML
+            // 
+            this.VRML.AutoSize = true;
+            this.VRML.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VRML.Location = new System.Drawing.Point(6, 141);
+            this.VRML.Name = "VRML";
+            this.VRML.Size = new System.Drawing.Size(183, 16);
+            this.VRML.TabIndex = 3;
+            this.VRML.Text = "Set CPU level and GPU level:";
+            // 
+            // VRDRR
+            // 
+            this.VRDRR.AutoSize = true;
+            this.VRDRR.Location = new System.Drawing.Point(6, 104);
+            this.VRDRR.Name = "VRDRR";
+            this.VRDRR.Size = new System.Drawing.Size(153, 16);
+            this.VRDRR.TabIndex = 3;
+            this.VRDRR.Text = "Set display Refresh rate:";
+            // 
+            // VRMEM
+            // 
+            this.VRMEM.AutoSize = true;
+            this.VRMEM.Location = new System.Drawing.Point(6, 71);
+            this.VRMEM.Name = "VRMEM";
+            this.VRMEM.Size = new System.Drawing.Size(171, 16);
+            this.VRMEM.TabIndex = 3;
+            this.VRMEM.Text = "Enable experimental mode:";
+            // 
+            // VRMPS
+            // 
+            this.VRMPS.AutoSize = true;
+            this.VRMPS.Location = new System.Drawing.Point(6, 39);
+            this.VRMPS.Name = "VRMPS";
+            this.VRMPS.Size = new System.Drawing.Size(108, 16);
+            this.VRMPS.TabIndex = 3;
+            this.VRMPS.Text = "Proximity sensor:";
+            // 
+            // VRMSL
+            // 
+            this.VRMSL.AutoSize = true;
+            this.VRMSL.Location = new System.Drawing.Point(6, 4);
+            this.VRMSL.Name = "VRMSL";
+            this.VRMSL.Size = new System.Drawing.Size(91, 16);
+            this.VRMSL.TabIndex = 4;
+            this.VRMSL.Text = "Quest settings";
+            // 
+            // VRMC
+            // 
+            this.VRMC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VRMC.ForeColor = System.Drawing.Color.Red;
+            this.VRMC.Location = new System.Drawing.Point(272, 0);
+            this.VRMC.Name = "VRMC";
+            this.VRMC.Size = new System.Drawing.Size(34, 25);
+            this.VRMC.TabIndex = 3;
+            this.VRMC.Text = "X";
+            this.VRMC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.VRMC.UseVisualStyleBackColor = true;
+            this.VRMC.Click += new System.EventHandler(this.VRMC_Click);
+            // 
+            // VRMD
+            // 
+            this.VRMD.Dock = System.Windows.Forms.DockStyle.Top;
+            this.VRMD.Enabled = false;
+            this.VRMD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VRMD.Location = new System.Drawing.Point(0, 0);
+            this.VRMD.Name = "VRMD";
+            this.VRMD.Size = new System.Drawing.Size(306, 25);
+            this.VRMD.TabIndex = 1;
+            this.VRMD.UseVisualStyleBackColor = true;
+            // 
+            // VRMB
+            // 
+            this.VRMB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.VRMB.Enabled = false;
+            this.VRMB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VRMB.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VRMB.Location = new System.Drawing.Point(0, 0);
+            this.VRMB.Name = "VRMB";
+            this.VRMB.Size = new System.Drawing.Size(306, 236);
+            this.VRMB.TabIndex = 0;
+            this.VRMB.UseVisualStyleBackColor = true;
+            // 
+            // ADBGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1129, 452);
+            this.Controls.Add(this.VRM);
+            this.Controls.Add(this.VR);
             this.Controls.Add(this.appdrawer);
             this.Controls.Add(this.sp);
             this.Controls.Add(this.CC);
@@ -543,14 +827,17 @@
             this.ForeColor = System.Drawing.Color.Lime;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "ADBGUI";
+            this.Text = "ADB-Gui";
             this.drag.ResumeLayout(false);
             this.sw.ResumeLayout(false);
             this.appdrawer.ResumeLayout(false);
             this.appdrawer.PerformLayout();
             this.drawp.ResumeLayout(false);
             this.sp.ResumeLayout(false);
+            this.VRM.ResumeLayout(false);
+            this.VRM.PerformLayout();
+            this.fpsetp.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,6 +884,26 @@
         private System.Windows.Forms.CheckBox drp;
         private System.Windows.Forms.Button CC;
         private System.Windows.Forms.Panel sp;
+        private System.Windows.Forms.Button VR;
+        private System.Windows.Forms.Panel VRM;
+        private System.Windows.Forms.Button VRMC;
+        private System.Windows.Forms.Button VRMD;
+        private System.Windows.Forms.Button VRMB;
+        private System.Windows.Forms.Label VRMSL;
+        private System.Windows.Forms.Button prox;
+        private System.Windows.Forms.Button fpset;
+        private System.Windows.Forms.Button eperimode;
+        private System.Windows.Forms.Button disprox;
+        private System.Windows.Forms.Label VRMEM;
+        private System.Windows.Forms.Label VRMPS;
+        private System.Windows.Forms.Button fpsetb;
+        private System.Windows.Forms.ComboBox fpsetc;
+        private System.Windows.Forms.Panel fpsetp;
+        private System.Windows.Forms.Label VRML;
+        private System.Windows.Forms.Label VRDRR;
+        private System.Windows.Forms.Button setlb;
+        private System.Windows.Forms.ComboBox setls;
+        private System.Windows.Forms.Button lset;
     }
 }
 

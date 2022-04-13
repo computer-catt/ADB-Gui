@@ -9,23 +9,24 @@ using DiscordRpcDemo;
 
 namespace ADB_simplifier
 {
-    public partial class Form1 : Form
+    public partial class ADBGUI : Form
     {
         private Point offset;
         bool live, doe, connected, mousedown;
-        string prev = "",prev2 = "", found, test, ms;
+        string prev = "",prev2 = "", found, test, ms, model;
         string[] rpc, ab;
         //            ^
         //ab is being  used dont worry bout it
         WebClient net = new WebClient();
         private DiscordRpc.EventHandlers handlers;
         private DiscordRpc.RichPresence presence;
-        private static Process adb = new Process();
-        public Form1()
+        private static Process adbp = new Process();
+        public ADBGUI()
         {
             InitializeComponent();
             ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 100);
+            VRM.Location = new Point(190,90);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\adb\\adb.exe"))
             {
                 net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/950150446159380590/adb.zip", "adb.zip");
@@ -34,8 +35,8 @@ namespace ADB_simplifier
             }
         }
 
-        private void bs_Click(object sender, EventArgs e) => snr("devices", true);
-        string snr(string pogge, bool e)
+        private void bs_Click(object sender, EventArgs e) => adb("devices", true);
+        string adb(string pogge, bool e)
         {
             try
             {
@@ -48,44 +49,45 @@ namespace ADB_simplifier
             {
 
             }
-            adb.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\adb\\adb.exe";
-            adb.StartInfo.Arguments = pogge;
-            adb.StartInfo.RedirectStandardError = true;
-            adb.StartInfo.RedirectStandardOutput = true;
-            adb.StartInfo.RedirectStandardInput = true;
-            adb.StartInfo.CreateNoWindow = true;
-            adb.StartInfo.UseShellExecute = false;
-            adb.Start();
+
+            adbp.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\adb\\adb.exe";
+            adbp.StartInfo.Arguments = pogge;
+            adbp.StartInfo.RedirectStandardError = true;
+            adbp.StartInfo.RedirectStandardOutput = true;
+            adbp.StartInfo.RedirectStandardInput = true;
+            adbp.StartInfo.CreateNoWindow = true;
+            adbp.StartInfo.UseShellExecute = false;
+            adbp.Start();
             if (pogge.Contains("connect") || pogge.Length > 5)
             {
-                if (!adb.WaitForExit(5000))
+                if (!adbp.WaitForExit(5000))
                 {
-                    adb.Kill();
+                    adbp.Kill();
                 }
             }
             else
             {
-                adb.WaitForExit();
+                adbp.WaitForExit();
             }
             if (e)
             {
-                string error = adb.StandardError.ReadToEnd();
-                script.Text = adb.StandardOutput.ReadToEnd() + error;
+                string error = adbp.StandardError.ReadToEnd();
+                script.Text = adbp.StandardOutput.ReadToEnd() + error;
                 script.SelectionStart = script.Text.Length - error.Length + 1;
                 script.SelectionLength = script.Text.Length;
                 script.SelectionColor = Color.Red;
             }
-            
-            return adb.StandardOutput.ReadToEnd();
+
+            return adbp.StandardOutput.ReadToEnd() + adbp.StandardError.ReadToEnd();
         }
         private void button1_Click(object sender, EventArgs e) => Close();
-        private void bs2_Click(object sender, EventArgs e) => snr("reboot", true);
+        private void bs2_Click(object sender, EventArgs e) => adb("reboot", true);
         //needs a cart fix
         private void bs4_Click(object sender, EventArgs e)
         {
-                snr("tcpip 5555", false);
+                adb("tcpip 5555", false);
                 MessageBox.Show("tcpip started, please wait untill device reconnects.");
-                snr("connect " + snr("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), true);
+                adb("connect " + adb("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), true);
         }
 
         private void bs3_Click(object sender, EventArgs e)
@@ -96,10 +98,10 @@ namespace ADB_simplifier
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                snr("install \"" + ofd.FileName + "\"", true);
+                adb("install \"" + ofd.FileName + "\"", true);
             }
         }
-        private void bs5_Click(object sender, EventArgs e) => snr("disconnect", true);
+        private void bs5_Click(object sender, EventArgs e) => adb("disconnect", true);
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mousedown = true;
@@ -123,26 +125,30 @@ namespace ADB_simplifier
                 {
                     cl.Text = cl.Text.Substring(3);
                 }
-                snr(cl.Text, true);
+                adb(cl.Text, true);
                 cl.Clear();
             }
         }
-        //there was a note here but now its not needed(snr listing: 2)
+        //there was a note here but now its not needed(adb listing: 2)
         private void sc_Tick(object sender, EventArgs e)
         {
-            string[] ab = snr("devices", false).Split("\r".ToCharArray());
+
+            ab = adb("devices", false).Split("\r".ToCharArray());
             connected = !ab[1].Contains("device") ? false : true;
             ds.Items.Clear();
             if (ds.Text.Length > 3)
             {
-                found = snr("shell dumpsys battery", false);
+                found = adb("shell dumpsys battery", false);
                 if (found.Contains("not found"))
                 {
                     ds.Text = "";
+                    percent.Text = "";
                 }
             }
             if (connected)
             {
+                model = adb("shell getprop ro.product.model", false);
+                VR.Visible = model.Contains("Quest");
                 foreach (string beanis in ab)
                 {
                     if (!beanis.Contains("List of devices attached") && beanis.Contains("device"))
@@ -152,7 +158,6 @@ namespace ADB_simplifier
                             ds.Items.Add(beanis.Replace("device", "").Trim());
                         }
                     }
-
                 }
                 if (ds.Text.Length < 3)
                 {
@@ -166,12 +171,18 @@ namespace ADB_simplifier
             else
             {
                 ds.Items.Clear();
+                VR.Visible = false;
+                VRM.Visible = false;
             }
             if (ds.Text.Length > 3)
             {
                 if (found != null)
                 {
-                    percent.Text = connected ? found.Split("\r".ToCharArray())[10].Remove(0, 10) : "";
+                    try
+                    {
+                        percent.Text = connected ? found.Split("\r".ToCharArray())[10].Remove(0, 10) : "";
+                    }
+                    catch { }
                 }
             }
         }
@@ -214,7 +225,7 @@ namespace ADB_simplifier
                 }
                 if (e.KeyCode == Keys.Enter)
                 {
-                    snr("shell input keyboard text '" + settext.Text + "'", false);
+                    adb("shell input keyboard text '" + settext.Text + "'", false);
                     settext.Clear();
                 }
             }
@@ -342,13 +353,59 @@ namespace ADB_simplifier
                 }
             }
         }
-        private void key(int keyevent) => snr("shell input keyevent " + keyevent, false);
-        private void button1_Click_1(object sender, EventArgs e) => snr("shell svc usb setFunctions mtp true", false);
+        private void key(int keyevent) => adb("shell input keyevent " + keyevent, false);
+        private void button1_Click_1(object sender, EventArgs e) => adb("shell svc usb setFunctions mtp true", true);
+        private void VRMC_Click(object sender, EventArgs e) => VRM.Visible = false;
+        private void VR_Click(object sender, EventArgs e) => VRM.Visible = !VRM.Visible;
+        private void fpsetb_Click(object sender, EventArgs e) => fpsetc.DroppedDown = !fpsetc.DroppedDown;
+        private void fpsetc_SelectedIndexChanged(object sender, EventArgs e) => fpsetb.Text = fpsetc.Text;
+        private void setlb_Click(object sender, EventArgs e) => setls.DroppedDown = !setls.DroppedDown;
+        private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
+
+        private void disprox_Click(object sender, EventArgs e)
+        {
+            adb("shell am broadcast - a com.oculus.vrpowermanager.prox_close", true);
+            MessageBox.Show("A quest restart needs to be perfromed for changes to apply.");
+        }
+
+        private void prox_Click(object sender, EventArgs e)
+        {
+            adb("shell am broadcast - a com.oculus.vrpowermanager.automation_disable", true);
+            MessageBox.Show("A quest restart needs to be perfromed for changes to apply.");
+        }
+
+        private void eperimode_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.experimentalEnabled 1 ", true);
+
+        private void fpset_Click(object sender, EventArgs e)
+        {
+            if (fpsetb.Text != "")
+            {
+                adb("shell setprop debug.oculus.refreshRate " + fpsetb.Text, true);
+            }
+            else
+            {
+                MessageBox.Show("You must set a value first!");
+            }
+        }
+
+        private void lset_Click(object sender, EventArgs e)
+        {
+            if (setlb.Text != "")
+            {
+                adb("shell setprop debug.oculus.cpuLevel " + setlb.Text, true);
+                adb("shell setprop debug.oculus.gpuLevel " + setlb.Text, true);
+            }
+            else
+            {
+                MessageBox.Show("You must set a value first!");
+            }
+        }
+
         private void percent_Click(object sender, EventArgs e) => ds.DroppedDown = !ds.DroppedDown;
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
-        //snr use: 2
+        //adb use: 2
         private void apppop_Tick(object sender, EventArgs e)
         {
             doe = false;
@@ -357,10 +414,10 @@ namespace ADB_simplifier
                 if (appdrawer.Visible)
                 {
                     draw.Items.Clear();
-                    test = snr("shell dumpsys window animator", false);
+                    test = adb("shell dumpsys window animator", false);
 
                     ms = "running: ";
-                    foreach (string beans in snr("shell pm list packages -3", false).Split("\r".ToCharArray()))
+                    foreach (string beans in adb("shell pm list packages -3", false).Split("\r".ToCharArray()))
                     {
                         if (beans.Length > 1 && !beans.Contains("environment"))
                         {
@@ -402,8 +459,8 @@ namespace ADB_simplifier
             }
         }
 
-        private void start_Click(object sender, EventArgs e) => snr("shell monkey -p " + draw.Text + " 1", false);
-        private void cr_Click(object sender, EventArgs e) => snr("shell am force-stop " + draw.Text, false);
+        private void start_Click(object sender, EventArgs e) => adb("shell monkey -p " + draw.Text + " 1", false);
+        private void cr_Click(object sender, EventArgs e) => adb("shell am force-stop " + draw.Text, false);
 
         private void drp_CheckedChanged(object sender, EventArgs e)
         {
@@ -437,6 +494,7 @@ namespace ADB_simplifier
                 settext.ForeColor = colorDialog.Color;
                 cl.ForeColor = colorDialog.Color;
                 sp.BackColor = colorDialog.Color;
+                fpsetc.ForeColor = colorDialog.Color;
             }
             
         }
