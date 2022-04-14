@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using System.IO.Compression;
+using System.Collections.Generic;
 using DiscordRpcDemo;
 
 namespace ADB_simplifier
@@ -13,7 +14,7 @@ namespace ADB_simplifier
     {
         private Point offset;
         bool live, doe, connected, mousedown;
-        string prev = "",prev2 = "", found, test, ms, model;
+        string prev = "", prev2 = "", found, test, ms, model;
         string[] rpc, ab;
         //            ^
         //ab is being  used dont worry bout it
@@ -27,7 +28,7 @@ namespace ADB_simplifier
             InitializeComponent();
             ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 120);
-            VRM.Location = new Point(190,90);
+            VRM.Location = new Point(190, 90);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\resources\\adb.exe"))
             {
                 net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/963970216084246588/adb.zip", "adb.zip");
@@ -37,13 +38,13 @@ namespace ADB_simplifier
         }
 
         private void bs_Click(object sender, EventArgs e) => adb("devices", true);
-        string adb(string pogge, bool e)
+        string adb(string command, bool e)
         {
             try
             {
                 if (ds.Text.Length > 3)
                 {
-                    pogge = " -s " + ds.Text.Trim() + " " + pogge;
+                    command = " -s " + ds.Text.Trim() + " " + command;
                 }
             }
             catch
@@ -52,13 +53,13 @@ namespace ADB_simplifier
             }
 
             adbp.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\resources\\adb.exe";
-            adbp.StartInfo.Arguments = pogge;
+            adbp.StartInfo.Arguments = command;
             adbp.StartInfo.RedirectStandardError = true;
             adbp.StartInfo.RedirectStandardOutput = true;
             adbp.StartInfo.CreateNoWindow = true;
             adbp.StartInfo.UseShellExecute = false;
             adbp.Start();
-            if (pogge.Contains("connect") || pogge.Length > 5)
+            if (command.Contains("connect") || command.Length > 5)
             {
                 if (!adbp.WaitForExit(5000))
                 {
@@ -96,9 +97,9 @@ namespace ADB_simplifier
         //needs a cart fix
         private void bs4_Click(object sender, EventArgs e)
         {
-                adb("tcpip 5555", false);
-                MessageBox.Show("tcpip started, please wait untill device reconnects.");
-                adb("connect " + adb("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), true);
+            adb("tcpip 5555", false);
+            MessageBox.Show("tcpip started, please wait untill device reconnects.");
+            adb("connect " + adb("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), true);
         }
 
         private void bs3_Click(object sender, EventArgs e)
@@ -212,7 +213,10 @@ namespace ADB_simplifier
             settext.Text = prev;
             settext.ReadOnly = false;
         }
-        //can mabye be shortened to hell i need to test it(im not proud of this "if spam")
+        //can mabye be shortened to hell i need to test it(im not proud of this "if spam") FIXED
+
+        string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Enter", "Return", "Back", "Space" };
+        int[] keycodes = { 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 66, 66, 67, 62 };
         private void settext_KeyDown(object sender, KeyEventArgs e)
         {
             if (!live)
@@ -240,126 +244,7 @@ namespace ADB_simplifier
             }
             else
             {
-                if (e.KeyCode == Keys.Escape)
-                {
-                    instant.PerformClick();
-                }
-                if (e.KeyCode == Keys.A)
-                {
-                    key(29);
-                }
-                if (e.KeyCode == Keys.B)
-                {
-                    key(30);
-                }
-                if (e.KeyCode == Keys.C)
-                {
-                    key(31);
-                }
-                if (e.KeyCode == Keys.D)
-                {
-                    key(32);
-                }
-                if (e.KeyCode == Keys.E)
-                {
-                    key(33);
-                }
-                if (e.KeyCode == Keys.F)
-                {
-                    key(34);
-                }
-                if (e.KeyCode == Keys.G)
-                {
-                    key(35);
-                }
-                if (e.KeyCode == Keys.H)
-                {
-                    key(36);
-                }
-                if (e.KeyCode == Keys.I)
-                {
-                    key(37);
-                }
-                if (e.KeyCode == Keys.J)
-                {
-                    key(38);
-                }
-                if (e.KeyCode == Keys.K)
-                {
-                    key(39);
-                }
-                if (e.KeyCode == Keys.L)
-                {
-                    key(40);
-                }
-                if (e.KeyCode == Keys.M)
-                {
-                    key(41);
-                }
-                if (e.KeyCode == Keys.N)
-                {
-                    key(42);
-                }
-                if (e.KeyCode == Keys.O)
-                {
-                    key(43);
-                }
-                if (e.KeyCode == Keys.P)
-                {
-                    key(44);
-                }
-                if (e.KeyCode == Keys.Q)
-                {
-                    key(45);
-                }
-                if (e.KeyCode == Keys.R)
-                {
-                    key(46);
-                }
-                if (e.KeyCode == Keys.S)
-                {
-                    key(47);
-                }
-                if (e.KeyCode == Keys.T)
-                {
-                    key(48);
-                }
-                if (e.KeyCode == Keys.U)
-                {
-                    key(49);
-                }
-                if (e.KeyCode == Keys.V)
-                {
-                    key(50);
-                }
-                if (e.KeyCode == Keys.W)
-                {
-                    key(51);
-                }
-                if (e.KeyCode == Keys.X)
-                {
-                    key(52);
-                }
-                if (e.KeyCode == Keys.Y)
-                {
-                    key(53);
-                }
-                if (e.KeyCode == Keys.Z)
-                {
-                    key(54);
-                }
-                if (e.KeyCode == Keys.Enter)
-                {
-                    key(66);
-                }
-                if (e.KeyCode == Keys.Back)
-                {
-                    key(67);
-                }
-                if (e.KeyCode == Keys.Space)
-                {
-                    key(62);
-                }
+                key(keycodes[Array.IndexOf(letters, e.KeyCode.ToString())]);
             }
         }
 
@@ -374,7 +259,7 @@ namespace ADB_simplifier
             {
                 MessageBox.Show("You must set a value first!");
             }
-           
+
         }
         private void fpset_Click(object sender, EventArgs e)
         {
