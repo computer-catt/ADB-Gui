@@ -310,12 +310,13 @@ namespace ADB_simplifier
                             if (test.Contains(beans.Substring(9)))
                             {
                                 ms += beans.Substring(9);
-                                if (ms != la.Text)
+
+                                doe = true;
+                            } 
+                            if (ms != la.Text||ms.Contains("not found"))
                                 {
                                     la.Text = ms;
                                 }
-                                doe = true;
-                            }
                             if (drp.Checked)
                             {
                                 //need shit here that will only update presence only when theres a change to update
