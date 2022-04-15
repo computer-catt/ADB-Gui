@@ -312,11 +312,12 @@ namespace ADB_simplifier
                                 ms += beans.Substring(9);
 
                                 doe = true;
-                            } 
-                            if (ms != la.Text||ms.Contains("not found"))
-                                {
-                                    la.Text = ms;
-                                }
+                            }
+                            if (ms != la.Text || ms.Contains("not found"))
+                            {
+                                la.Text = ms;
+                            }
+
                             if (drp.Checked)
                             {
                                 //need shit here that will only update presence only when theres a change to update
