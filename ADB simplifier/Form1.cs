@@ -5,7 +5,6 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using System.IO.Compression;
-using System.Collections.Generic;
 using DiscordRpcDemo;
 
 namespace ADB_simplifier
