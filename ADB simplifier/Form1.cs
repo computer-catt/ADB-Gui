@@ -24,15 +24,10 @@ namespace ADB_simplifier
         private Process scrcpy = new Process();
         public ADBGUI()
         {
-            adbp.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\resources\\adb.exe";
-            adbp.StartInfo.RedirectStandardError = true;
-            adbp.StartInfo.RedirectStandardOutput = true;
-            adbp.StartInfo.CreateNoWindow = true;
-            adbp.StartInfo.UseShellExecute = false;
             InitializeComponent();
             ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 120);
-            VRM.Location = new Point(190, 75);
+            VRM.Location = new Point(190, 90);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\resources\\adb.exe"))
             {
                 net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/963970216084246588/adb.zip", "adb.zip");
@@ -51,8 +46,17 @@ namespace ADB_simplifier
                     command = " -s " + ds.Text.Trim() + " " + command;
                 }
             }
-            catch{}
+            catch
+            {
+
+            }
+
+            adbp.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\resources\\adb.exe";
             adbp.StartInfo.Arguments = command;
+            adbp.StartInfo.RedirectStandardError = true;
+            adbp.StartInfo.RedirectStandardOutput = true;
+            adbp.StartInfo.CreateNoWindow = true;
+            adbp.StartInfo.UseShellExecute = false;
             adbp.Start();
             if (command.Contains("connect") || command.Length > 5)
             {
@@ -134,6 +138,7 @@ namespace ADB_simplifier
                 cl.Clear();
             }
         }
+        //there was a note here but now its not needed(adb listing: 2)
         private void sc_Tick(object sender, EventArgs e)
         {
 
@@ -207,6 +212,8 @@ namespace ADB_simplifier
             settext.Text = prev;
             settext.ReadOnly = false;
         }
+        //can mabye be shortened to hell i need to test it(im not proud of this "if spam") FIXED
+
         string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Enter", "Return", "Back", "Space" };
         int[] keycodes = { 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 66, 66, 67, 62 };
         private void settext_KeyDown(object sender, KeyEventArgs e)
@@ -382,8 +389,6 @@ namespace ADB_simplifier
         private void panel1_MouseUp(object sender, MouseEventArgs e) => mousedown = false;
         private void percent_Click(object sender, EventArgs e) => ds.DroppedDown = !ds.DroppedDown;
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
-        private void VRMGD_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 1", true);
-        private void VRMGE_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 0", true);
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
