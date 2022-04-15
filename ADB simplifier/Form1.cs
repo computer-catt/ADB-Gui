@@ -243,7 +243,14 @@ namespace ADB_simplifier
             }
             else
             {
-                key(keycodes[Array.IndexOf(letters, e.KeyCode.ToString())]);
+                if (e.KeyCode == Keys.Escape)
+                {
+                    instant.PerformClick();
+                }
+                else
+                {
+                    key(keycodes[Array.IndexOf(letters, e.KeyCode.ToString())]);
+                }
             }
         }
 
@@ -258,7 +265,6 @@ namespace ADB_simplifier
             {
                 MessageBox.Show("You must set a value first!");
             }
-
         }
         private void fpset_Click(object sender, EventArgs e)
         {
