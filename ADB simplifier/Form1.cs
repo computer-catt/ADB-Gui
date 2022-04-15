@@ -382,6 +382,7 @@ namespace ADB_simplifier
                 setls.ForeColor = colorDialog.Color;
             }
         }
+
         private void key(int keyevent) => adb("shell input keyevent " + keyevent, false);
         private void button1_Click_1(object sender, EventArgs e) => adb("shell svc usb setFunctions mtp true", true);
         private void VRMC_Click(object sender, EventArgs e) => VRM.Visible = false;
