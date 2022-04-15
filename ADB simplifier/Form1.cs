@@ -94,7 +94,7 @@ namespace ADB_simplifier
         {
             adb("tcpip 5555", false);
             MessageBox.Show("tcpip started, please wait untill device reconnects.");
-            adb("connect " + adb("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Substring(10, 16).Replace("/", ""), true);
+            adb("connect " + adb("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Split("/".ToCharArray())[0].Replace("inet", "").Trim(), true);
         }
 
         private void bs3_Click(object sender, EventArgs e)
