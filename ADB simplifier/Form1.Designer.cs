@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ADBGUI));
             this.bs = new System.Windows.Forms.Button();
             this.scriptyB = new System.Windows.Forms.Button();
             this.db = new System.Windows.Forms.Button();
@@ -72,6 +73,9 @@
             this.CC = new System.Windows.Forms.Button();
             this.sp = new System.Windows.Forms.Panel();
             this.VRM = new System.Windows.Forms.Panel();
+            this.VRMGD = new System.Windows.Forms.Button();
+            this.VRMGE = new System.Windows.Forms.Button();
+            this.VRMGL = new System.Windows.Forms.Label();
             this.scrcpybut = new System.Windows.Forms.Label();
             this.tsl = new System.Windows.Forms.Label();
             this.tsButton = new System.Windows.Forms.Button();
@@ -94,9 +98,6 @@
             this.VRMC = new System.Windows.Forms.Button();
             this.VRMD = new System.Windows.Forms.Button();
             this.VRMB = new System.Windows.Forms.Button();
-            this.VRMGE = new System.Windows.Forms.Button();
-            this.VRMGD = new System.Windows.Forms.Button();
-            this.VRMGL = new System.Windows.Forms.Label();
             this.drag.SuspendLayout();
             this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
@@ -506,9 +507,9 @@
             this.la.AutoSize = true;
             this.la.Location = new System.Drawing.Point(3, 4);
             this.la.Name = "la";
-            this.la.Size = new System.Drawing.Size(62, 16);
+            this.la.Size = new System.Drawing.Size(56, 16);
             this.la.TabIndex = 16;
-            this.la.Text = "Running: ";
+            this.la.Text = "running: ";
             // 
             // drawe
             // 
@@ -655,6 +656,46 @@
             this.VRM.Size = new System.Drawing.Size(307, 275);
             this.VRM.TabIndex = 18;
             this.VRM.Visible = false;
+            // 
+            // VRMGD
+            // 
+            this.VRMGD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VRMGD.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VRMGD.Location = new System.Drawing.Point(188, 238);
+            this.VRMGD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VRMGD.Name = "VRMGD";
+            this.VRMGD.Size = new System.Drawing.Size(53, 26);
+            this.VRMGD.TabIndex = 19;
+            this.VRMGD.Text = "Off";
+            this.VRMGD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.VRMGD.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.VRMGD.UseVisualStyleBackColor = true;
+            this.VRMGD.Click += new System.EventHandler(this.VRMGD_Click);
+            // 
+            // VRMGE
+            // 
+            this.VRMGE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VRMGE.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VRMGE.Location = new System.Drawing.Point(240, 238);
+            this.VRMGE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VRMGE.Name = "VRMGE";
+            this.VRMGE.Size = new System.Drawing.Size(47, 26);
+            this.VRMGE.TabIndex = 19;
+            this.VRMGE.Text = " On";
+            this.VRMGE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.VRMGE.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.VRMGE.UseVisualStyleBackColor = true;
+            this.VRMGE.Click += new System.EventHandler(this.VRMGE_Click);
+            // 
+            // VRMGL
+            // 
+            this.VRMGL.AutoSize = true;
+            this.VRMGL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VRMGL.Location = new System.Drawing.Point(5, 244);
+            this.VRMGL.Name = "VRMGL";
+            this.VRMGL.Size = new System.Drawing.Size(68, 16);
+            this.VRMGL.TabIndex = 14;
+            this.VRMGL.Text = " Guardian:";
             // 
             // scrcpybut
             // 
@@ -947,46 +988,6 @@
             this.VRMB.TabIndex = 0;
             this.VRMB.UseVisualStyleBackColor = true;
             // 
-            // VRMGE
-            // 
-            this.VRMGE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VRMGE.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VRMGE.Location = new System.Drawing.Point(240, 238);
-            this.VRMGE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.VRMGE.Name = "VRMGE";
-            this.VRMGE.Size = new System.Drawing.Size(47, 26);
-            this.VRMGE.TabIndex = 19;
-            this.VRMGE.Text = " On";
-            this.VRMGE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.VRMGE.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.VRMGE.UseVisualStyleBackColor = true;
-            this.VRMGE.Click += new System.EventHandler(this.VRMGE_Click);
-            // 
-            // VRMGD
-            // 
-            this.VRMGD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VRMGD.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VRMGD.Location = new System.Drawing.Point(188, 238);
-            this.VRMGD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.VRMGD.Name = "VRMGD";
-            this.VRMGD.Size = new System.Drawing.Size(53, 26);
-            this.VRMGD.TabIndex = 19;
-            this.VRMGD.Text = "Off";
-            this.VRMGD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.VRMGD.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.VRMGD.UseVisualStyleBackColor = true;
-            this.VRMGD.Click += new System.EventHandler(this.VRMGD_Click);
-            // 
-            // VRMGL
-            // 
-            this.VRMGL.AutoSize = true;
-            this.VRMGL.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VRMGL.Location = new System.Drawing.Point(5, 244);
-            this.VRMGL.Name = "VRMGL";
-            this.VRMGL.Size = new System.Drawing.Size(68, 16);
-            this.VRMGL.TabIndex = 14;
-            this.VRMGL.Text = " Guardian:";
-            // 
             // ADBGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1017,6 +1018,7 @@
             this.Controls.Add(this.cover);
             this.ForeColor = System.Drawing.Color.Lime;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(800, 450);
             this.Name = "ADBGUI";
