@@ -298,6 +298,7 @@ namespace ADB_simplifier
             {
                 draw.Items.Clear();
                 test = adb("shell dumpsys window animator", false);
+
                 ms = "running: ";
                 foreach (string beans in adb("shell pm list packages -3", false).Split("\r".ToCharArray()))
                 {
@@ -309,6 +310,10 @@ namespace ADB_simplifier
                             if (test.Contains(beans.Substring(9)))
                             {
                                 ms += beans.Substring(9);
+                                if (ms != la.Text)
+                                {
+                                    la.Text = ms;
+                                }
                                 doe = true;
                             }
                             if (drp.Checked)
@@ -330,10 +335,6 @@ namespace ADB_simplifier
                                 }
                                 DiscordRpc.UpdatePresence(ref presence);
                             }
-                        }
-                        if (ms != la.Text)
-                        {
-                            la.Text = ms;
                         }
                     }
                 }
