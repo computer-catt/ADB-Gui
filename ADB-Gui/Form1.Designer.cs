@@ -1,4 +1,4 @@
-﻿namespace ADB_simplifier
+﻿namespace ADB_GUI
 {
     partial class ADBGUI
     {

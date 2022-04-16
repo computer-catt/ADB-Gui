@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.IO.Compression;
 using DiscordRpcDemo;
 
-namespace ADB_simplifier
+namespace ADB_GUI
 {
     public partial class ADBGUI : Form
     {

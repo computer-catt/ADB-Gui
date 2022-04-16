@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ADB_simplifier
+namespace ADB_Gui
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace ADB_simplifier
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ADBGUI());
+            Application.Run(new ADB_GUI.ADBGUI());
         }
     }
 }
