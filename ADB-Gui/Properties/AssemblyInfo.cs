@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ADB-Gui")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Waffle&DED Inc.")]
+[assembly: AssemblyCompany("!DED&Waffle Inc.")]
 [assembly: AssemblyProduct("ADB-Gui")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
