@@ -1,4 +1,4 @@
-﻿namespace ADB_GUI
+﻿namespace ADB_Gui
 {
     partial class ADBGUI
     {

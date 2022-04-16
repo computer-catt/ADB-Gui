@@ -16,7 +16,7 @@ namespace ADB_Gui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ADB_GUI.ADBGUI());
+            Application.Run(new ADBGUI());
         }
     }
 }
