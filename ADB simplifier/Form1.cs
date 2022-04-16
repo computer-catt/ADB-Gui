@@ -46,25 +46,14 @@ namespace ADB_simplifier
         {
             try
             {
-                if (ds.Text.Length > 3)
-                {
-                    command = " -s " + ds.Text.Trim() + " " + command;
-                }
+                if (ds.Text.Length > 3) command = " -s " + ds.Text.Trim() + " " + command;
             }
             catch { }
             adbp.StartInfo.Arguments = command;
             adbp.Start();
-            if (command.Contains("connect") || command.Length > 5)
-            {
-                if (!adbp.WaitForExit(5000))
-                {
-                    adbp.Kill();
-                }
-            }
-            else
-            {
-                adbp.WaitForExit();
-            }
+            if (command.Contains("connect") || command.Length > 5) if (!adbp.WaitForExit(5000)) adbp.Kill();
+            else adbp.WaitForExit();
+
             if (e)
             {
                 string error = adbp.StandardError.ReadToEnd();
@@ -89,7 +78,6 @@ namespace ADB_simplifier
             scrcpy.StartInfo.UseShellExecute = false;
             scrcpy.Start();
         }
-        //needs a cart fix
         private void bs4_Click(object sender, EventArgs e)
         {
             adb("tcpip 5555", false);
@@ -103,10 +91,8 @@ namespace ADB_simplifier
             {
                 Filter = "APK files (*.APK)|*.APK| All Files (*.*)|*.*"
             };
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                adb("install \"" + ofd.FileName + "\"", true);
-            }
+            if (ofd.ShowDialog() == DialogResult.OK) adb("install \"" + ofd.FileName + "\"", true);
+            
         }
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -126,17 +112,13 @@ namespace ADB_simplifier
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (cl.Text.ToLower().StartsWith("adb"))
-                {
-                    cl.Text = cl.Text.Substring(3);
-                }
+                if (cl.Text.ToLower().StartsWith("adb")) cl.Text = cl.Text.Substring(3);
                 adb(cl.Text, true);
                 cl.Clear();
             }
         }
         private void sc_Tick(object sender, EventArgs e)
         {
-
             ab = adb("devices", false).Split("\r".ToCharArray());
             connected = !ab[1].Contains("device") ? false : true;
             ds.Items.Clear();
@@ -153,16 +135,7 @@ namespace ADB_simplifier
             {
                 model = adb("shell getprop ro.product.model", false);
                 VR.Visible = model.Contains("Quest");
-                foreach (string beanis in ab)
-                {
-                    if (!beanis.Contains("List of devices attached") && beanis.Contains("device"))
-                    {
-                        if (beanis.Length > 3)
-                        {
-                            ds.Items.Add(beanis.Replace("device", "").Trim());
-                        }
-                    }
-                }
+                foreach (string beanis in ab) if (!beanis.Contains("List of devices attached") && beanis.Contains("device")) if (beanis.Length > 3) ds.Items.Add(beanis.Replace("device", "").Trim());
                 if (ds.Text.Length < 3)
                 {
                     try
@@ -215,19 +188,11 @@ namespace ADB_simplifier
             {
                 if (settext.Text == "")
                 {
-                    if (e.KeyCode == Keys.Enter)
-                    {
-                        key(66);
-                    }
-                    if (e.KeyCode == Keys.Back)
-                    {
-                        key(67);
-                    }
+                    if (e.KeyCode == Keys.Enter) key(66);
+                    if (e.KeyCode == Keys.Back) key(67);
+                   
                 }
-                if (e.KeyCode == Keys.Escape)
-                {
-                    dababy.PerformClick();
-                }
+                if (e.KeyCode == Keys.Escape) dababy.PerformClick();
                 if (e.KeyCode == Keys.Enter)
                 {
                     adb("shell input keyboard text '" + settext.Text + "'", false);
@@ -236,14 +201,9 @@ namespace ADB_simplifier
             }
             else
             {
-                if (e.KeyCode == Keys.Escape)
-                {
-                    instant.PerformClick();
-                }
-                else
-                {
-                    key(keycodes[Array.IndexOf(letters, e.KeyCode.ToString())]);
-                }
+                if (e.KeyCode == Keys.Escape) instant.PerformClick();
+                else key(keycodes[Array.IndexOf(letters, e.KeyCode.ToString())]);
+                
             }
         }
 
@@ -254,21 +214,12 @@ namespace ADB_simplifier
                 adb("shell setprop debug.oculus.textureWidth " + tsButton.Text, false);
                 adb("shell setprop debug.oculus.textureHeight  " + tsButton.Text, false);
             }
-            else
-            {
-                MessageBox.Show("You must set a value first!");
-            }
+            else MessageBox.Show("You must set a value first!");
         }
         private void fpset_Click(object sender, EventArgs e)
         {
-            if (fpsetb.Text != "")
-            {
-                adb("shell setprop debug.oculus.refreshRate " + fpsetb.Text, true);
-            }
-            else
-            {
-                MessageBox.Show("You must set a value first!");
-            }
+            if (fpsetb.Text != "") adb("shell setprop debug.oculus.refreshRate " + fpsetb.Text, true);
+            else MessageBox.Show("You must set a value first!");
         }
 
         private void lset_Click(object sender, EventArgs e)
@@ -278,10 +229,7 @@ namespace ADB_simplifier
                 adb("shell setprop debug.oculus.cpuLevel " + setlb.Text, true);
                 adb("shell setprop debug.oculus.gpuLevel " + setlb.Text, true);
             }
-            else
-            {
-                MessageBox.Show("You must set a value first!");
-            }
+            else MessageBox.Show("You must set a value first!");
         }
         private void delbut_Click(object sender, EventArgs e)
         {
@@ -304,39 +252,38 @@ namespace ADB_simplifier
                 {
                     if (beans.Length > 1 && !beans.Contains("environment"))
                     {
-                        draw.Items.Add(beans.Substring(9));
+                        draw.Items.Add(beans.Trim().Substring(8));
                         if (!doe)
                         {
-                            if (test.Contains(beans.Substring(9)))
+                            if (test.Contains(beans.Trim().Substring(8)))
                             {
-                                ms += beans.Substring(9);
-
+                                ms += beans.Trim().Substring(8);
                                 doe = true;
                             }
-                            if (ms != la.Text || ms.Contains("not found"))
-                            {
-                                la.Text = ms;
-                            }
-                            if (drp.Checked)
-                            {
-                                //need shit here that will only update presence only when theres a change to update
-                                if (la.Text.Substring(8).Trim() == "")
-                                {
-                                    presence.details = "nothing!";
-                                    presence.largeImageKey = "";
-                                }
-                                else
-                                {
-                                    presence.details = "Playing: " + la.Text.Substring(8).Trim();
-                                    if (Array.Exists(rpc[0].Split("\"".ToCharArray()), element => element == la.Text.Substring(8).Trim()))
-                                    {
-                                        presence.details = "Playing: " + rpc[1].Split("\"".ToCharArray())[Array.IndexOf(rpc[0].Split("\"".ToCharArray()), la.Text.Substring(8).Trim())];
-                                    }
-                                    presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").ToLower().Trim();
-                                }
-                                DiscordRpc.UpdatePresence(ref presence);
-                            }
+                            if (ms != la.Text) la.Text = ms;
+                            if (ms.Contains("not found")) la.Text = "Device not found!";
+
                         }
+                    }
+                }
+                if (drp.Checked)
+                {
+                    if (presence.details.Replace("Playing: ", "").Replace("nothing!", "").Trim() != la.Text.Substring(8).Trim())
+                    {
+                        if (la.Text.Substring(8).Trim() == "")
+                        {
+                            presence.details = "nothing!";
+                            presence.largeImageKey = "";
+                        }
+                        else
+                        {
+                            presence.details = "Playing: " + la.Text.Substring(8).Trim();
+                            if (Array.Exists(rpc[0].Split("\"".ToCharArray()), element => element == la.Text.Substring(8).Trim())) presence.details = "Playing: " + rpc[1].Split("\"".ToCharArray())[Array.IndexOf(rpc[0].Split("\"".ToCharArray()), la.Text.Substring(8).Trim())];
+                            presence.largeImageKey = la.Text.Substring(8).Replace(".", "_").ToLower().Trim();
+                        }
+                        script.Text = presence.details.Replace("Playing: ", "").Trim();
+                        script.Text += "\r" + la.Text.Substring(8).Trim();
+                        DiscordRpc.UpdatePresence(ref presence);
                     }
                 }
             }
@@ -346,19 +293,15 @@ namespace ADB_simplifier
             if (drp.Checked)
             {
                 rpc = net.DownloadString("https://pastebin.com/raw/LXBguAnh").Split("\r".ToCharArray());
-                if (!File.Exists("discord-rpc-w32.dll"))
-                {
-                    net.DownloadFile("https://cdn.discordapp.com/attachments/947224516034187356/962914900357828688/discord-rpc-w32.dll", "discord-rpc-w32.dll");
-                }
+                if (!File.Exists("discord-rpc-w32.dll")) net.DownloadFile("https://cdn.discordapp.com/attachments/947224516034187356/962914900357828688/discord-rpc-w32.dll", "discord-rpc-w32.dll");
+                
                 handlers = default(DiscordRpc.EventHandlers);
                 DiscordRpc.Initialize("867565943290462218", ref this.handlers, true, null);
                 presence.details = "nothing!";
                 DiscordRpc.UpdatePresence(ref presence);
             }
-            else
-            {
-                DiscordRpc.Shutdown();
-            }
+            else DiscordRpc.Shutdown();
+            
         }
         private void CC_Click(object sender, EventArgs e)
         {
