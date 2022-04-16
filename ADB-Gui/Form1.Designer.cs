@@ -98,6 +98,7 @@
             this.VRMC = new System.Windows.Forms.Button();
             this.VRMD = new System.Windows.Forms.Button();
             this.VRMB = new System.Windows.Forms.Button();
+            this.TT = new System.Windows.Forms.ToolTip(this.components);
             this.drag.SuspendLayout();
             this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
@@ -118,6 +119,7 @@
             this.bs.TabIndex = 0;
             this.bs.Text = "list devices";
             this.bs.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TT.SetToolTip(this.bs, "List currently connected devices");
             this.bs.UseVisualStyleBackColor = true;
             this.bs.Click += new System.EventHandler(this.bs_Click);
             // 
@@ -167,6 +169,7 @@
             this.close.TabIndex = 3;
             this.close.Text = "X";
             this.close.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TT.SetToolTip(this.close, "Close ADB-Gui");
             this.close.UseVisualStyleBackColor = true;
             this.close.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -194,6 +197,7 @@
             this.ds.Name = "ds";
             this.ds.Size = new System.Drawing.Size(175, 24);
             this.ds.TabIndex = 11;
+            this.TT.SetToolTip(this.ds, "Current device");
             // 
             // app
             // 
@@ -205,6 +209,7 @@
             this.app.Size = new System.Drawing.Size(28, 25);
             this.app.TabIndex = 11;
             this.app.Text = "=";
+            this.TT.SetToolTip(this.app, "Apps and stuff");
             this.app.UseVisualStyleBackColor = true;
             this.app.Click += new System.EventHandler(this.app_Click);
             // 
@@ -220,6 +225,7 @@
             this.scrcpyButton.Text = "Start";
             this.scrcpyButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.scrcpyButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TT.SetToolTip(this.scrcpyButton, "Start a headset stream");
             this.scrcpyButton.UseVisualStyleBackColor = true;
             this.scrcpyButton.Click += new System.EventHandler(this.scrcpyButton_Click);
             // 
@@ -235,6 +241,7 @@
             this.VR.Text = "🥽";
             this.VR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.VR.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TT.SetToolTip(this.VR, "Headset options");
             this.VR.UseVisualStyleBackColor = true;
             this.VR.Visible = false;
             this.VR.Click += new System.EventHandler(this.VR_Click);
@@ -250,6 +257,7 @@
             this.bs2.TabIndex = 0;
             this.bs2.Text = "reboot";
             this.bs2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TT.SetToolTip(this.bs2, "Reboot currently selected device");
             this.bs2.UseVisualStyleBackColor = true;
             this.bs2.Click += new System.EventHandler(this.bs2_Click);
             // 
@@ -264,6 +272,7 @@
             this.bs3.TabIndex = 0;
             this.bs3.Text = "install apk";
             this.bs3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TT.SetToolTip(this.bs3, "Sideload apk to device");
             this.bs3.UseVisualStyleBackColor = true;
             this.bs3.Click += new System.EventHandler(this.bs3_Click);
             // 
@@ -278,6 +287,7 @@
             this.bs4.TabIndex = 0;
             this.bs4.Text = "connect via wifi";
             this.bs4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TT.SetToolTip(this.bs4, "Connects to your device via Wifi adb");
             this.bs4.UseVisualStyleBackColor = true;
             this.bs4.Click += new System.EventHandler(this.bs4_Click);
             // 
@@ -292,6 +302,7 @@
             this.bs5.TabIndex = 0;
             this.bs5.Text = "disconnect all";
             this.bs5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TT.SetToolTip(this.bs5, "Disconnects all currently attached devices");
             this.bs5.UseVisualStyleBackColor = true;
             this.bs5.Click += new System.EventHandler(this.bs5_Click);
             // 
@@ -358,6 +369,7 @@
             this.dababy.Size = new System.Drawing.Size(71, 27);
             this.dababy.TabIndex = 8;
             this.dababy.Text = "live text";
+            this.TT.SetToolTip(this.dababy, "Switch to live text(laggy)");
             this.dababy.UseVisualStyleBackColor = true;
             this.dababy.Click += new System.EventHandler(this.dababyc);
             // 
@@ -406,6 +418,7 @@
             this.bc.Name = "bc";
             this.bc.Size = new System.Drawing.Size(28, 25);
             this.bc.TabIndex = 11;
+            this.TT.SetToolTip(this.bc, "Dropdown button for currently selected device");
             this.bc.UseVisualStyleBackColor = true;
             this.bc.Click += new System.EventHandler(this.percent_Click);
             // 
@@ -418,6 +431,7 @@
             this.mount.Size = new System.Drawing.Size(75, 26);
             this.mount.TabIndex = 12;
             this.mount.Text = "Mount";
+            this.TT.SetToolTip(this.mount, "Mount your device as a drive(android 9+)");
             this.mount.UseVisualStyleBackColor = true;
             this.mount.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -430,6 +444,7 @@
             this.percent.Name = "percent";
             this.percent.Size = new System.Drawing.Size(0, 16);
             this.percent.TabIndex = 13;
+            this.TT.SetToolTip(this.percent, "Dropdown button for currently selected device");
             this.percent.Click += new System.EventHandler(this.percent_Click);
             // 
             // appdrawer
@@ -461,6 +476,7 @@
             this.delbut.Size = new System.Drawing.Size(80, 30);
             this.delbut.TabIndex = 18;
             this.delbut.Text = "Uninstall";
+            this.TT.SetToolTip(this.delbut, "Uninstall currently selected application");
             this.delbut.UseVisualStyleBackColor = true;
             this.delbut.Click += new System.EventHandler(this.delbut_Click);
             // 
@@ -475,6 +491,7 @@
             this.drp.Size = new System.Drawing.Size(154, 20);
             this.drp.TabIndex = 15;
             this.drp.Text = "discord rich presence";
+            this.TT.SetToolTip(this.drp, "Enable discord rich presence client for running apps");
             this.drp.UseVisualStyleBackColor = false;
             this.drp.CheckedChanged += new System.EventHandler(this.drp_CheckedChanged);
             // 
@@ -487,6 +504,7 @@
             this.cr.Size = new System.Drawing.Size(99, 30);
             this.cr.TabIndex = 17;
             this.cr.Text = "Force close";
+            this.TT.SetToolTip(this.cr, "Force close currently selected application");
             this.cr.UseVisualStyleBackColor = true;
             this.cr.Click += new System.EventHandler(this.cr_Click);
             // 
@@ -499,6 +517,7 @@
             this.start.Size = new System.Drawing.Size(71, 30);
             this.start.TabIndex = 17;
             this.start.Text = "Start";
+            this.TT.SetToolTip(this.start, "Start currently selected application");
             this.start.UseVisualStyleBackColor = true;
             this.start.Click += new System.EventHandler(this.start_Click);
             // 
@@ -510,6 +529,7 @@
             this.la.Size = new System.Drawing.Size(56, 16);
             this.la.TabIndex = 16;
             this.la.Text = "running: ";
+            this.TT.SetToolTip(this.la, "Currently running application package name");
             // 
             // drawe
             // 
@@ -520,6 +540,7 @@
             this.drawe.Name = "drawe";
             this.drawe.Size = new System.Drawing.Size(28, 25);
             this.drawe.TabIndex = 11;
+            this.TT.SetToolTip(this.drawe, "Expand app drawer");
             this.drawe.UseVisualStyleBackColor = true;
             this.drawe.Click += new System.EventHandler(this.drawe_Click);
             // 
@@ -554,6 +575,7 @@
             this.appdrawc.TabIndex = 3;
             this.appdrawc.Text = "X";
             this.appdrawc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TT.SetToolTip(this.appdrawc, "Close App drawer");
             this.appdrawc.UseVisualStyleBackColor = true;
             this.appdrawc.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -609,6 +631,7 @@
             this.CC.Size = new System.Drawing.Size(28, 25);
             this.CC.TabIndex = 11;
             this.CC.Text = "🖌";
+            this.TT.SetToolTip(this.CC, "Color changer");
             this.CC.UseVisualStyleBackColor = true;
             this.CC.Click += new System.EventHandler(this.CC_Click);
             // 
@@ -669,6 +692,7 @@
             this.VRMGD.Text = "Off";
             this.VRMGD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.VRMGD.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TT.SetToolTip(this.VRMGD, "Toggle your guardian off");
             this.VRMGD.UseVisualStyleBackColor = true;
             this.VRMGD.Click += new System.EventHandler(this.VRMGD_Click);
             // 
@@ -684,6 +708,7 @@
             this.VRMGE.Text = " On";
             this.VRMGE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.VRMGE.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TT.SetToolTip(this.VRMGE, "Toggle your guardian on");
             this.VRMGE.UseVisualStyleBackColor = true;
             this.VRMGE.Click += new System.EventHandler(this.VRMGE_Click);
             // 
@@ -696,6 +721,7 @@
             this.VRMGL.Size = new System.Drawing.Size(68, 16);
             this.VRMGL.TabIndex = 14;
             this.VRMGL.Text = " Guardian:";
+            this.TT.SetToolTip(this.VRMGL, "Toggle your guardian state");
             // 
             // scrcpybut
             // 
@@ -706,6 +732,7 @@
             this.scrcpybut.Size = new System.Drawing.Size(124, 16);
             this.scrcpybut.TabIndex = 14;
             this.scrcpybut.Text = "Scrcpy stream start:";
+            this.TT.SetToolTip(this.scrcpybut, "Start a headset stream");
             // 
             // tsl
             // 
@@ -886,6 +913,7 @@
             this.eperimode.TabIndex = 5;
             this.eperimode.Text = "Enable";
             this.eperimode.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TT.SetToolTip(this.eperimode, "Enable experimental mode for passthough api");
             this.eperimode.UseVisualStyleBackColor = true;
             this.eperimode.Click += new System.EventHandler(this.eperimode_Click);
             // 
@@ -900,6 +928,7 @@
             this.disprox.TabIndex = 5;
             this.disprox.Text = "Disable";
             this.disprox.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TT.SetToolTip(this.disprox, "Disable proximity sensor in the middle of the lenses");
             this.disprox.UseVisualStyleBackColor = true;
             this.disprox.Click += new System.EventHandler(this.disprox_Click);
             // 
@@ -930,6 +959,7 @@
             this.VRMEM.Size = new System.Drawing.Size(171, 16);
             this.VRMEM.TabIndex = 3;
             this.VRMEM.Text = "Enable experimental mode:";
+            this.TT.SetToolTip(this.VRMEM, "Enable experimental mode for passthough api");
             // 
             // VRMPS
             // 
@@ -939,6 +969,7 @@
             this.VRMPS.Size = new System.Drawing.Size(108, 16);
             this.VRMPS.TabIndex = 3;
             this.VRMPS.Text = "Proximity sensor:";
+            this.TT.SetToolTip(this.VRMPS, "Disable proximity sensor in the middle of the lenses");
             // 
             // VRMSL
             // 
@@ -948,6 +979,7 @@
             this.VRMSL.Size = new System.Drawing.Size(91, 16);
             this.VRMSL.TabIndex = 4;
             this.VRMSL.Text = "Quest settings";
+            this.TT.SetToolTip(this.VRMSL, "Quest settings");
             // 
             // VRMC
             // 
@@ -960,6 +992,7 @@
             this.VRMC.TabIndex = 3;
             this.VRMC.Text = "X";
             this.VRMC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TT.SetToolTip(this.VRMC, "Close headset options");
             this.VRMC.UseVisualStyleBackColor = true;
             this.VRMC.Click += new System.EventHandler(this.VRMC_Click);
             // 
@@ -987,6 +1020,14 @@
             this.VRMB.Size = new System.Drawing.Size(307, 275);
             this.VRMB.TabIndex = 0;
             this.VRMB.UseVisualStyleBackColor = true;
+            // 
+            // TT
+            // 
+            this.TT.AutomaticDelay = 1000;
+            this.TT.BackColor = System.Drawing.Color.Black;
+            this.TT.ForeColor = System.Drawing.Color.Lime;
+            this.TT.OwnerDraw = true;
+            this.TT.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.TT_Draw);
             // 
             // ADBGUI
             // 
@@ -1107,5 +1148,6 @@
         private System.Windows.Forms.Button VRMGD;
         private System.Windows.Forms.Button VRMGE;
         private System.Windows.Forms.Label VRMGL;
+        private System.Windows.Forms.ToolTip TT;
     }
 }

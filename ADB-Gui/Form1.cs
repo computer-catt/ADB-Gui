@@ -22,6 +22,7 @@ namespace ADB_Gui
         private DiscordRpc.RichPresence presence;
         private Process adbp = new Process();
         private Process scrcpy = new Process();
+        Color colore = Color.Lime;
         public ADBGUI()
         {
             adbp.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\resources\\adb.exe";
@@ -316,6 +317,8 @@ namespace ADB_Gui
                 fpsetc.ForeColor = colorDialog.Color;
                 tsDrop.ForeColor = colorDialog.Color;
                 setls.ForeColor = colorDialog.Color;
+                TT.ForeColor = colorDialog.Color;
+                colore = colorDialog.Color;
             }
         }
         private void key(int keyevent) => adb("shell input keyevent " + keyevent, false);
@@ -333,6 +336,17 @@ namespace ADB_Gui
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
         private void VRMGD_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 1", true);
         private void VRMGE_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 0", true);
+
+        private void TT_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawText();
+            e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 1, e.Bounds.Width, e.Bounds.Height - 1);
+            e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 20, e.Bounds.Width, e.Bounds.Height - 20);
+            e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 20, 0, e.Bounds.Height);
+            e.Graphics.DrawLine(new Pen(colore), e.Bounds.Width - 1, e.Bounds.Height - 20, e.Bounds.Width -1, e.Bounds.Height);
+        }
+
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
