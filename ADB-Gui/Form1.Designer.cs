@@ -431,7 +431,7 @@
             this.mount.Size = new System.Drawing.Size(75, 26);
             this.mount.TabIndex = 12;
             this.mount.Text = "Mount";
-            this.TT.SetToolTip(this.mount, "Mount your device as a drive(android 9+)");
+            this.TT.SetToolTip(this.mount, "Mount your device as a USB drive(android 9+)(wired connection only)");
             this.mount.UseVisualStyleBackColor = true;
             this.mount.Click += new System.EventHandler(this.button1_Click_1);
             // 
@@ -563,6 +563,7 @@
             this.draw.Name = "draw";
             this.draw.Size = new System.Drawing.Size(260, 24);
             this.draw.TabIndex = 0;
+            this.draw.DropDown += new System.EventHandler(this.draw_DropDown);
             // 
             // appdrawc
             // 

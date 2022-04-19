@@ -24,6 +24,8 @@ namespace ADB_Gui
         private Process adbp = new Process();
         private Process scrcpy = new Process();
         Color colore = Color.Lime;
+        string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Enter", "Return", "Back", "Space" };
+        int[] keycodes = { 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 66, 66, 67, 62 };
         public ADBGUI()
         {
             adbp.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\resources\\adb.exe";
@@ -43,7 +45,6 @@ namespace ADB_Gui
             }
         }
 
-        private void bs_Click(object sender, EventArgs e) => adb("devices", true);
         string adb(string command, bool e)
         {
             try
@@ -53,7 +54,7 @@ namespace ADB_Gui
             catch { }
             adbp.StartInfo.Arguments = command;
             adbp.Start();
-            if (command.Contains("connect")) if (!adbp.WaitForExit(5000)) adbp.Kill();
+            if (command.Contains("connect")|(command.Trim() == "")) if (!adbp.WaitForExit(5000)) adbp.Kill();
             else adbp.WaitForExit();
             if (e)
             {
@@ -87,28 +88,9 @@ namespace ADB_Gui
             scrcpy.StartInfo.UseShellExecute = false;
             scrcpy.Start();
         }
-        private void bs4_Click(object sender, EventArgs e)
-        {
-            adb("tcpip 5555", false);
-            MessageBox.Show("tcpip started, please wait untill device reconnects.");
-            adb("connect " + adb("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Split("/".ToCharArray())[0].Replace("inet", "").Trim(), true);
-        }
 
-        private void bs3_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog()
-            {
-                Filter = "APK files (*.APK)|*.APK| All Files (*.*)|*.*"
-            };
-            if (ofd.ShowDialog() == DialogResult.OK) adb("install \"" + ofd.FileName + "\"", true);
-            
-        }
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            mousedown = true;
-            offset.X = e.X;
-            offset.Y = e.Y;
-        }
+
+
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (mousedown)
@@ -117,15 +99,7 @@ namespace ADB_Gui
                 Location = new Point(lol.X - offset.X, lol.Y - offset.Y);
             }
         }
-        private void cl_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (cl.Text.ToLower().StartsWith("adb")) cl.Text = cl.Text.Substring(3);
-                adb(cl.Text, true);
-                cl.Clear();
-            }
-        }
+
         private async void sc_Tick(object sender, EventArgs e)
         {
             ab = await Task.Run(()=>adb("devices", false).Split("\r".ToCharArray()));
@@ -176,25 +150,8 @@ namespace ADB_Gui
                 }
             }
         }
-        private void dababyc(object sender, EventArgs e)
-        {
-            live = true;
-            dababy.SendToBack();
-            prev = settext.Text;
-            settext.Text = prev2;
-            settext.ReadOnly = true;
-        }
 
-        private void instant_Click(object sender, EventArgs e)
-        {
-            live = false;
-            instant.SendToBack();
-            prev2 = settext.Text;
-            settext.Text = prev;
-            settext.ReadOnly = false;
-        }
-        string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Enter", "Return", "Back", "Space" };
-        int[] keycodes = { 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 66, 66, 67, 62 };
+
         private void settext_KeyDown(object sender, KeyEventArgs e)
         {
             if (!live)
@@ -220,35 +177,6 @@ namespace ADB_Gui
             }
         }
 
-        private void tsSet_Click(object sender, EventArgs e)
-        {
-            if (tsButton.Text != "")
-            {
-                adb("shell setprop debug.oculus.textureWidth " + tsButton.Text, false);
-                adb("shell setprop debug.oculus.textureHeight  " + tsButton.Text, false);
-            }
-            else MessageBox.Show("You must set a value first!");
-        }
-        private void fpset_Click(object sender, EventArgs e)
-        {
-            if (fpsetb.Text != "") adb("shell setprop debug.oculus.refreshRate " + fpsetb.Text, true);
-            else MessageBox.Show("You must set a value first!");
-        }
-
-        private void lset_Click(object sender, EventArgs e)
-        {
-            if (setlb.Text != "")
-            {
-                adb("shell setprop debug.oculus.cpuLevel " + setlb.Text, true);
-                adb("shell setprop debug.oculus.gpuLevel " + setlb.Text, true);
-            }
-            else MessageBox.Show("You must set a value first!");
-        }
-        private void delbut_Click(object sender, EventArgs e)
-        {
-            adb("uninstall " + draw.Text, true);
-            draw.Text = "";
-        }
 
 
         //adb use: 2
@@ -257,15 +185,15 @@ namespace ADB_Gui
             doe = false;
             if (connected)
             {
-                draw.Items.Clear();
-                test = await Task.Run(()=>adb("shell dumpsys window animator", false));
+                //draw.Items.Clear();
+                test = await Task.Run(() => adb("shell dumpsys window animator", false));
 
                 ms = "running: ";
-                foreach (string beans in await Task.Run(()=>adb("shell pm list packages -3", false).Split("\r".ToCharArray())))
+                foreach (string beans in await Task.Run(() => adb("shell pm list packages -3", false).Split("\r".ToCharArray())))
                 {
                     if (beans.Length > 1 && !beans.Contains("environment"))
                     {
-                        draw.Items.Add(beans.Trim().Substring(8));
+                        //draw.Items.Add(beans.Trim().Substring(8));
                         if (!doe)
                         {
                             if (test.Contains(beans.Trim().Substring(8)))
@@ -275,12 +203,12 @@ namespace ADB_Gui
                             }
                             if (ms != la.Text) la.Text = ms;
                             if (ms.Contains("not found")) la.Text = "Device not found!";
-
                         }
                     }
                 }
                 if (drp.Checked)
                 {
+
                     if (presence.details.Replace("Playing: ", "").Replace("nothing!", "").Trim() != la.Text.Substring(8).Trim())
                     {
                         if (la.Text.Substring(8).Trim() == "")
@@ -297,6 +225,10 @@ namespace ADB_Gui
                         DiscordRpc.UpdatePresence(ref presence);
                     }
                 }
+            }
+            else
+            {
+                draw.DroppedDown = false;
             }
         }
         private void drp_CheckedChanged(object sender, EventArgs e)
@@ -342,9 +274,85 @@ namespace ADB_Gui
             e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 20, 0, e.Bounds.Height);
             e.Graphics.DrawLine(new Pen(colore), e.Bounds.Width - 1, e.Bounds.Height - 20, e.Bounds.Width -1, e.Bounds.Height);
         }
+        private void cl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (cl.Text.ToLower().StartsWith("adb")) cl.Text = cl.Text.Substring(3);
+                adb(cl.Text, true);
+                cl.Clear();
+            }
+        }
 
+        private void dababyc(object sender, EventArgs e)
+        {
+            live = true;
+            dababy.SendToBack();
+            prev = settext.Text;
+            settext.Text = prev2;
+            settext.ReadOnly = true;
+        }
+
+        private void instant_Click(object sender, EventArgs e)
+        {
+            live = false;
+            instant.SendToBack();
+            prev2 = settext.Text;
+            settext.Text = prev;
+            settext.ReadOnly = false;
+        }
+
+        private void tsSet_Click(object sender, EventArgs e)
+        {
+            if (tsButton.Text != "")
+            {
+                adb("shell setprop debug.oculus.textureWidth " + tsButton.Text, false);
+                adb("shell setprop debug.oculus.textureHeight  " + tsButton.Text, false);
+            }
+            else MessageBox.Show("You must set a value first!");
+        }
+        private void lset_Click(object sender, EventArgs e)
+        {
+            if (setlb.Text != "")
+            {
+                adb("shell setprop debug.oculus.cpuLevel " + setlb.Text, true);
+                adb("shell setprop debug.oculus.gpuLevel " + setlb.Text, true);
+            }
+            else MessageBox.Show("You must set a value first!");
+        }
+        private void bs3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Filter = "APK files (*.APK)|*.APK| All Files (*.*)|*.*"
+            };
+            if (ofd.ShowDialog() == DialogResult.OK) adb("install \"" + ofd.FileName + "\"", true);
+        }
+        private void bs4_Click(object sender, EventArgs e)
+        {
+            adb("tcpip 5555", false);
+            MessageBox.Show("tcpip started, please wait untill device reconnects.");
+            adb("connect " + adb("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Split("/".ToCharArray())[0].Replace("inet", "").Trim(), true);
+        }
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mousedown = true;
+            offset.X = e.X;
+            offset.Y = e.Y;
+        }
+        private void delbut_Click(object sender, EventArgs e)
+        {
+            adb("uninstall " + draw.Text, true);
+            draw.Text = "";
+        }
+        private void fpset_Click(object sender, EventArgs e)
+        {
+            if (fpsetb.Text != "") adb("shell setprop debug.oculus.refreshRate " + fpsetb.Text, true);
+            else MessageBox.Show("You must set a value first!");
+        }
         private void key(int keyevent) => adb("shell input keyevent " + keyevent, false);
         private void button1_Click_1(object sender, EventArgs e) => adb("shell svc usb setFunctions mtp true", true);
+        private void bs_Click(object sender, EventArgs e) => adb("devices", true);
         private void VRMC_Click(object sender, EventArgs e) => VRM.Visible = false;
         private void VR_Click(object sender, EventArgs e) => VRM.Visible = !VRM.Visible;
         private void fpsetb_Click(object sender, EventArgs e) => fpsetc.DroppedDown = !fpsetc.DroppedDown;
@@ -358,6 +366,23 @@ namespace ADB_Gui
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
         private void VRMGD_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 1", true);
         private void VRMGE_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 0", true);
+
+        private async void draw_DropDown(object sender, EventArgs e)
+        {
+            try
+            {
+                if (connected)
+                {
+                    draw.Items.Clear();
+                    foreach (string beans in await Task.Run(() => adb("shell pm list packages -3", false).Split("\r".ToCharArray()))) if (beans.Length > 1 && !beans.Contains("environment")) draw.Items.Add(beans.Trim().Substring(8));
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
