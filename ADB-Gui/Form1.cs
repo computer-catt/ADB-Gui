@@ -235,9 +235,8 @@ namespace ADB_Gui
         {
             if (drp.Checked)
             {
-                rpc = net.DownloadString("https://pastebin.com/raw/LXBguAnh").Split("\r".ToCharArray());
+                rpc = net.DownloadString("https://raw.githubusercontent.com/DED0026/ADB-GUl/main/compatstuff").Split("\n".ToCharArray());
                 if (!File.Exists("discord-rpc-w32.dll")) net.DownloadFile("https://cdn.discordapp.com/attachments/947224516034187356/962914900357828688/discord-rpc-w32.dll", "discord-rpc-w32.dll");
-                
                 handlers = default(DiscordRpc.EventHandlers);
                 DiscordRpc.Initialize("867565943290462218", ref this.handlers, true, null);
                 presence.details = "nothing!";
