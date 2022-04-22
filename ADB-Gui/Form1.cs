@@ -265,6 +265,21 @@ namespace ADB_Gui
                 colore = colorDialog.Color;
             }
         }
+        private async void draw_DropDown(object sender, EventArgs e)
+        {
+            try
+            {
+                if (connected)
+                {
+                    draw.Items.Clear();
+                    foreach (string beans in await Task.Run(() => adb("shell pm list packages -3", false).Split("\r".ToCharArray()))) if (beans.Length > 1 && !beans.Contains("environment")) draw.Items.Add(beans.Trim().Substring(8));
+                }
+            }
+            catch
+            {
+
+            }
+        }
         private void TT_Draw(object sender, DrawToolTipEventArgs e)
         {
             e.DrawBackground();
@@ -366,22 +381,6 @@ namespace ADB_Gui
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
         private void VRMGD_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 1", true);
         private void VRMGE_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 0", true);
-
-        private async void draw_DropDown(object sender, EventArgs e)
-        {
-            try
-            {
-                if (connected)
-                {
-                    draw.Items.Clear();
-                    foreach (string beans in await Task.Run(() => adb("shell pm list packages -3", false).Split("\r".ToCharArray()))) if (beans.Length > 1 && !beans.Contains("environment")) draw.Items.Add(beans.Trim().Substring(8));
-                }
-            }
-            catch
-            {
-
-            }
-        }
 
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
