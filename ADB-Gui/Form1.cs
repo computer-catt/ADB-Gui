@@ -36,7 +36,7 @@ namespace ADB_Gui
             InitializeComponent();
             ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 120);
-            VRM.Location = new Point(190, 75);
+            VRM.Location = new Point(190, 60);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\resources\\adb.exe"))
             {
                 net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/963970216084246588/adb.zip", "adb.zip");

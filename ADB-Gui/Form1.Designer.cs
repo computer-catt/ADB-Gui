@@ -69,6 +69,9 @@
             this.appdrawdrag = new System.Windows.Forms.Button();
             this.bcoverdraw = new System.Windows.Forms.Button();
             this.appdrawercover = new System.Windows.Forms.Button();
+            this.frc = new System.Windows.Forms.Button();
+            this.frco = new System.Windows.Forms.Button();
+            this.frcl = new System.Windows.Forms.Label();
             this.apppop = new System.Windows.Forms.Timer(this.components);
             this.CC = new System.Windows.Forms.Button();
             this.sp = new System.Windows.Forms.Panel();
@@ -649,9 +652,12 @@
             // 
             // VRM
             // 
+            this.VRM.Controls.Add(this.frc);
             this.VRM.Controls.Add(this.VRMGD);
+            this.VRM.Controls.Add(this.frco);
             this.VRM.Controls.Add(this.VRMGE);
             this.VRM.Controls.Add(this.scrcpyButton);
+            this.VRM.Controls.Add(this.frcl);
             this.VRM.Controls.Add(this.VRMGL);
             this.VRM.Controls.Add(this.scrcpybut);
             this.VRM.Controls.Add(this.tsl);
@@ -677,9 +683,25 @@
             this.VRM.Location = new System.Drawing.Point(811, 143);
             this.VRM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.VRM.Name = "VRM";
-            this.VRM.Size = new System.Drawing.Size(307, 275);
+            this.VRM.Size = new System.Drawing.Size(307, 307); 
             this.VRM.TabIndex = 18;
             this.VRM.Visible = false;
+            // 
+            // frc
+            // 
+            this.frc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.frc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frc.Location = new System.Drawing.Point(188, 271);
+            this.frc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.frc.Name = "frc";
+            this.frc.Size = new System.Drawing.Size(53, 26);
+            this.frc.TabIndex = 19;
+            this.frc.Text = "Off";
+            this.frc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.frc.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TT.SetToolTip(this.frc, "Toggle full rate capture off");
+            this.frc.UseVisualStyleBackColor = true;
+            this.frc.Click += new System.EventHandler(this.VRMGD_Click);
             // 
             // VRMGD
             // 
@@ -697,6 +719,22 @@
             this.VRMGD.UseVisualStyleBackColor = true;
             this.VRMGD.Click += new System.EventHandler(this.VRMGD_Click);
             // 
+            // frco
+            // 
+            this.frco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.frco.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frco.Location = new System.Drawing.Point(240, 271);
+            this.frco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.frco.Name = "frco";
+            this.frco.Size = new System.Drawing.Size(47, 26);
+            this.frco.TabIndex = 19;
+            this.frco.Text = " On";
+            this.frco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.frco.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TT.SetToolTip(this.frco, "Toggle full rate capture on");
+            this.frco.UseVisualStyleBackColor = true;
+            this.frco.Click += new System.EventHandler(this.VRMGE_Click);
+            // 
             // VRMGE
             // 
             this.VRMGE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -712,6 +750,17 @@
             this.TT.SetToolTip(this.VRMGE, "Toggle your guardian on");
             this.VRMGE.UseVisualStyleBackColor = true;
             this.VRMGE.Click += new System.EventHandler(this.VRMGE_Click);
+            // 
+            // frcl
+            // 
+            this.frcl.AutoSize = true;
+            this.frcl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frcl.Location = new System.Drawing.Point(5, 277);
+            this.frcl.Name = "frcl";
+            this.frcl.Size = new System.Drawing.Size(105, 16);
+            this.frcl.TabIndex = 14;
+            this.frcl.Text = "Full rate capture:";
+            this.TT.SetToolTip(this.frcl, "Makes the quest videos record at the same refresh rate your refresh rate is");
             // 
             // VRMGL
             // 
@@ -1081,6 +1130,9 @@
 
         #endregion
 
+        private System.Windows.Forms.Button frc;
+        private System.Windows.Forms.Button frco;
+        private System.Windows.Forms.Label frcl;
         private System.Windows.Forms.Button bs;
         private System.Windows.Forms.Button scriptyB;
         private System.Windows.Forms.Button db;
