@@ -37,6 +37,7 @@ namespace ADB_Gui
             ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 120);
             VRM.Location = new Point(190, 75);
+            setting_panel.Location = new Point(190, 15);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\resources\\adb.exe"))
             {
                 net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/963970216084246588/adb.zip", "adb.zip");
@@ -54,8 +55,8 @@ namespace ADB_Gui
             catch { }
             adbp.StartInfo.Arguments = command;
             adbp.Start();
-            if (command.Contains("connect")|(command.Trim() == "")) if (!adbp.WaitForExit(5000)) adbp.Kill();
-            else adbp.WaitForExit();
+            if (command.Contains("connect") | (command.Trim() == "")) if (!adbp.WaitForExit(5000)) adbp.Kill();
+                else adbp.WaitForExit();
             if (e)
             {
                 string error = adbp.StandardError.ReadToEnd();
@@ -102,16 +103,16 @@ namespace ADB_Gui
 
         private async void sc_Tick(object sender, EventArgs e)
         {
-            ab = await Task.Run(()=>adb("devices", false).Split("\r".ToCharArray()));
+            ab = await Task.Run(() => adb("devices", false).Split("\r".ToCharArray()));
             try
             {
                 connected = !ab[1].Contains("device") ? false : true;
             }
-            catch{}
+            catch { }
             ds.Items.Clear();
             if (ds.Text.Length > 3)
             {
-                found = await Task.Run(()=>adb("shell dumpsys battery", false));
+                found = await Task.Run(() => adb("shell dumpsys battery", false));
                 if (found.Contains("not found"))
                 {
                     ds.Text = "";
@@ -120,7 +121,7 @@ namespace ADB_Gui
             }
             if (connected)
             {
-                model = await Task.Run(()=>adb("shell getprop ro.product.model", false));
+                model = await Task.Run(() => adb("shell getprop ro.product.model", false));
                 VR.Visible = model.Contains("Quest");
                 foreach (string beanis in ab) if (!beanis.Contains("List of devices attached") && beanis.Contains("device")) if (beanis.Length > 3) ds.Items.Add(beanis.Replace("device", "").Trim());
                 if (ds.Text.Length < 3)
@@ -160,7 +161,7 @@ namespace ADB_Gui
                 {
                     if (e.KeyCode == Keys.Enter) key(66);
                     if (e.KeyCode == Keys.Back) key(67);
-                   
+
                 }
                 if (e.KeyCode == Keys.Escape) dababy.PerformClick();
                 if (e.KeyCode == Keys.Enter)
@@ -173,7 +174,7 @@ namespace ADB_Gui
             {
                 if (e.KeyCode == Keys.Escape) instant.PerformClick();
                 else key(keycodes[Array.IndexOf(letters, e.KeyCode.ToString())]);
-                
+
             }
         }
 
@@ -188,7 +189,7 @@ namespace ADB_Gui
                 //draw.Items.Clear();
                 test = await Task.Run(() => adb("shell dumpsys window animator", false));
 
-                ms = "running: ";
+                ms = "Running: ";
                 foreach (string beans in await Task.Run(() => adb("shell pm list packages -3", false).Split("\r".ToCharArray())))
                 {
                     if (beans.Length > 1 && !beans.Contains("environment"))
@@ -243,7 +244,7 @@ namespace ADB_Gui
                 DiscordRpc.UpdatePresence(ref presence);
             }
             else DiscordRpc.Shutdown();
-            
+
         }
         private void CC_Click(object sender, EventArgs e)
         {
@@ -286,7 +287,7 @@ namespace ADB_Gui
             e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 1, e.Bounds.Width, e.Bounds.Height - 1);
             e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 20, e.Bounds.Width, e.Bounds.Height - 20);
             e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 20, 0, e.Bounds.Height);
-            e.Graphics.DrawLine(new Pen(colore), e.Bounds.Width - 1, e.Bounds.Height - 20, e.Bounds.Width -1, e.Bounds.Height);
+            e.Graphics.DrawLine(new Pen(colore), e.Bounds.Width - 1, e.Bounds.Height - 20, e.Bounds.Width - 1, e.Bounds.Height);
         }
         private void cl_KeyDown(object sender, KeyEventArgs e)
         {
@@ -380,6 +381,7 @@ namespace ADB_Gui
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
         private void VRMGD_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 1", true);
         private void VRMGE_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 0", true);
+        private void setting_Click(object sender, EventArgs e) => setting_panel.Visible = !setting_panel.Visible;
 
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
