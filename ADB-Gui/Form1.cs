@@ -34,7 +34,7 @@ namespace ADB_Gui
             adbp.StartInfo.CreateNoWindow = true;
             adbp.StartInfo.UseShellExecute = false;
             InitializeComponent();
-            ClientSize = new Size(600, 365);
+            //ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 120);
             VRM.Location = new Point(190, 60);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\resources\\adb.exe"))
@@ -45,7 +45,7 @@ namespace ADB_Gui
             }
         }
 
-        string adb(string command, bool e)
+        public string adb(string command, bool e)
         {
             try
             {
@@ -275,9 +275,7 @@ namespace ADB_Gui
                 }
             }
             catch
-            {
-
-            }
+            { }
         }
         private void TT_Draw(object sender, DrawToolTipEventArgs e)
         {
@@ -354,6 +352,12 @@ namespace ADB_Gui
             offset.X = e.X;
             offset.Y = e.Y;
         }
+        private void ca_Click(object sender, EventArgs e)
+        {
+            items.Controls.Add(new ADB_GUI.item() {Nam = name.Text, Command = com.Text });
+            name.Text = "";
+            com.Text = "";
+        }
         private void delbut_Click(object sender, EventArgs e)
         {
             adb("uninstall " + draw.Text, true);
@@ -364,7 +368,7 @@ namespace ADB_Gui
             if (fpsetb.Text != "") adb("shell setprop debug.oculus.refreshRate " + fpsetb.Text, true);
             else MessageBox.Show("You must set a value first!");
         }
-        private void key(int keyevent) => adb("shell input keyevent " + keyevent, false);
+        private void key(int keyevent) =>  Task.Run(()=>adb("shell input keyevent " + keyevent, false));
         private void button1_Click_1(object sender, EventArgs e) => adb("shell svc usb setFunctions mtp true", true);
         private void bs_Click(object sender, EventArgs e) => adb("devices", true);
         private void VRMC_Click(object sender, EventArgs e) => VRM.Visible = false;
@@ -380,7 +384,6 @@ namespace ADB_Gui
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
         private void VRMGD_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 1", true);
         private void VRMGE_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 0", true);
-
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;

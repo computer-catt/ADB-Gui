@@ -102,6 +102,19 @@
             this.VRMD = new System.Windows.Forms.Button();
             this.VRMB = new System.Windows.Forms.Button();
             this.TT = new System.Windows.Forms.ToolTip(this.components);
+            this.settings = new System.Windows.Forms.Panel();
+            this.settingsb = new System.Windows.Forms.Button();
+            this.settingsd = new System.Windows.Forms.Button();
+            this.settingsc = new System.Windows.Forms.Button();
+            this.settingsl = new System.Windows.Forms.Label();
+            this.settingsf = new System.Windows.Forms.Button();
+            this.items = new System.Windows.Forms.FlowLayoutPanel();
+            this.ca = new System.Windows.Forms.Button();
+            this.nameb = new System.Windows.Forms.Button();
+            this.Comb = new System.Windows.Forms.Button();
+            this.name = new System.Windows.Forms.TextBox();
+            this.com = new System.Windows.Forms.TextBox();
+            this.itemp = new System.Windows.Forms.Panel();
             this.drag.SuspendLayout();
             this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
@@ -109,6 +122,8 @@
             this.sp.SuspendLayout();
             this.VRM.SuspendLayout();
             this.fpsetp.SuspendLayout();
+            this.settings.SuspendLayout();
+            this.itemp.SuspendLayout();
             this.SuspendLayout();
             // 
             // bs
@@ -341,7 +356,7 @@
             this.cover.Location = new System.Drawing.Point(0, 0);
             this.cover.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cover.Name = "cover";
-            this.cover.Size = new System.Drawing.Size(1127, 452);
+            this.cover.Size = new System.Drawing.Size(1450, 452);
             this.cover.TabIndex = 7;
             this.cover.UseVisualStyleBackColor = true;
             // 
@@ -619,6 +634,49 @@
             this.appdrawercover.TabIndex = 0;
             this.appdrawercover.UseVisualStyleBackColor = true;
             // 
+            // frc
+            // 
+            this.frc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.frc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frc.Location = new System.Drawing.Point(188, 271);
+            this.frc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.frc.Name = "frc";
+            this.frc.Size = new System.Drawing.Size(53, 26);
+            this.frc.TabIndex = 19;
+            this.frc.Text = "Off";
+            this.frc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.frc.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TT.SetToolTip(this.frc, "Toggle full rate capture off");
+            this.frc.UseVisualStyleBackColor = true;
+            this.frc.Click += new System.EventHandler(this.VRMGD_Click);
+            // 
+            // frco
+            // 
+            this.frco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.frco.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frco.Location = new System.Drawing.Point(240, 271);
+            this.frco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.frco.Name = "frco";
+            this.frco.Size = new System.Drawing.Size(47, 26);
+            this.frco.TabIndex = 19;
+            this.frco.Text = " On";
+            this.frco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.frco.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TT.SetToolTip(this.frco, "Toggle full rate capture on");
+            this.frco.UseVisualStyleBackColor = true;
+            this.frco.Click += new System.EventHandler(this.VRMGE_Click);
+            // 
+            // frcl
+            // 
+            this.frcl.AutoSize = true;
+            this.frcl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frcl.Location = new System.Drawing.Point(5, 277);
+            this.frcl.Name = "frcl";
+            this.frcl.Size = new System.Drawing.Size(105, 16);
+            this.frcl.TabIndex = 14;
+            this.frcl.Text = "Full rate capture:";
+            this.TT.SetToolTip(this.frcl, "Makes the quest videos record at the same refresh rate your refresh rate is");
+            // 
             // apppop
             // 
             this.apppop.Enabled = true;
@@ -683,25 +741,9 @@
             this.VRM.Location = new System.Drawing.Point(811, 143);
             this.VRM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.VRM.Name = "VRM";
-            this.VRM.Size = new System.Drawing.Size(307, 307); 
+            this.VRM.Size = new System.Drawing.Size(307, 307);
             this.VRM.TabIndex = 18;
             this.VRM.Visible = false;
-            // 
-            // frc
-            // 
-            this.frc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.frc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.frc.Location = new System.Drawing.Point(188, 271);
-            this.frc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.frc.Name = "frc";
-            this.frc.Size = new System.Drawing.Size(53, 26);
-            this.frc.TabIndex = 19;
-            this.frc.Text = "Off";
-            this.frc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.frc.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.TT.SetToolTip(this.frc, "Toggle full rate capture off");
-            this.frc.UseVisualStyleBackColor = true;
-            this.frc.Click += new System.EventHandler(this.VRMGD_Click);
             // 
             // VRMGD
             // 
@@ -719,22 +761,6 @@
             this.VRMGD.UseVisualStyleBackColor = true;
             this.VRMGD.Click += new System.EventHandler(this.VRMGD_Click);
             // 
-            // frco
-            // 
-            this.frco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.frco.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.frco.Location = new System.Drawing.Point(240, 271);
-            this.frco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.frco.Name = "frco";
-            this.frco.Size = new System.Drawing.Size(47, 26);
-            this.frco.TabIndex = 19;
-            this.frco.Text = " On";
-            this.frco.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.frco.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.TT.SetToolTip(this.frco, "Toggle full rate capture on");
-            this.frco.UseVisualStyleBackColor = true;
-            this.frco.Click += new System.EventHandler(this.VRMGE_Click);
-            // 
             // VRMGE
             // 
             this.VRMGE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -750,17 +776,6 @@
             this.TT.SetToolTip(this.VRMGE, "Toggle your guardian on");
             this.VRMGE.UseVisualStyleBackColor = true;
             this.VRMGE.Click += new System.EventHandler(this.VRMGE_Click);
-            // 
-            // frcl
-            // 
-            this.frcl.AutoSize = true;
-            this.frcl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.frcl.Location = new System.Drawing.Point(5, 277);
-            this.frcl.Name = "frcl";
-            this.frcl.Size = new System.Drawing.Size(105, 16);
-            this.frcl.TabIndex = 14;
-            this.frcl.Text = "Full rate capture:";
-            this.TT.SetToolTip(this.frcl, "Makes the quest videos record at the same refresh rate your refresh rate is");
             // 
             // VRMGL
             // 
@@ -1067,7 +1082,7 @@
             this.VRMB.Location = new System.Drawing.Point(0, 0);
             this.VRMB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.VRMB.Name = "VRMB";
-            this.VRMB.Size = new System.Drawing.Size(307, 275);
+            this.VRMB.Size = new System.Drawing.Size(307, 307);
             this.VRMB.TabIndex = 0;
             this.VRMB.UseVisualStyleBackColor = true;
             // 
@@ -1079,12 +1094,158 @@
             this.TT.OwnerDraw = true;
             this.TT.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.TT_Draw);
             // 
+            // settings
+            // 
+            this.settings.Controls.Add(this.itemp);
+            this.settings.Controls.Add(this.com);
+            this.settings.Controls.Add(this.name);
+            this.settings.Controls.Add(this.Comb);
+            this.settings.Controls.Add(this.nameb);
+            this.settings.Controls.Add(this.ca);
+            this.settings.Controls.Add(this.settingsf);
+            this.settings.Controls.Add(this.settingsc);
+            this.settings.Controls.Add(this.settingsl);
+            this.settings.Controls.Add(this.settingsd);
+            this.settings.Controls.Add(this.settingsb);
+            this.settings.Location = new System.Drawing.Point(1124, 10);
+            this.settings.Name = "settings";
+            this.settings.Size = new System.Drawing.Size(314, 347);
+            this.settings.TabIndex = 19;
+            // 
+            // settingsb
+            // 
+            this.settingsb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsb.Enabled = false;
+            this.settingsb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsb.Location = new System.Drawing.Point(0, 0);
+            this.settingsb.Name = "settingsb";
+            this.settingsb.Size = new System.Drawing.Size(314, 347);
+            this.settingsb.TabIndex = 0;
+            this.settingsb.UseVisualStyleBackColor = true;
+            // 
+            // settingsd
+            // 
+            this.settingsd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.settingsd.Enabled = false;
+            this.settingsd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsd.Location = new System.Drawing.Point(0, 0);
+            this.settingsd.Name = "settingsd";
+            this.settingsd.Size = new System.Drawing.Size(314, 25);
+            this.settingsd.TabIndex = 1;
+            this.settingsd.UseVisualStyleBackColor = true;
+            // 
+            // settingsc
+            // 
+            this.settingsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsc.ForeColor = System.Drawing.Color.Red;
+            this.settingsc.Location = new System.Drawing.Point(279, 0);
+            this.settingsc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.settingsc.Name = "settingsc";
+            this.settingsc.Size = new System.Drawing.Size(35, 25);
+            this.settingsc.TabIndex = 3;
+            this.settingsc.Text = "X";
+            this.settingsc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.settingsc.UseVisualStyleBackColor = true;
+            this.settingsc.Click += new System.EventHandler(this.VRMC_Click);
+            // 
+            // settingsl
+            // 
+            this.settingsl.AutoSize = true;
+            this.settingsl.Location = new System.Drawing.Point(6, 4);
+            this.settingsl.Name = "settingsl";
+            this.settingsl.Size = new System.Drawing.Size(91, 16);
+            this.settingsl.TabIndex = 4;
+            this.settingsl.Text = "Quest settings";
+            // 
+            // settingsf
+            // 
+            this.settingsf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsf.Location = new System.Drawing.Point(8, 88);
+            this.settingsf.Name = "settingsf";
+            this.settingsf.Size = new System.Drawing.Size(296, 214);
+            this.settingsf.TabIndex = 5;
+            this.settingsf.UseVisualStyleBackColor = true;
+            // 
+            // items
+            // 
+            this.items.AutoScroll = true;
+            this.items.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.items.Location = new System.Drawing.Point(-2, 3);
+            this.items.Name = "items";
+            this.items.Size = new System.Drawing.Size(321, 210);
+            this.items.TabIndex = 6;
+            this.items.WrapContents = false;
+            // 
+            // ca
+            // 
+            this.ca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ca.Location = new System.Drawing.Point(211, 311);
+            this.ca.Name = "ca";
+            this.ca.Size = new System.Drawing.Size(90, 27);
+            this.ca.TabIndex = 7;
+            this.ca.Text = "New com";
+            this.ca.UseVisualStyleBackColor = true;
+            this.ca.Click += new System.EventHandler(this.ca_Click);
+            // 
+            // nameb
+            // 
+            this.nameb.Enabled = false;
+            this.nameb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nameb.Location = new System.Drawing.Point(8, 311);
+            this.nameb.Name = "nameb";
+            this.nameb.Size = new System.Drawing.Size(96, 27);
+            this.nameb.TabIndex = 8;
+            this.nameb.UseVisualStyleBackColor = true;
+            // 
+            // Comb
+            // 
+            this.Comb.Enabled = false;
+            this.Comb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Comb.Location = new System.Drawing.Point(103, 311);
+            this.Comb.Name = "Comb";
+            this.Comb.Size = new System.Drawing.Size(102, 27);
+            this.Comb.TabIndex = 8;
+            this.Comb.UseVisualStyleBackColor = true;
+            // 
+            // name
+            // 
+            this.name.BackColor = System.Drawing.Color.Black;
+            this.name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.ForeColor = System.Drawing.Color.Lime;
+            this.name.Location = new System.Drawing.Point(11, 313);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(90, 20);
+            this.name.TabIndex = 0;
+            this.name.Text = "Name";
+            // 
+            // com
+            // 
+            this.com.BackColor = System.Drawing.Color.Black;
+            this.com.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.com.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.com.ForeColor = System.Drawing.Color.Lime;
+            this.com.Location = new System.Drawing.Point(107, 313);
+            this.com.Name = "com";
+            this.com.Size = new System.Drawing.Size(96, 20);
+            this.com.TabIndex = 0;
+            this.com.Text = "Com";
+            // 
+            // itemp
+            // 
+            this.itemp.Controls.Add(this.items);
+            this.itemp.Location = new System.Drawing.Point(11, 90);
+            this.itemp.Name = "itemp";
+            this.itemp.Size = new System.Drawing.Size(292, 209);
+            this.itemp.TabIndex = 9;
+            // 
             // ADBGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1127, 452);
+            this.ClientSize = new System.Drawing.Size(1450, 452);
+            this.Controls.Add(this.settings);
             this.Controls.Add(this.VRM);
             this.Controls.Add(this.VR);
             this.Controls.Add(this.appdrawer);
@@ -1123,6 +1284,9 @@
             this.VRM.ResumeLayout(false);
             this.VRM.PerformLayout();
             this.fpsetp.ResumeLayout(false);
+            this.settings.ResumeLayout(false);
+            this.settings.PerformLayout();
+            this.itemp.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1202,5 +1366,18 @@
         private System.Windows.Forms.Button VRMGE;
         private System.Windows.Forms.Label VRMGL;
         private System.Windows.Forms.ToolTip TT;
+        private System.Windows.Forms.Panel settings;
+        private System.Windows.Forms.Button settingsf;
+        private System.Windows.Forms.Button settingsc;
+        private System.Windows.Forms.Label settingsl;
+        private System.Windows.Forms.Button settingsd;
+        private System.Windows.Forms.Button settingsb;
+        private System.Windows.Forms.Button ca;
+        private System.Windows.Forms.FlowLayoutPanel items;
+        private System.Windows.Forms.Button Comb;
+        private System.Windows.Forms.Button nameb;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox com;
+        private System.Windows.Forms.Panel itemp;
     }
 }
