@@ -24,15 +24,15 @@ namespace ADB_Gui
         private Process adbp = new Process();
         private Process scrcpy = new Process();
         public Color colore = Color.Lime;
-        public static string comm;
+        public static string comm = "";
         public ADBGUI()
         {
+            InitializeComponent();
             adbp.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\resources\\adb.exe";
             adbp.StartInfo.RedirectStandardError = true;
             adbp.StartInfo.RedirectStandardOutput = true;
             adbp.StartInfo.CreateNoWindow = true;
             adbp.StartInfo.UseShellExecute = false;
-            InitializeComponent();
             ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 120);
             settings.Location = new Point(190, 50);
@@ -43,30 +43,71 @@ namespace ADB_Gui
                 ZipFile.ExtractToDirectory("adb.zip", Directory.GetCurrentDirectory() + "\\resources");
                 File.Delete("adb.zip");
             }
+            load(true);
+        }
+        public void load(bool LoadOrSave)
+        {
+            if (LoadOrSave)
+            {
+                if (!File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"/ADBGui/options"))
+                {
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ADBGui");
+                    File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ADBGui\options", "Lime\r");
+                }
+                else
+                {
+                    string[] save = File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ADBGui\options");
+                    color(ColorTranslator.FromHtml(save[0]));
+                    if (save.Length > 1)
+                    {
+                        for (int i = 0; i < save[1].Split(';').Length; i++)
+                        {
+                            items.Controls.Add(new item() { Nam = save[1].Split(';')[i].Split(',')[0], Command = save[1].Split(';')[i].Split(',')[1], ForeColor = ForeColor });
+                        }
+                    }
+                }
+            }
+            else
+            {
+                string sitems = "";
+                foreach (Control ditem in items.Controls)
+                {
+                    if (ditem is item Item)
+                    {
+                        sitems += Item.Nam + "," + Item.Command + ";";
+                    }
+                }
+                File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ADBGui\options", new string[] { ForeColor.ToArgb().ToString(), sitems.Remove(sitems.Length -1) });
+            }
+
         }
 
         public string adb(string command, bool e)
         {
+        tryagain:
             try
             {
                 if (ds.Text.Length > 3) command = " -s " + ds.Text.Trim() + " " + command;
-                adbp.StartInfo.Arguments = command;
-                adbp.Start();
-                if (command.Contains("connect") | (command.Trim() == "")) if (!adbp.WaitForExit(5000)) adbp.Kill();
-                    else adbp.WaitForExit();
-                if (e)
-                {
-                    string error = adbp.StandardError.ReadToEnd();
-                    script.Text = adbp.StandardOutput.ReadToEnd() + error;
-                    script.SelectionStart = script.Text.Length - error.Length + 1;
-                    script.SelectionLength = script.Text.Length;
-                    script.SelectionColor = Color.Red;
-                }
+            }
+            catch { goto tryagain; }
+            adbp.StartInfo.Arguments = command;
+            adbp.Start();
+            if (command.Contains("connect") | (command.Trim() == "")) if (!adbp.WaitForExit(5000)) adbp.Kill();
+                else adbp.WaitForExit();
+            if (e)
+            {
+                string error = adbp.StandardError.ReadToEnd();
+                script.Text = adbp.StandardOutput.ReadToEnd() + error;
+                script.SelectionStart = script.Text.Length - error.Length + 1;
+                script.SelectionLength = script.Text.Length;
+                script.SelectionColor = Color.Red;
+            }
+            try
+            {
                 return adbp.StandardOutput.ReadToEnd() + adbp.StandardError.ReadToEnd();
             }
             catch { return ""; }
         }
-
         private void scrcpyButton_Click(object sender, EventArgs e)
         {
             string args = "";
@@ -96,6 +137,7 @@ namespace ADB_Gui
         private async void sc_Tick(object sender, EventArgs e)
         {
             ab = await Task.Run(() => adb("devices", false).Split("\r".ToCharArray()));
+
             try
             {
                 connected = !ab[1].Contains("device") ? false : true;
@@ -159,12 +201,6 @@ namespace ADB_Gui
                 settext.Clear();
             }
         }
-        public void transfer(object sender, EventArgs e)
-        {
-            adb(comm, true);
-        }
-
-
         //adb use: 2
         private async void apppop_Tick(object sender, EventArgs e)
         {
@@ -229,35 +265,39 @@ namespace ADB_Gui
                 DiscordRpc.UpdatePresence(ref presence);
             }
             else DiscordRpc.Shutdown();
-
         }
         private void CC_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                ForeColor = colorDialog.Color;
-                ds.ForeColor = colorDialog.Color;
-                script.ForeColor = colorDialog.Color;
-                draw.ForeColor = colorDialog.Color;
-                settext.ForeColor = colorDialog.Color;
-                cl.ForeColor = colorDialog.Color;
-                sp.BackColor = colorDialog.Color;
-                fpsetc.ForeColor = colorDialog.Color;
-                tsDrop.ForeColor = colorDialog.Color;
-                setls.ForeColor = colorDialog.Color;
-                name.ForeColor = colorDialog.Color;
-                com.ForeColor = colorDialog.Color;
-                TT.ForeColor = colorDialog.Color;
-                colore = colorDialog.Color;
-                foreach (Control ditem in items.Controls)
+                color(colorDialog.Color);
+            }
+        }
+        void color(Color color)
+        {
+            ForeColor = color;
+            ds.ForeColor = color;
+            script.ForeColor = color;
+            draw.ForeColor = color;
+            settext.ForeColor = color;
+            cl.ForeColor = color;
+            sp.BackColor = color;
+            fpsetc.ForeColor = color;
+            tsDrop.ForeColor = color;
+            setls.ForeColor = color;
+            name.ForeColor = color;
+            com.ForeColor = color;
+            TT.ForeColor = color;
+            colore = color;
+            foreach (Control ditem in items.Controls)
+            {
+                if (ditem.GetType() == typeof(item))
                 {
-                    if (ditem.GetType() == typeof(item))
-                    {
-                        ditem.ForeColor = colorDialog.Color;
-                    }
+                    ditem.ForeColor = color;
                 }
             }
+
         }
         private async void draw_DropDown(object sender, EventArgs e)
         {
@@ -308,12 +348,15 @@ namespace ADB_Gui
             }
             else MessageBox.Show("You must set a value first!");
         }
-        private async void cuscomc_Tick(object sender, EventArgs e)
+        private void cuscomc_Tick(object sender, EventArgs e)
         {
-            if (comm != "")
+            if (connected)
             {
-                await Task.Run(()=>adb(comm, true));
-                comm = "";
+                if (comm != "")
+                {
+                    adb(comm, true);
+                    comm = "";
+                }
             }
         }
         private void bs3_Click(object sender, EventArgs e)
@@ -373,7 +416,7 @@ namespace ADB_Gui
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
-
+        private void ADBGUI_FormClosing(object sender, FormClosingEventArgs e) => load(false);
         private void tsDrop_SelectedIndexChanged(object sender, EventArgs e) => tsButton.Text = tsDrop.Text;
         private void disprox_Click(object sender, EventArgs e) => adb("shell am broadcast -a com.oculus.vrpowermanager.prox_close", true);
         private void eperimode_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.experimentalEnabled 1 ", true);

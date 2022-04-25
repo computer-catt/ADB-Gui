@@ -38,10 +38,6 @@ namespace ADB_Gui
             e.Graphics.DrawLine(new Pen(ForeColor), e.Bounds.Width - 1, e.Bounds.Height - 25, e.Bounds.Width - 1, e.Bounds.Height);
         }
         private void item_ForeColorChanged(object sender, EventArgs e) => TT.ForeColor = ForeColor;
-
-        private void back_Click(object sender, EventArgs e)
-        {
-            ADBGUI.comm = _command;
-        }
+        private void back_Click(object sender, EventArgs e) => ADBGUI.comm = _command;
     }
 }

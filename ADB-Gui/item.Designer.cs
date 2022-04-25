@@ -47,7 +47,7 @@
             this.back.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TT.SetToolTip(this.back, "ass");
             this.back.UseVisualStyleBackColor = true;
-            this.back.Click += new System.EventHandler(this.back_Click);
+            this.back.Click += new System.EventHandler(back_Click);
             // 
             // close
             // 

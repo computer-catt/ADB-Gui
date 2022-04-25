@@ -215,6 +215,7 @@
             this.ds.Name = "ds";
             this.ds.Size = new System.Drawing.Size(175, 24);
             this.ds.TabIndex = 11;
+            this.ds.Text = " ";
             this.TT.SetToolTip(this.ds, "Current device");
             // 
             // app
@@ -222,7 +223,7 @@
             this.app.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.app.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.app.Location = new System.Drawing.Point(86, 37);
-            this.app.Margin = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.app.Margin = new System.Windows.Forms.Padding(4, 3, 3, 6);
             this.app.Name = "app";
             this.app.Size = new System.Drawing.Size(25, 26);
             this.app.TabIndex = 11;
@@ -252,6 +253,7 @@
             this.VR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VR.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VR.Location = new System.Drawing.Point(359, 37);
+            this.VR.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
             this.VR.Name = "VR";
             this.VR.Size = new System.Drawing.Size(25, 26);
             this.VR.TabIndex = 11;
@@ -313,7 +315,7 @@
             this.bs5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bs5.Location = new System.Drawing.Point(3, 38);
-            this.bs5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.bs5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 6);
             this.bs5.Name = "bs5";
             this.bs5.Size = new System.Drawing.Size(76, 26);
             this.bs5.TabIndex = 0;
@@ -409,7 +411,7 @@
             this.mount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mount.Location = new System.Drawing.Point(118, 37);
-            this.mount.Margin = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.mount.Margin = new System.Windows.Forms.Padding(4, 3, 3, 6);
             this.mount.Name = "mount";
             this.mount.Size = new System.Drawing.Size(32, 26);
             this.mount.TabIndex = 12;
@@ -653,6 +655,7 @@
             this.CC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CC.Location = new System.Drawing.Point(156, 37);
+            this.CC.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
             this.CC.Name = "CC";
             this.CC.Size = new System.Drawing.Size(25, 26);
             this.CC.TabIndex = 11;
@@ -1108,6 +1111,7 @@
             this.Keyb.Controls.Add(this.settext);
             this.Keyb.Controls.Add(this.textboxbackround);
             this.Keyb.Location = new System.Drawing.Point(187, 37);
+            this.Keyb.Margin = new System.Windows.Forms.Padding(3, 3, 3, 6);
             this.Keyb.Name = "Keyb";
             this.Keyb.Size = new System.Drawing.Size(166, 28);
             this.Keyb.TabIndex = 12;
@@ -1268,6 +1272,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 450);
             this.Name = "ADBGUI";
             this.Text = "ADB-Gui";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ADBGUI_FormClosing);
             this.drag.ResumeLayout(false);
             this.appdrawer.ResumeLayout(false);
             this.appdrawer.PerformLayout();
