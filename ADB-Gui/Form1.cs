@@ -13,8 +13,8 @@ namespace ADB_Gui
     public partial class ADBGUI : Form
     {
         private Point offset;
-        bool live, doe, connected, mousedown;
-        string prev = "", prev2 = "", found, test, ms, model;
+        bool doe, connected, mousedown;
+        public string found, test, ms, model;
         string[] rpc, ab;
         //            ^
         //ab is being  used dont worry bout it
@@ -23,9 +23,8 @@ namespace ADB_Gui
         private DiscordRpc.RichPresence presence;
         private Process adbp = new Process();
         private Process scrcpy = new Process();
-        Color colore = Color.Lime;
-        string[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Enter", "Return", "Back", "Space" };
-        int[] keycodes = { 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 66, 66, 67, 62 };
+        public Color colore = Color.Lime;
+        public static string comm;
         public ADBGUI()
         {
             adbp.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\resources\\adb.exe";
@@ -34,9 +33,10 @@ namespace ADB_Gui
             adbp.StartInfo.CreateNoWindow = true;
             adbp.StartInfo.UseShellExecute = false;
             InitializeComponent();
-            //ClientSize = new Size(600, 365);
+            ClientSize = new Size(600, 365);
             appdrawer.Location = new Point(190, 120);
-            VRM.Location = new Point(190, 60);
+            settings.Location = new Point(190, 50);
+            VRM.Location = new Point(220, 60);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\resources\\adb.exe"))
             {
                 net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/963970216084246588/adb.zip", "adb.zip");
@@ -50,28 +50,21 @@ namespace ADB_Gui
             try
             {
                 if (ds.Text.Length > 3) command = " -s " + ds.Text.Trim() + " " + command;
-            }
-            catch { }
-            adbp.StartInfo.Arguments = command;
-            adbp.Start();
-            if (command.Contains("connect")|(command.Trim() == "")) if (!adbp.WaitForExit(5000)) adbp.Kill();
-            else adbp.WaitForExit();
-            if (e)
-            {
-                string error = adbp.StandardError.ReadToEnd();
-                script.Text = adbp.StandardOutput.ReadToEnd() + error;
-                script.SelectionStart = script.Text.Length - error.Length + 1;
-                script.SelectionLength = script.Text.Length;
-                script.SelectionColor = Color.Red;
-            }
-            try
-            {
+                adbp.StartInfo.Arguments = command;
+                adbp.Start();
+                if (command.Contains("connect") | (command.Trim() == "")) if (!adbp.WaitForExit(5000)) adbp.Kill();
+                    else adbp.WaitForExit();
+                if (e)
+                {
+                    string error = adbp.StandardError.ReadToEnd();
+                    script.Text = adbp.StandardOutput.ReadToEnd() + error;
+                    script.SelectionStart = script.Text.Length - error.Length + 1;
+                    script.SelectionLength = script.Text.Length;
+                    script.SelectionColor = Color.Red;
+                }
                 return adbp.StandardOutput.ReadToEnd() + adbp.StandardError.ReadToEnd();
             }
-            catch
-            {
-                return "";
-            }
+            catch { return ""; }
         }
 
         private void scrcpyButton_Click(object sender, EventArgs e)
@@ -102,16 +95,16 @@ namespace ADB_Gui
 
         private async void sc_Tick(object sender, EventArgs e)
         {
-            ab = await Task.Run(()=>adb("devices", false).Split("\r".ToCharArray()));
+            ab = await Task.Run(() => adb("devices", false).Split("\r".ToCharArray()));
             try
             {
                 connected = !ab[1].Contains("device") ? false : true;
             }
-            catch{}
+            catch { }
             ds.Items.Clear();
             if (ds.Text.Length > 3)
             {
-                found = await Task.Run(()=>adb("shell dumpsys battery", false));
+                found = await Task.Run(() => adb("shell dumpsys battery", false));
                 if (found.Contains("not found"))
                 {
                     ds.Text = "";
@@ -120,7 +113,7 @@ namespace ADB_Gui
             }
             if (connected)
             {
-                model = await Task.Run(()=>adb("shell getprop ro.product.model", false));
+                model = await Task.Run(() => adb("shell getprop ro.product.model", false));
                 VR.Visible = model.Contains("Quest");
                 foreach (string beanis in ab) if (!beanis.Contains("List of devices attached") && beanis.Contains("device")) if (beanis.Length > 3) ds.Items.Add(beanis.Replace("device", "").Trim());
                 if (ds.Text.Length < 3)
@@ -154,29 +147,22 @@ namespace ADB_Gui
 
         private void settext_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!live)
+            if (settext.Text == "")
             {
-                if (settext.Text == "")
-                {
-                    if (e.KeyCode == Keys.Enter) key(66);
-                    if (e.KeyCode == Keys.Back) key(67);
-                   
-                }
-                if (e.KeyCode == Keys.Escape) dababy.PerformClick();
-                if (e.KeyCode == Keys.Enter)
-                {
-                    adb("shell input keyboard text '" + settext.Text + "'", false);
-                    settext.Clear();
-                }
+                if (e.KeyCode == Keys.Enter) key(66);
+                if (e.KeyCode == Keys.Back) key(67);
+
             }
-            else
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Escape) instant.PerformClick();
-                else key(keycodes[Array.IndexOf(letters, e.KeyCode.ToString())]);
-                
+                adb("shell input keyboard text '" + settext.Text + "'", false);
+                settext.Clear();
             }
         }
-
+        public void transfer(object sender, EventArgs e)
+        {
+            adb(comm, true);
+        }
 
 
         //adb use: 2
@@ -243,7 +229,7 @@ namespace ADB_Gui
                 DiscordRpc.UpdatePresence(ref presence);
             }
             else DiscordRpc.Shutdown();
-            
+
         }
         private void CC_Click(object sender, EventArgs e)
         {
@@ -260,8 +246,17 @@ namespace ADB_Gui
                 fpsetc.ForeColor = colorDialog.Color;
                 tsDrop.ForeColor = colorDialog.Color;
                 setls.ForeColor = colorDialog.Color;
+                name.ForeColor = colorDialog.Color;
+                com.ForeColor = colorDialog.Color;
                 TT.ForeColor = colorDialog.Color;
                 colore = colorDialog.Color;
+                foreach (Control ditem in items.Controls)
+                {
+                    if (ditem.GetType() == typeof(item))
+                    {
+                        ditem.ForeColor = colorDialog.Color;
+                    }
+                }
             }
         }
         private async void draw_DropDown(object sender, EventArgs e)
@@ -282,9 +277,9 @@ namespace ADB_Gui
             e.DrawBackground();
             e.DrawText();
             e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 1, e.Bounds.Width, e.Bounds.Height - 1);
-            e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 20, e.Bounds.Width, e.Bounds.Height - 20);
-            e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 20, 0, e.Bounds.Height);
-            e.Graphics.DrawLine(new Pen(colore), e.Bounds.Width - 1, e.Bounds.Height - 20, e.Bounds.Width -1, e.Bounds.Height);
+            e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 25, e.Bounds.Width, e.Bounds.Height - 25);
+            e.Graphics.DrawLine(new Pen(colore), 0, e.Bounds.Height - 25, 0, e.Bounds.Height);
+            e.Graphics.DrawLine(new Pen(colore), e.Bounds.Width - 1, e.Bounds.Height - 25, e.Bounds.Width - 1, e.Bounds.Height);
         }
         private void cl_KeyDown(object sender, KeyEventArgs e)
         {
@@ -295,25 +290,6 @@ namespace ADB_Gui
                 cl.Clear();
             }
         }
-
-        private void dababyc(object sender, EventArgs e)
-        {
-            live = true;
-            dababy.SendToBack();
-            prev = settext.Text;
-            settext.Text = prev2;
-            settext.ReadOnly = true;
-        }
-
-        private void instant_Click(object sender, EventArgs e)
-        {
-            live = false;
-            instant.SendToBack();
-            prev2 = settext.Text;
-            settext.Text = prev;
-            settext.ReadOnly = false;
-        }
-
         private void tsSet_Click(object sender, EventArgs e)
         {
             if (tsButton.Text != "")
@@ -331,6 +307,14 @@ namespace ADB_Gui
                 adb("shell setprop debug.oculus.gpuLevel " + setlb.Text, true);
             }
             else MessageBox.Show("You must set a value first!");
+        }
+        private async void cuscomc_Tick(object sender, EventArgs e)
+        {
+            if (comm != "")
+            {
+                await Task.Run(()=>adb(comm, true));
+                comm = "";
+            }
         }
         private void bs3_Click(object sender, EventArgs e)
         {
@@ -354,7 +338,7 @@ namespace ADB_Gui
         }
         private void ca_Click(object sender, EventArgs e)
         {
-            items.Controls.Add(new ADB_GUI.item() {Nam = name.Text, Command = com.Text });
+            items.Controls.Add(new item() { Nam = name.Text, Command = com.Text, ForeColor = ForeColor });
             name.Text = "";
             com.Text = "";
         }
@@ -368,7 +352,7 @@ namespace ADB_Gui
             if (fpsetb.Text != "") adb("shell setprop debug.oculus.refreshRate " + fpsetb.Text, true);
             else MessageBox.Show("You must set a value first!");
         }
-        private void key(int keyevent) =>  Task.Run(()=>adb("shell input keyevent " + keyevent, false));
+        private void key(int keyevent) => Task.Run(() => adb("shell input keyevent " + keyevent, false));
         private void button1_Click_1(object sender, EventArgs e) => adb("shell svc usb setFunctions mtp true", true);
         private void bs_Click(object sender, EventArgs e) => adb("devices", true);
         private void VRMC_Click(object sender, EventArgs e) => VRM.Visible = false;
@@ -384,9 +368,12 @@ namespace ADB_Gui
         private void app_Click(object sender, EventArgs e) => appdrawer.Visible = !appdrawer.Visible;
         private void VRMGD_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 1", true);
         private void VRMGE_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.guardian_pause 0", true);
+        private void settingsc_Click(object sender, EventArgs e) => settings.Visible = false;
+        private void settingsba_Click(object sender, EventArgs e) => settings.Visible = !settings.Visible;
         private void drawe_Click(object sender, EventArgs e) => draw.DroppedDown = !draw.DroppedDown;
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
+
         private void tsDrop_SelectedIndexChanged(object sender, EventArgs e) => tsButton.Text = tsDrop.Text;
         private void disprox_Click(object sender, EventArgs e) => adb("shell am broadcast -a com.oculus.vrpowermanager.prox_close", true);
         private void eperimode_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.experimentalEnabled 1 ", true);

@@ -48,9 +48,6 @@
             this.cl = new System.Windows.Forms.TextBox();
             this.cover = new System.Windows.Forms.Button();
             this.sc = new System.Windows.Forms.Timer(this.components);
-            this.instant = new System.Windows.Forms.Button();
-            this.dababy = new System.Windows.Forms.Button();
-            this.sw = new System.Windows.Forms.Panel();
             this.textboxbackround = new System.Windows.Forms.Button();
             this.settext = new System.Windows.Forms.TextBox();
             this.bc = new System.Windows.Forms.Button();
@@ -103,20 +100,22 @@
             this.VRMB = new System.Windows.Forms.Button();
             this.TT = new System.Windows.Forms.ToolTip(this.components);
             this.settings = new System.Windows.Forms.Panel();
-            this.settingsb = new System.Windows.Forms.Button();
-            this.settingsd = new System.Windows.Forms.Button();
+            this.itemp = new System.Windows.Forms.Panel();
+            this.items = new System.Windows.Forms.FlowLayoutPanel();
+            this.Keyb = new System.Windows.Forms.Panel();
+            this.com = new System.Windows.Forms.TextBox();
+            this.name = new System.Windows.Forms.TextBox();
+            this.Comb = new System.Windows.Forms.Button();
+            this.nameb = new System.Windows.Forms.Button();
+            this.ca = new System.Windows.Forms.Button();
+            this.settingsf = new System.Windows.Forms.Button();
             this.settingsc = new System.Windows.Forms.Button();
             this.settingsl = new System.Windows.Forms.Label();
-            this.settingsf = new System.Windows.Forms.Button();
-            this.items = new System.Windows.Forms.FlowLayoutPanel();
-            this.ca = new System.Windows.Forms.Button();
-            this.nameb = new System.Windows.Forms.Button();
-            this.Comb = new System.Windows.Forms.Button();
-            this.name = new System.Windows.Forms.TextBox();
-            this.com = new System.Windows.Forms.TextBox();
-            this.itemp = new System.Windows.Forms.Panel();
+            this.settingsd = new System.Windows.Forms.Button();
+            this.settingsb = new System.Windows.Forms.Button();
+            this.settingsba = new System.Windows.Forms.Button();
+            this.cuscomc = new System.Windows.Forms.Timer(this.components);
             this.drag.SuspendLayout();
-            this.sw.SuspendLayout();
             this.appdrawer.SuspendLayout();
             this.drawp.SuspendLayout();
             this.sp.SuspendLayout();
@@ -124,16 +123,18 @@
             this.fpsetp.SuspendLayout();
             this.settings.SuspendLayout();
             this.itemp.SuspendLayout();
+            this.items.SuspendLayout();
+            this.Keyb.SuspendLayout();
             this.SuspendLayout();
             // 
             // bs
             // 
             this.bs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs.Location = new System.Drawing.Point(12, 31);
-            this.bs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bs.Location = new System.Drawing.Point(4, 4);
+            this.bs.Margin = new System.Windows.Forms.Padding(4);
             this.bs.Name = "bs";
-            this.bs.Size = new System.Drawing.Size(91, 27);
+            this.bs.Size = new System.Drawing.Size(91, 26);
             this.bs.TabIndex = 0;
             this.bs.Text = "list devices";
             this.bs.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -147,7 +148,7 @@
             this.scriptyB.Location = new System.Drawing.Point(776, 0);
             this.scriptyB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.scriptyB.Name = "scriptyB";
-            this.scriptyB.Size = new System.Drawing.Size(87, 329);
+            this.scriptyB.Size = new System.Drawing.Size(87, 362);
             this.scriptyB.TabIndex = 1;
             this.scriptyB.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.scriptyB.UseVisualStyleBackColor = true;
@@ -172,7 +173,7 @@
             this.script.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.script.Name = "script";
             this.script.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.script.Size = new System.Drawing.Size(799, 327);
+            this.script.Size = new System.Drawing.Size(799, 357);
             this.script.TabIndex = 2;
             this.script.Text = "";
             // 
@@ -194,7 +195,6 @@
             // drag
             // 
             this.drag.Controls.Add(this.ds);
-            this.drag.Controls.Add(this.app);
             this.drag.Location = new System.Drawing.Point(1, 1);
             this.drag.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.drag.Name = "drag";
@@ -221,10 +221,10 @@
             // 
             this.app.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.app.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.app.Location = new System.Drawing.Point(736, -2);
-            this.app.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.app.Location = new System.Drawing.Point(86, 37);
+            this.app.Margin = new System.Windows.Forms.Padding(4, 3, 3, 3);
             this.app.Name = "app";
-            this.app.Size = new System.Drawing.Size(28, 25);
+            this.app.Size = new System.Drawing.Size(25, 26);
             this.app.TabIndex = 11;
             this.app.Text = "=";
             this.TT.SetToolTip(this.app, "Apps and stuff");
@@ -251,10 +251,9 @@
             // 
             this.VR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VR.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VR.Location = new System.Drawing.Point(683, 0);
-            this.VR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VR.Location = new System.Drawing.Point(359, 37);
             this.VR.Name = "VR";
-            this.VR.Size = new System.Drawing.Size(28, 25);
+            this.VR.Size = new System.Drawing.Size(25, 26);
             this.VR.TabIndex = 11;
             this.VR.Text = "🥽";
             this.VR.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -268,10 +267,10 @@
             // 
             this.bs2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs2.Location = new System.Drawing.Point(108, 31);
-            this.bs2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bs2.Location = new System.Drawing.Point(103, 4);
+            this.bs2.Margin = new System.Windows.Forms.Padding(4);
             this.bs2.Name = "bs2";
-            this.bs2.Size = new System.Drawing.Size(63, 27);
+            this.bs2.Size = new System.Drawing.Size(63, 26);
             this.bs2.TabIndex = 0;
             this.bs2.Text = "reboot";
             this.bs2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -283,10 +282,10 @@
             // 
             this.bs3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs3.Location = new System.Drawing.Point(177, 31);
-            this.bs3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bs3.Location = new System.Drawing.Point(174, 4);
+            this.bs3.Margin = new System.Windows.Forms.Padding(4);
             this.bs3.Name = "bs3";
-            this.bs3.Size = new System.Drawing.Size(84, 27);
+            this.bs3.Size = new System.Drawing.Size(84, 26);
             this.bs3.TabIndex = 0;
             this.bs3.Text = "install apk";
             this.bs3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -298,10 +297,10 @@
             // 
             this.bs4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs4.Location = new System.Drawing.Point(267, 31);
-            this.bs4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bs4.Location = new System.Drawing.Point(266, 4);
+            this.bs4.Margin = new System.Windows.Forms.Padding(4);
             this.bs4.Name = "bs4";
-            this.bs4.Size = new System.Drawing.Size(119, 27);
+            this.bs4.Size = new System.Drawing.Size(119, 26);
             this.bs4.TabIndex = 0;
             this.bs4.Text = "connect via wifi";
             this.bs4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -313,12 +312,12 @@
             // 
             this.bs5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bs5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bs5.Location = new System.Drawing.Point(392, 31);
-            this.bs5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bs5.Location = new System.Drawing.Point(3, 38);
+            this.bs5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
             this.bs5.Name = "bs5";
-            this.bs5.Size = new System.Drawing.Size(107, 27);
+            this.bs5.Size = new System.Drawing.Size(76, 26);
             this.bs5.TabIndex = 0;
-            this.bs5.Text = "disconnect all";
+            this.bs5.Text = "disconnect";
             this.bs5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.TT.SetToolTip(this.bs5, "Disconnects all currently attached devices");
             this.bs5.UseVisualStyleBackColor = true;
@@ -356,7 +355,7 @@
             this.cover.Location = new System.Drawing.Point(0, 0);
             this.cover.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cover.Name = "cover";
-            this.cover.Size = new System.Drawing.Size(1450, 452);
+            this.cover.Size = new System.Drawing.Size(1550, 452);
             this.cover.TabIndex = 7;
             this.cover.UseVisualStyleBackColor = true;
             // 
@@ -366,50 +365,15 @@
             this.sc.Interval = 2000;
             this.sc.Tick += new System.EventHandler(this.sc_Tick);
             // 
-            // instant
-            // 
-            this.instant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.instant.Location = new System.Drawing.Point(0, 0);
-            this.instant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.instant.Name = "instant";
-            this.instant.Size = new System.Drawing.Size(71, 27);
-            this.instant.TabIndex = 8;
-            this.instant.Text = "set text";
-            this.instant.UseVisualStyleBackColor = true;
-            this.instant.Click += new System.EventHandler(this.instant_Click);
-            // 
-            // dababy
-            // 
-            this.dababy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dababy.Location = new System.Drawing.Point(0, 0);
-            this.dababy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dababy.Name = "dababy";
-            this.dababy.Size = new System.Drawing.Size(71, 27);
-            this.dababy.TabIndex = 8;
-            this.dababy.Text = "live text";
-            this.TT.SetToolTip(this.dababy, "Switch to live text(laggy)");
-            this.dababy.UseVisualStyleBackColor = true;
-            this.dababy.Click += new System.EventHandler(this.dababyc);
-            // 
-            // sw
-            // 
-            this.sw.Controls.Add(this.dababy);
-            this.sw.Controls.Add(this.instant);
-            this.sw.Location = new System.Drawing.Point(717, 31);
-            this.sw.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.sw.Name = "sw";
-            this.sw.Size = new System.Drawing.Size(71, 27);
-            this.sw.TabIndex = 9;
-            // 
             // textboxbackround
             // 
             this.textboxbackround.Enabled = false;
             this.textboxbackround.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.textboxbackround.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textboxbackround.Location = new System.Drawing.Point(595, 31);
+            this.textboxbackround.Location = new System.Drawing.Point(0, 0);
             this.textboxbackround.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textboxbackround.Name = "textboxbackround";
-            this.textboxbackround.Size = new System.Drawing.Size(123, 27);
+            this.textboxbackround.Size = new System.Drawing.Size(166, 27);
             this.textboxbackround.TabIndex = 0;
             this.textboxbackround.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.textboxbackround.UseVisualStyleBackColor = true;
@@ -420,10 +384,10 @@
             this.settext.BackColor = System.Drawing.Color.Black;
             this.settext.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.settext.ForeColor = System.Drawing.Color.Lime;
-            this.settext.Location = new System.Drawing.Point(597, 37);
+            this.settext.Location = new System.Drawing.Point(2, 6);
             this.settext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.settext.Name = "settext";
-            this.settext.Size = new System.Drawing.Size(115, 15);
+            this.settext.Size = new System.Drawing.Size(158, 15);
             this.settext.TabIndex = 10;
             this.settext.KeyDown += new System.Windows.Forms.KeyEventHandler(this.settext_KeyDown);
             // 
@@ -443,12 +407,13 @@
             // mount
             // 
             this.mount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mount.Location = new System.Drawing.Point(504, 31);
-            this.mount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mount.Location = new System.Drawing.Point(118, 37);
+            this.mount.Margin = new System.Windows.Forms.Padding(4, 3, 3, 3);
             this.mount.Name = "mount";
-            this.mount.Size = new System.Drawing.Size(75, 26);
+            this.mount.Size = new System.Drawing.Size(32, 26);
             this.mount.TabIndex = 12;
-            this.mount.Text = "Mount";
+            this.mount.Text = "💾";
             this.TT.SetToolTip(this.mount, "Mount your device as a USB drive(android 9+)(wired connection only)");
             this.mount.UseVisualStyleBackColor = true;
             this.mount.Click += new System.EventHandler(this.button1_Click_1);
@@ -687,10 +652,9 @@
             // 
             this.CC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CC.Location = new System.Drawing.Point(709, 0);
-            this.CC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CC.Location = new System.Drawing.Point(156, 37);
             this.CC.Name = "CC";
-            this.CC.Size = new System.Drawing.Size(28, 25);
+            this.CC.Size = new System.Drawing.Size(25, 26);
             this.CC.TabIndex = 11;
             this.CC.Text = "🖌";
             this.TT.SetToolTip(this.CC, "Color changer");
@@ -702,10 +666,10 @@
             this.sp.BackColor = System.Drawing.Color.Lime;
             this.sp.Controls.Add(this.scriptyB);
             this.sp.Controls.Add(this.script);
-            this.sp.Location = new System.Drawing.Point(11, 64);
+            this.sp.Location = new System.Drawing.Point(11, 33);
             this.sp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sp.Name = "sp";
-            this.sp.Size = new System.Drawing.Size(777, 330);
+            this.sp.Size = new System.Drawing.Size(777, 359);
             this.sp.TabIndex = 15;
             // 
             // VRM
@@ -1107,105 +1071,58 @@
             this.settings.Controls.Add(this.settingsl);
             this.settings.Controls.Add(this.settingsd);
             this.settings.Controls.Add(this.settingsb);
-            this.settings.Location = new System.Drawing.Point(1124, 10);
+            this.settings.Location = new System.Drawing.Point(1124, 46);
             this.settings.Name = "settings";
-            this.settings.Size = new System.Drawing.Size(314, 347);
+            this.settings.Size = new System.Drawing.Size(414, 347);
             this.settings.TabIndex = 19;
+            this.settings.Visible = false;
             // 
-            // settingsb
+            // itemp
             // 
-            this.settingsb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingsb.Enabled = false;
-            this.settingsb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsb.Location = new System.Drawing.Point(0, 0);
-            this.settingsb.Name = "settingsb";
-            this.settingsb.Size = new System.Drawing.Size(314, 347);
-            this.settingsb.TabIndex = 0;
-            this.settingsb.UseVisualStyleBackColor = true;
-            // 
-            // settingsd
-            // 
-            this.settingsd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.settingsd.Enabled = false;
-            this.settingsd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsd.Location = new System.Drawing.Point(0, 0);
-            this.settingsd.Name = "settingsd";
-            this.settingsd.Size = new System.Drawing.Size(314, 25);
-            this.settingsd.TabIndex = 1;
-            this.settingsd.UseVisualStyleBackColor = true;
-            // 
-            // settingsc
-            // 
-            this.settingsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsc.ForeColor = System.Drawing.Color.Red;
-            this.settingsc.Location = new System.Drawing.Point(279, 0);
-            this.settingsc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.settingsc.Name = "settingsc";
-            this.settingsc.Size = new System.Drawing.Size(35, 25);
-            this.settingsc.TabIndex = 3;
-            this.settingsc.Text = "X";
-            this.settingsc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.settingsc.UseVisualStyleBackColor = true;
-            this.settingsc.Click += new System.EventHandler(this.VRMC_Click);
-            // 
-            // settingsl
-            // 
-            this.settingsl.AutoSize = true;
-            this.settingsl.Location = new System.Drawing.Point(6, 4);
-            this.settingsl.Name = "settingsl";
-            this.settingsl.Size = new System.Drawing.Size(91, 16);
-            this.settingsl.TabIndex = 4;
-            this.settingsl.Text = "Quest settings";
-            // 
-            // settingsf
-            // 
-            this.settingsf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsf.Location = new System.Drawing.Point(8, 88);
-            this.settingsf.Name = "settingsf";
-            this.settingsf.Size = new System.Drawing.Size(296, 214);
-            this.settingsf.TabIndex = 5;
-            this.settingsf.UseVisualStyleBackColor = true;
+            this.itemp.Controls.Add(this.items);
+            this.itemp.Location = new System.Drawing.Point(9, 36);
+            this.itemp.Name = "itemp";
+            this.itemp.Size = new System.Drawing.Size(394, 262);
+            this.itemp.TabIndex = 9;
             // 
             // items
             // 
             this.items.AutoScroll = true;
-            this.items.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.items.Location = new System.Drawing.Point(-2, 3);
+            this.items.Controls.Add(this.bs);
+            this.items.Controls.Add(this.bs2);
+            this.items.Controls.Add(this.bs3);
+            this.items.Controls.Add(this.bs4);
+            this.items.Controls.Add(this.bs5);
+            this.items.Controls.Add(this.app);
+            this.items.Controls.Add(this.mount);
+            this.items.Controls.Add(this.CC);
+            this.items.Controls.Add(this.Keyb);
+            this.items.Controls.Add(this.VR);
+            this.items.Location = new System.Drawing.Point(1, 1);
             this.items.Name = "items";
-            this.items.Size = new System.Drawing.Size(321, 210);
+            this.items.Size = new System.Drawing.Size(416, 262);
             this.items.TabIndex = 6;
-            this.items.WrapContents = false;
             // 
-            // ca
+            // Keyb
             // 
-            this.ca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ca.Location = new System.Drawing.Point(211, 311);
-            this.ca.Name = "ca";
-            this.ca.Size = new System.Drawing.Size(90, 27);
-            this.ca.TabIndex = 7;
-            this.ca.Text = "New com";
-            this.ca.UseVisualStyleBackColor = true;
-            this.ca.Click += new System.EventHandler(this.ca_Click);
+            this.Keyb.Controls.Add(this.settext);
+            this.Keyb.Controls.Add(this.textboxbackround);
+            this.Keyb.Location = new System.Drawing.Point(187, 37);
+            this.Keyb.Name = "Keyb";
+            this.Keyb.Size = new System.Drawing.Size(166, 28);
+            this.Keyb.TabIndex = 12;
             // 
-            // nameb
+            // com
             // 
-            this.nameb.Enabled = false;
-            this.nameb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nameb.Location = new System.Drawing.Point(8, 311);
-            this.nameb.Name = "nameb";
-            this.nameb.Size = new System.Drawing.Size(96, 27);
-            this.nameb.TabIndex = 8;
-            this.nameb.UseVisualStyleBackColor = true;
-            // 
-            // Comb
-            // 
-            this.Comb.Enabled = false;
-            this.Comb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Comb.Location = new System.Drawing.Point(103, 311);
-            this.Comb.Name = "Comb";
-            this.Comb.Size = new System.Drawing.Size(102, 27);
-            this.Comb.TabIndex = 8;
-            this.Comb.UseVisualStyleBackColor = true;
+            this.com.BackColor = System.Drawing.Color.Black;
+            this.com.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.com.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.com.ForeColor = System.Drawing.Color.Lime;
+            this.com.Location = new System.Drawing.Point(153, 313);
+            this.com.Name = "com";
+            this.com.Size = new System.Drawing.Size(132, 20);
+            this.com.TabIndex = 0;
+            this.com.Text = "Command";
             // 
             // name
             // 
@@ -1215,58 +1132,134 @@
             this.name.ForeColor = System.Drawing.Color.Lime;
             this.name.Location = new System.Drawing.Point(11, 313);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(90, 20);
+            this.name.Size = new System.Drawing.Size(137, 20);
             this.name.TabIndex = 0;
             this.name.Text = "Name";
             // 
-            // com
+            // Comb
             // 
-            this.com.BackColor = System.Drawing.Color.Black;
-            this.com.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.com.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.com.ForeColor = System.Drawing.Color.Lime;
-            this.com.Location = new System.Drawing.Point(107, 313);
-            this.com.Name = "com";
-            this.com.Size = new System.Drawing.Size(96, 20);
-            this.com.TabIndex = 0;
-            this.com.Text = "Com";
+            this.Comb.Enabled = false;
+            this.Comb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Comb.Location = new System.Drawing.Point(149, 311);
+            this.Comb.Name = "Comb";
+            this.Comb.Size = new System.Drawing.Size(138, 27);
+            this.Comb.TabIndex = 8;
+            this.Comb.UseVisualStyleBackColor = true;
             // 
-            // itemp
+            // nameb
             // 
-            this.itemp.Controls.Add(this.items);
-            this.itemp.Location = new System.Drawing.Point(11, 90);
-            this.itemp.Name = "itemp";
-            this.itemp.Size = new System.Drawing.Size(292, 209);
-            this.itemp.TabIndex = 9;
+            this.nameb.Enabled = false;
+            this.nameb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nameb.Location = new System.Drawing.Point(8, 311);
+            this.nameb.Name = "nameb";
+            this.nameb.Size = new System.Drawing.Size(143, 27);
+            this.nameb.TabIndex = 8;
+            this.nameb.UseVisualStyleBackColor = true;
+            // 
+            // ca
+            // 
+            this.ca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ca.Location = new System.Drawing.Point(287, 311);
+            this.ca.Name = "ca";
+            this.ca.Size = new System.Drawing.Size(117, 27);
+            this.ca.TabIndex = 7;
+            this.ca.Text = "New command";
+            this.ca.UseVisualStyleBackColor = true;
+            this.ca.Click += new System.EventHandler(this.ca_Click);
+            // 
+            // settingsf
+            // 
+            this.settingsf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsf.Location = new System.Drawing.Point(8, 35);
+            this.settingsf.Name = "settingsf";
+            this.settingsf.Size = new System.Drawing.Size(396, 267);
+            this.settingsf.TabIndex = 5;
+            this.settingsf.UseVisualStyleBackColor = true;
+            // 
+            // settingsc
+            // 
+            this.settingsc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsc.ForeColor = System.Drawing.Color.Red;
+            this.settingsc.Location = new System.Drawing.Point(379, 0);
+            this.settingsc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.settingsc.Name = "settingsc";
+            this.settingsc.Size = new System.Drawing.Size(35, 25);
+            this.settingsc.TabIndex = 3;
+            this.settingsc.Text = "X";
+            this.settingsc.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.settingsc.UseVisualStyleBackColor = true;
+            this.settingsc.Click += new System.EventHandler(this.settingsc_Click);
+            // 
+            // settingsl
+            // 
+            this.settingsl.AutoSize = true;
+            this.settingsl.Location = new System.Drawing.Point(6, 4);
+            this.settingsl.Name = "settingsl";
+            this.settingsl.Size = new System.Drawing.Size(55, 16);
+            this.settingsl.TabIndex = 4;
+            this.settingsl.Text = "Settings";
+            // 
+            // settingsd
+            // 
+            this.settingsd.Dock = System.Windows.Forms.DockStyle.Top;
+            this.settingsd.Enabled = false;
+            this.settingsd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsd.Location = new System.Drawing.Point(0, 0);
+            this.settingsd.Name = "settingsd";
+            this.settingsd.Size = new System.Drawing.Size(414, 25);
+            this.settingsd.TabIndex = 1;
+            this.settingsd.UseVisualStyleBackColor = true;
+            // 
+            // settingsb
+            // 
+            this.settingsb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingsb.Enabled = false;
+            this.settingsb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsb.Location = new System.Drawing.Point(0, 0);
+            this.settingsb.Name = "settingsb";
+            this.settingsb.Size = new System.Drawing.Size(414, 347);
+            this.settingsb.TabIndex = 0;
+            this.settingsb.UseVisualStyleBackColor = true;
+            // 
+            // settingsba
+            // 
+            this.settingsba.CausesValidation = false;
+            this.settingsba.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsba.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsba.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.settingsba.Location = new System.Drawing.Point(740, 0);
+            this.settingsba.Margin = new System.Windows.Forms.Padding(2);
+            this.settingsba.Name = "settingsba";
+            this.settingsba.Size = new System.Drawing.Size(25, 25);
+            this.settingsba.TabIndex = 11;
+            this.settingsba.Text = "⚙️";
+            this.settingsba.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.settingsba.UseVisualStyleBackColor = true;
+            this.settingsba.Click += new System.EventHandler(this.settingsba_Click);
+            // 
+            // cuscomc
+            // 
+            this.cuscomc.Enabled = true;
+            this.cuscomc.Tick += new System.EventHandler(this.cuscomc_Tick);
             // 
             // ADBGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1450, 452);
+            this.ClientSize = new System.Drawing.Size(1550, 452);
             this.Controls.Add(this.settings);
+            this.Controls.Add(this.settingsba);
             this.Controls.Add(this.VRM);
-            this.Controls.Add(this.VR);
             this.Controls.Add(this.appdrawer);
             this.Controls.Add(this.sp);
-            this.Controls.Add(this.CC);
             this.Controls.Add(this.percent);
-            this.Controls.Add(this.mount);
             this.Controls.Add(this.bc);
-            this.Controls.Add(this.settext);
-            this.Controls.Add(this.sw);
             this.Controls.Add(this.cl);
             this.Controls.Add(this.cldb);
             this.Controls.Add(this.drag);
             this.Controls.Add(this.close);
             this.Controls.Add(this.db);
-            this.Controls.Add(this.bs4);
-            this.Controls.Add(this.textboxbackround);
-            this.Controls.Add(this.bs5);
-            this.Controls.Add(this.bs3);
-            this.Controls.Add(this.bs2);
-            this.Controls.Add(this.bs);
             this.Controls.Add(this.cover);
             this.ForeColor = System.Drawing.Color.Lime;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1276,7 +1269,6 @@
             this.Name = "ADBGUI";
             this.Text = "ADB-Gui";
             this.drag.ResumeLayout(false);
-            this.sw.ResumeLayout(false);
             this.appdrawer.ResumeLayout(false);
             this.appdrawer.PerformLayout();
             this.drawp.ResumeLayout(false);
@@ -1287,6 +1279,9 @@
             this.settings.ResumeLayout(false);
             this.settings.PerformLayout();
             this.itemp.ResumeLayout(false);
+            this.items.ResumeLayout(false);
+            this.Keyb.ResumeLayout(false);
+            this.Keyb.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1300,7 +1295,6 @@
         private System.Windows.Forms.Button bs;
         private System.Windows.Forms.Button scriptyB;
         private System.Windows.Forms.Button db;
-        private System.Windows.Forms.RichTextBox script;
         private System.Windows.Forms.Button close;
         private System.Windows.Forms.Panel drag;
         private System.Windows.Forms.Button bs2;
@@ -1311,9 +1305,6 @@
         private System.Windows.Forms.TextBox cl;
         private System.Windows.Forms.Button cover;
         private System.Windows.Forms.Timer sc;
-        private System.Windows.Forms.Button instant;
-        private System.Windows.Forms.Button dababy;
-        private System.Windows.Forms.Panel sw;
         private System.Windows.Forms.Button textboxbackround;
         private System.Windows.Forms.TextBox settext;
         private System.Windows.Forms.ComboBox ds;
@@ -1379,5 +1370,9 @@
         private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.TextBox com;
         private System.Windows.Forms.Panel itemp;
+        public System.Windows.Forms.RichTextBox script;
+        private System.Windows.Forms.Button settingsba;
+        private System.Windows.Forms.Panel Keyb;
+        private System.Windows.Forms.Timer cuscomc;
     }
 }

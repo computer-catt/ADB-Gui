@@ -1,4 +1,4 @@
-﻿namespace ADB_GUI
+﻿namespace ADB_Gui
 {
     partial class item
     {
@@ -41,7 +41,7 @@
             this.back.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.back.Location = new System.Drawing.Point(0, 0);
             this.back.Name = "back";
-            this.back.Size = new System.Drawing.Size(280, 30);
+            this.back.Size = new System.Drawing.Size(383, 30);
             this.back.TabIndex = 0;
             this.back.Text = "Name here";
             this.back.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -53,7 +53,7 @@
             // 
             this.close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.close.ForeColor = System.Drawing.Color.Red;
-            this.close.Location = new System.Drawing.Point(250, 0);
+            this.close.Location = new System.Drawing.Point(353, 0);
             this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(30, 30);
             this.close.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             this.TT.AutomaticDelay = 1000;
             this.TT.BackColor = System.Drawing.Color.Black;
-            this.TT.ForeColor = System.Drawing.Color.Lime;
+            this.TT.ForeColor = this.ForeColor;
             this.TT.OwnerDraw = true;
             this.TT.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.TT_Draw);
             // 
@@ -79,7 +79,8 @@
             this.ForeColor = System.Drawing.Color.Lime;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "item";
-            this.Size = new System.Drawing.Size(280, 30);
+            this.Size = new System.Drawing.Size(383, 30);
+            this.ForeColorChanged += new System.EventHandler(this.item_ForeColorChanged);
             this.ResumeLayout(false);
 
         }
