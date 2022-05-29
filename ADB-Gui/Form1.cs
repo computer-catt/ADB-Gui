@@ -77,9 +77,12 @@ namespace ADB_Gui
                         sitems += Item.Nam + "," + Item.Command + ";";
                     }
                 }
-                File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ADBGui\options", new string[] { ForeColor.ToArgb().ToString(), sitems.Remove(sitems.Length -1) });
+                if (sitems.EndsWith(";"))
+                {
+                    sitems = sitems.Remove(sitems.Length - 1);
+                }
+                File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ADBGui\options", new string[] { ForeColor.ToArgb().ToString(), sitems });
             }
-
         }
 
         public string adb(string command, bool e)
@@ -137,7 +140,6 @@ namespace ADB_Gui
         private async void sc_Tick(object sender, EventArgs e)
         {
             ab = await Task.Run(() => adb("devices", false).Split("\r".ToCharArray()));
-
             try
             {
                 connected = !ab[1].Contains("device") ? false : true;
@@ -367,10 +369,10 @@ namespace ADB_Gui
             };
             if (ofd.ShowDialog() == DialogResult.OK) adb("install \"" + ofd.FileName + "\"", true);
         }
-        private void bs4_Click(object sender, EventArgs e)
+        private async void bs4_Click(object sender, EventArgs e)
         {
             adb("tcpip 5555", false);
-            MessageBox.Show("tcpip started, please wait untill device reconnects.");
+            await Task.Delay(2000);
             adb("connect " + adb("shell ip addr show wlan0", false).Split("\r".ToCharArray())[2].Split("/".ToCharArray())[0].Replace("inet", "").Trim(), true);
         }
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -417,6 +419,8 @@ namespace ADB_Gui
         private void button2_Click(object sender, EventArgs e) => appdrawer.Visible = false;
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
         private void ADBGUI_FormClosing(object sender, FormClosingEventArgs e) => load(false);
+        private void frc_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.fullRateCapture 0", false);
+        private void frco_Click(object sender, EventArgs e) => adb("adb shell setprop debug.oculus.fullRateCapture 1", false);
         private void tsDrop_SelectedIndexChanged(object sender, EventArgs e) => tsButton.Text = tsDrop.Text;
         private void disprox_Click(object sender, EventArgs e) => adb("shell am broadcast -a com.oculus.vrpowermanager.prox_close", true);
         private void eperimode_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.experimentalEnabled 1 ", true);

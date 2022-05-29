@@ -364,7 +364,7 @@
             // sc
             // 
             this.sc.Enabled = true;
-            this.sc.Interval = 2000;
+            this.sc.Interval = 1000;
             this.sc.Tick += new System.EventHandler(this.sc_Tick);
             // 
             // textboxbackround
@@ -615,7 +615,7 @@
             this.frc.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TT.SetToolTip(this.frc, "Toggle full rate capture off");
             this.frc.UseVisualStyleBackColor = true;
-            this.frc.Click += new System.EventHandler(this.VRMGD_Click);
+            this.frc.Click += new System.EventHandler(this.frc_Click);
             // 
             // frco
             // 
@@ -631,7 +631,7 @@
             this.frco.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TT.SetToolTip(this.frco, "Toggle full rate capture on");
             this.frco.UseVisualStyleBackColor = true;
-            this.frco.Click += new System.EventHandler(this.VRMGE_Click);
+            this.frco.Click += new System.EventHandler(this.frco_Click);
             // 
             // frcl
             // 
