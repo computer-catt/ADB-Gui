@@ -217,6 +217,7 @@
             this.ds.TabIndex = 11;
             this.ds.Text = " ";
             this.TT.SetToolTip(this.ds, "Current device");
+            this.ds.SelectedIndexChanged += new System.EventHandler(this.ds_SelectedIndexChanged);
             // 
             // app
             // 

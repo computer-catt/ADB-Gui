@@ -24,7 +24,7 @@ namespace ADB_Gui
         private Process adbp = new Process();
         private Process scrcpy = new Process();
         public Color colore = Color.Lime;
-        public static string comm = "";
+        public static string comm = "", Device = "";
         public ADBGUI()
         {
             InitializeComponent();
@@ -87,12 +87,7 @@ namespace ADB_Gui
 
         public string adb(string command, bool e)
         {
-        tryagain:
-            try
-            {
-                if (ds.Text.Length > 3) command = " -s " + ds.Text.Trim() + " " + command;
-            }
-            catch { goto tryagain; }
+            if (Device.Length > 3) command = " -s " + Device.Trim() + " " + command;
             adbp.StartInfo.Arguments = command;
             adbp.Start();
             if (command.Contains("connect") | (command.Trim() == "")) if (!adbp.WaitForExit(5000)) adbp.Kill();
@@ -146,12 +141,12 @@ namespace ADB_Gui
             }
             catch { }
             ds.Items.Clear();
-            if (ds.Text.Length > 3)
+            if (Device.Length > 3)
             {
                 found = await Task.Run(() => adb("shell dumpsys battery", false));
                 if (found.Contains("not found"))
                 {
-                    ds.Text = "";
+                    Device = "";
                     percent.Text = "";
                 }
             }
@@ -160,7 +155,7 @@ namespace ADB_Gui
                 model = await Task.Run(() => adb("shell getprop ro.product.model", false));
                 VR.Visible = model.Contains("Quest");
                 foreach (string beanis in ab) if (!beanis.Contains("List of devices attached") && beanis.Contains("device")) if (beanis.Length > 3) ds.Items.Add(beanis.Replace("device", "").Trim());
-                if (ds.Text.Length < 3)
+                if (Device.Length < 3)
                 {
                     try
                     {
@@ -175,7 +170,7 @@ namespace ADB_Gui
                 VR.Visible = false;
                 VRM.Visible = false;
             }
-            if (ds.Text.Length > 3)
+            if (Device.Length > 3)
             {
                 if (found != null)
                 {
@@ -420,6 +415,7 @@ namespace ADB_Gui
         private void setls_SelectedIndexChanged(object sender, EventArgs e) => setlb.Text = setls.Text;
         private void ADBGUI_FormClosing(object sender, FormClosingEventArgs e) => load(false);
         private void frc_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.fullRateCapture 0", false);
+        private void ds_SelectedIndexChanged(object sender, EventArgs e) => Device = ds.Text;
         private void frco_Click(object sender, EventArgs e) => adb("adb shell setprop debug.oculus.fullRateCapture 1", false);
         private void tsDrop_SelectedIndexChanged(object sender, EventArgs e) => tsButton.Text = tsDrop.Text;
         private void disprox_Click(object sender, EventArgs e) => adb("shell am broadcast -a com.oculus.vrpowermanager.prox_close", true);
