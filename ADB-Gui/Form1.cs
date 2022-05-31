@@ -34,9 +34,9 @@ namespace ADB_Gui
             adbp.StartInfo.CreateNoWindow = true;
             adbp.StartInfo.UseShellExecute = false;
             ClientSize = new Size(600, 365);
-            appdrawer.Location = new Point(190, 120);
             settings.Location = new Point(190, 50);
-            VRM.Location = new Point(220, 60);
+            VRM.Location = new Point(240, 60);
+            appdrawer.Location = new Point(240, 120);
             if (!File.Exists(Directory.GetCurrentDirectory() + "\\resources\\adb.exe"))
             {
                 net.DownloadFile("https://cdn.discordapp.com/attachments/937597423071666186/963970216084246588/adb.zip", "adb.zip");
@@ -420,6 +420,7 @@ namespace ADB_Gui
         private void ADBGUI_FormClosing(object sender, FormClosingEventArgs e) => load(false);
         private void frc_Click(object sender, EventArgs e) => adb("shell setprop debug.oculus.fullRateCapture 0", false);
         private void ds_SelectedIndexChanged(object sender, EventArgs e) => Device = ds.Text;
+        private void ADBGUI_Load(object sender, EventArgs e) => settings.Visible = false;
         private void frco_Click(object sender, EventArgs e) => adb("adb shell setprop debug.oculus.fullRateCapture 1", false);
         private void tsDrop_SelectedIndexChanged(object sender, EventArgs e) => tsButton.Text = tsDrop.Text;
         private void disprox_Click(object sender, EventArgs e) => adb("shell am broadcast -a com.oculus.vrpowermanager.prox_close", true);

@@ -430,7 +430,6 @@
             this.percent.Name = "percent";
             this.percent.Size = new System.Drawing.Size(26, 18);
             this.percent.TabIndex = 13;
-            this.percent.Text = "100";
             this.percent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TT.SetToolTip(this.percent, "Dropdown button for currently selected device");
             this.percent.Click += new System.EventHandler(this.percent_Click);
@@ -448,7 +447,7 @@
             this.appdrawer.Controls.Add(this.appdrawdrag);
             this.appdrawer.Controls.Add(this.bcoverdraw);
             this.appdrawer.Controls.Add(this.appdrawercover);
-            this.appdrawer.Location = new System.Drawing.Point(811, 10);
+            this.appdrawer.Location = new System.Drawing.Point(811, 7);
             this.appdrawer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.appdrawer.Name = "appdrawer";
             this.appdrawer.Size = new System.Drawing.Size(307, 126);
@@ -708,7 +707,7 @@
             this.VRM.Controls.Add(this.VRMC);
             this.VRM.Controls.Add(this.VRMD);
             this.VRM.Controls.Add(this.VRMB);
-            this.VRM.Location = new System.Drawing.Point(811, 143);
+            this.VRM.Location = new System.Drawing.Point(811, 140);
             this.VRM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.VRM.Name = "VRM";
             this.VRM.Size = new System.Drawing.Size(307, 307);
@@ -1081,7 +1080,6 @@
             this.settings.Name = "settings";
             this.settings.Size = new System.Drawing.Size(414, 347);
             this.settings.TabIndex = 19;
-            this.settings.Visible = false;
             // 
             // itemp
             // 
@@ -1255,10 +1253,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1550, 452);
-            this.Controls.Add(this.settings);
-            this.Controls.Add(this.settingsba);
             this.Controls.Add(this.VRM);
             this.Controls.Add(this.appdrawer);
+            this.Controls.Add(this.settings);
+            this.Controls.Add(this.settingsba);
             this.Controls.Add(this.sp);
             this.Controls.Add(this.percent);
             this.Controls.Add(this.bc);
@@ -1276,6 +1274,7 @@
             this.Name = "ADBGUI";
             this.Text = "ADB-Gui";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ADBGUI_FormClosing);
+            this.Load += new System.EventHandler(this.ADBGUI_Load);
             this.drag.ResumeLayout(false);
             this.appdrawer.ResumeLayout(false);
             this.appdrawer.PerformLayout();
