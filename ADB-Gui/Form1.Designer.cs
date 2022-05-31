@@ -181,10 +181,10 @@
             // 
             this.close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.close.ForeColor = System.Drawing.Color.Red;
-            this.close.Location = new System.Drawing.Point(765, 0);
+            this.close.Location = new System.Drawing.Point(764, 0);
             this.close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(35, 25);
+            this.close.Size = new System.Drawing.Size(36, 25);
             this.close.TabIndex = 3;
             this.close.Text = "X";
             this.close.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -397,7 +397,7 @@
             // bc
             // 
             this.bc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bc.Font = new System.Drawing.Font("Microsoft Sans Serif", 4.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bc.Location = new System.Drawing.Point(152, 0);
             this.bc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bc.Name = "bc";
@@ -423,13 +423,15 @@
             // 
             // percent
             // 
-            this.percent.AutoSize = true;
             this.percent.BackColor = System.Drawing.Color.Transparent;
             this.percent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.percent.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.percent.Location = new System.Drawing.Point(153, 4);
             this.percent.Name = "percent";
-            this.percent.Size = new System.Drawing.Size(0, 16);
+            this.percent.Size = new System.Drawing.Size(26, 18);
             this.percent.TabIndex = 13;
+            this.percent.Text = "100";
+            this.percent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TT.SetToolTip(this.percent, "Dropdown button for currently selected device");
             this.percent.Click += new System.EventHandler(this.percent_Click);
             // 

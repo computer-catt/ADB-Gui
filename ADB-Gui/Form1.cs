@@ -215,13 +215,17 @@ namespace ADB_Gui
                         //draw.Items.Add(beans.Trim().Substring(8));
                         if (!doe)
                         {
-                            if (test.Contains(beans.Trim().Substring(8)))
+                            try
                             {
-                                ms += beans.Trim().Substring(8);
-                                doe = true;
+                                if (test.Contains(beans.Trim().Substring(8)))
+                                {
+                                    ms += beans.Trim().Substring(8);
+                                    doe = true;
+                                }
+                                if (ms != la.Text) la.Text = ms;
+                                if (ms.Contains("not found")) la.Text = "Device not found!";
                             }
-                            if (ms != la.Text) la.Text = ms;
-                            if (ms.Contains("not found")) la.Text = "Device not found!";
+                            catch { }
                         }
                     }
                 }
